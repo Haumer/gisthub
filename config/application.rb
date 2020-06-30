@@ -1,4 +1,5 @@
 require_relative 'boot'
+require "view_component/engine"
 
 require 'rails/all'
 
