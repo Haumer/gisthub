@@ -1,0 +1,21 @@
+<div class="gist-card">
+  <div class="language">
+    <%= pluralize(@gist.languages.count, "language") %> used:
+    <% @gist.languages_percent.each do |language, percent| %>
+      <%= language %>: <%= percent %>
+    <% end %>
+  </div>
+  <div class="link">
+    <%= link_to @gist.gist_id.truncate(50, omission: '...'), @gist.url %>
+  </div>
+  <div class="comments">
+    <%= @gist.comments %>
+  </div>
+  <div class="files">
+    file count: <%= @gist.gist_files.count %>
+    <% @gist.gist_files.each do |file| %>
+    <% end %>
+  </div>
+</div>
+
+

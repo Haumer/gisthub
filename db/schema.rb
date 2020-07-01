@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_234907) do
+ActiveRecord::Schema.define(version: 2020_07_01_010442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(version: 2020_06_30_234907) do
     t.bigint "gist_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "filename", default: ""
+    t.string "raw_url", default: ""
+    t.integer "size", default: 0
+    t.string "language", default: ""
     t.index ["gist_id"], name: "index_gist_files_on_gist_id"
   end
 
@@ -29,12 +33,12 @@ ActiveRecord::Schema.define(version: 2020_06_30_234907) do
     t.string "url", default: "", null: false
     t.string "forks_url", default: "", null: false
     t.string "html_url", default: "", null: false
-    t.string "owner", default: "", null: false
     t.boolean "public", default: true, null: false
-    t.string "description", default: "", null: false
-    t.string "comments", default: "", null: false
+    t.string "description", default: ""
+    t.integer "comments", default: 0, null: false
     t.string "comments_url", default: "", null: false
     t.string "date", default: "", null: false
+    t.string "gist_id", default: "", null: false
     t.index ["user_id"], name: "index_gists_on_user_id"
   end
 
@@ -46,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_06_30_234907) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "githubname", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
