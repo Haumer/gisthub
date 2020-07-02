@@ -1,0 +1,28 @@
+.gist-card {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  line-height: 36px;
+  margin: 0 30px;
+  padding: 2px 8px;
+  justify-content: space-between;
+}
+
+.gist-info {
+  display: flex;
+}
+
+.comments,
+.files {
+  margin: 0 0 0 5px;
+}
+
+.language {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 36px;
+  }
+}
+

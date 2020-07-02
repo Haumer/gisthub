@@ -1,21 +1,23 @@
 <div class="gist-card">
-  <div class="language">
-    <%= pluralize(@gist.languages.count, "language") %> used:
-    <% @gist.languages_percent.each do |language, percent| %>
-      <%= language %>: <%= percent %>
-    <% end %>
+  <div class="gist-info">
+      <div class="language">
+        <% @gist.languages_percent.each do |language, percent| %>
+          <img class="language-icon" src="<%= Language.find_by_name(language.capitalize).img_url %>" alt="<%= language %>"> <%= percent.to_i %>%
+        <% end %>
+      </div>
+      <div class="files">
+        <%= pluralize(@gist.gist_files.count, "Files") %>:
+        <% @gist.gist_files.each do |file| %>
+          <%= link_to file do %>
+            <%= file.filename %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="comments">
+        <%= @gist.comments %> <i class="far fa-comment"></i>
+      </div>
   </div>
-  <div class="link">
-    <%= link_to @gist.gist_id.truncate(50, omission: '...'), @gist.url %>
-  </div>
-  <div class="comments">
-    <%= @gist.comments %>
-  </div>
-  <div class="files">
-    file count: <%= @gist.gist_files.count %>
-    <% @gist.gist_files.each do |file| %>
-    <% end %>
+  <div class="date">
+    Last updated: <%= @gist.date %>
   </div>
 </div>
-
-
