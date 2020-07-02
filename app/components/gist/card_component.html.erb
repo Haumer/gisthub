@@ -1,21 +1,24 @@
 <div class="gist-card">
   <div class="gist-info">
-      <div class="language">
-        <% @gist.languages_percent.each do |language, percent| %>
-          <img class="language-icon" src="<%= Language.find_by_name(language.capitalize).img_url %>" alt="<%= language %>"> <%= percent.to_i %>%
+    <%= link_to hide_gist_path(id: @gist.id), method: :post do %>
+      <i class="fas <%= @gist.hide ? "fa-eye" : "fa-eye-slash" %>"></i>
+    <% end %>
+    <div class="language">
+      <% @gist.languages_percent.each do |language, percent| %>
+        <img class="language-icon" src="<%= Language.find_by_name(language.capitalize).img_url %>" alt="<%= language %>"> <%= percent.to_i %>%
+      <% end %>
+    </div>
+    <div class="files">
+      <%= pluralize(@gist.gist_files.count, "File") %>:
+      <% @gist.gist_files.each do |file| %>
+        <%= link_to file do %>
+          <%= file.filename %>
         <% end %>
-      </div>
-      <div class="files">
-        <%= pluralize(@gist.gist_files.count, "File") %>:
-        <% @gist.gist_files.each do |file| %>
-          <%= link_to file do %>
-            <%= file.filename %>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="comments">
-        <%= @gist.comments %> <i class="far fa-comment"></i>
-      </div>
+      <% end %>
+    </div>
+    <div class="comments">
+      <%= @gist.comments %> <i class="far fa-comment"></i>
+    </div>
   </div>
   <div class="date">
     Last updated: <%= DateTime.strptime(@gist.date).strftime("%e %b %Y %H:%M:%S%p")

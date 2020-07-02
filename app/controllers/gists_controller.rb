@@ -7,6 +7,18 @@ class GistsController < ApplicationController
 
   end
 
+  def hide
+    @gist = Gist.find(params[:id])
+    @gist.update(hide: !@gist.hide)
+    redirect_to user_path(slug: @gist.user.githubname)
+  end
+
+  def star
+    @gist = Gist.find(params[:id])
+    @gist.update(star: !@gist.star)
+    redirect_to user_path(slug: @gist.user.githubname)
+  end
+
   private
 
   def gist_params

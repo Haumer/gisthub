@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_231522) do
+ActiveRecord::Schema.define(version: 2020_07_02_230057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2020_07_01_231522) do
     t.string "comments_url", default: "", null: false
     t.string "date", default: "", null: false
     t.string "gist_id", default: "", null: false
+    t.boolean "hide", default: true
+    t.boolean "star", default: true
     t.index ["user_id"], name: "index_gists_on_user_id"
   end
 
