@@ -2,4 +2,9 @@
   <div class="new_gists_count_text">
     <i class="fas fa-code-branch"></i> You have <%= pluralize(@count, "new gist") %>
   </div>
+  <%= link_to user_gists_path(@user.githubname) do %>
+    <div class="gist-index-cta">
+      New Gists
+    </div>
+  <% end %>
 </div>

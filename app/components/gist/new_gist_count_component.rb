@@ -1,6 +1,7 @@
 class Gist::NewGistCountComponent < ViewComponent::Base
-  def initialize(count)
-    @count = count.to_i
+  def initialize(count, user)
+    @count = count
+    @user = user
   end
 
   def render?

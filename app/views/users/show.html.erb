@@ -1,4 +1,4 @@
-<%= render Gist::NewGistCountComponent.new(params[:new_gists_count]) %>
+<%= render Gist::NewGistCountComponent.new(params[:new_gists_count], @user) %>
 <div class="refresh-gist">
   <%= link_to "refresh", [ :get_gists, slug: @user.githubname ], method: :post %>
 </div>
