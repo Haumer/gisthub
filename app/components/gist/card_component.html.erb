@@ -24,6 +24,16 @@
     <div class="comments">
       <%= @gist.comments %> <i class="far fa-comment"></i>
     </div>
+    <div class="gist-label d-flex">
+      <% @gist.labels.each do |label| %>
+        <%= label.name %>
+      <% end %>
+      <div class="add-label">
+        <i class="far fa-plus-square"></i>
+        <%= render "gist_labels/form", gist_label: GistLabel.new, gist: @gist, class: "hidden" %>
+      </div>
+
+    </div>
   </div>
   <div class="date">
     Created: <%= DateTime.strptime(@gist.date).strftime("%e %b %Y %H:%M:%S%p")

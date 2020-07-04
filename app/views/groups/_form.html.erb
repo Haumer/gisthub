@@ -1,3 +1,7 @@
 <%= simple_form_for group do |f| %>
-  <%= f.input :name %>
+  <%#= f.input :name, hint: "Group" %>
+  <div class="form-group string optional group_name d-flex">
+    <label class="string optional" for="group_name">Group</label>
+    <input class="form-control string optional" type="text" name="group[name]" id="group_name">
+  </div>
 <% end %>

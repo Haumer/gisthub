@@ -1,0 +1,9 @@
+<%= simple_form_for gist_label do |f| %>
+  <div class="d-flex">
+    <%= f.association :label,
+                      collection: Label.where(user: current_user) - gist.labels,
+                      label: false %>
+    <%= f.input :gist, :as => :hidden, :input_html => { :value => gist.id } %>
+    <%= f.submit "create" %>
+  </div>
+<% end %>
