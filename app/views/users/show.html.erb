@@ -10,13 +10,21 @@
   <% end %>
 </div>
 
+<div class="d-flex">
+  <%= render "groups/form", group: Group.new %>
+  <%= render "labels/form", label: Label.new %>
+</div>
+
 <% if @star_gists.present? %>
   <% @star_gists.each do |gist| %>
     <%= render Gist::CardComponent.new(gist) %>
   <% end %>
 <% end %>
 
-<div class="d-flex">
-  <%= render "groups/form", group: Group.new %>
-  <%= render "labels/form", label: Label.new %>
-</div>
+<% if @gists.present? %>
+  <% @gists.each do |gist| %>
+    <%= render Gist::CardComponent.new(gist) %>
+  <% end %>
+<% end %>
+
+

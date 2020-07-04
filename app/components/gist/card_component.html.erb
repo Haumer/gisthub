@@ -5,6 +5,11 @@
         <i class="fas <%= @gist.hide ? "fa-eye" : "fa-eye-slash" %>"></i>
       <% end %>
     </div>
+    <div class="gist-star">
+      <%= link_to star_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", method: :post, remote: true do %>
+        <i class="<%= @gist.hide ? "fas" : "far" %> fa-star"></i>
+      <% end %>
+    </div>
     <div class="language">
       <% @gist.languages_percent.each do |language, percent| %>
         <img class="language-icon" src="<%= Language.find_by_name(language.capitalize).img_url %>" alt="<%= language %>"> <%= percent.to_i %>%
