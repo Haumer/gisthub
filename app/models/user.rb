@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :gists
+  has_many :groups
 
   def gist_api
     gist_url = "https://api.github.com/users/#{self.githubname}/gists".freeze
