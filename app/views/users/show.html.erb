@@ -10,6 +10,12 @@
   <% end %>
 </div>
 
+<% if @star_gists.present? %>
+  <% @star_gists.each do |gist| %>
+    <%= render Gist::CardComponent.new(gist) %>
+  <% end %>
+<% end %>
+
 <div class="d-flex">
   <%= render "groups/form", group: Group.new %>
   <%= render "labels/form", label: Label.new %>
