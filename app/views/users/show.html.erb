@@ -1,6 +1,9 @@
 <div class="refresh-gist">
   <%= link_to "refresh", [ :get_gists, slug: @user.githubname ], method: :post %>
 </div>
+
+<%= render "groups/form", group: Group.new %>
+
 <% if @gists.present? %>
   <% @gists.each do |gist| %>
     <%= render Gist::CardComponent.new(gist) %>

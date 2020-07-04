@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :users, param: :slug, only: [ :show ]
   resources :gist_files, only: [ :show, :test ]
+  resources :groups, only: [ :new, :create ]
 
   post "get_gists", to: "users#get_gists"
   post "star_gist", to: "gists#star"

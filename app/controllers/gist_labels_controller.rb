@@ -1,0 +1,2 @@
+class GistLabelsController < ApplicationController
+end
