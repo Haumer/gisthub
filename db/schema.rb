@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_230057) do
+ActiveRecord::Schema.define(version: 2020_07_04_075526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2020_07_02_230057) do
     t.integer "size", default: 0
     t.string "language", default: ""
     t.index ["gist_id"], name: "index_gist_files_on_gist_id"
+  end
+
+  create_table "gist_labels", force: :cascade do |t|
+    t.bigint "label_id", null: false
+    t.bigint "gist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gist_id"], name: "index_gist_labels_on_gist_id"
+    t.index ["label_id"], name: "index_gist_labels_on_label_id"
   end
 
   create_table "gists", force: :cascade do |t|
@@ -42,6 +51,18 @@ ActiveRecord::Schema.define(version: 2020_07_02_230057) do
     t.boolean "hide", default: true
     t.boolean "star", default: true
     t.index ["user_id"], name: "index_gists_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "languages", force: :cascade do |t|
@@ -65,5 +86,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_230057) do
   end
 
   add_foreign_key "gist_files", "gists"
+  add_foreign_key "gist_labels", "gists"
+  add_foreign_key "gist_labels", "labels"
   add_foreign_key "gists", "users"
 end

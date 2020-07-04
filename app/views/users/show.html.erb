@@ -3,9 +3,6 @@
 </div>
 <% if @gists.present? %>
   <% @gists.each do |gist| %>
-    <% unless gist.user != current_user && gist.hide %>
-      <%= render Gist::CardComponent.new(gist) %>
-    <% end %>
+    <%= render Gist::CardComponent.new(gist) %>
   <% end %>
 <% end %>
-
