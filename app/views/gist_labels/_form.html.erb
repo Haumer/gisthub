@@ -1,5 +1,5 @@
 <%= simple_form_for gist_label do |f| %>
-  <div class="d-flex">
+  <div class="d-flex align-items-center">
     <%= f.association :label,
                       collection: Label.where(user: current_user) - gist.labels,
                       label: false %>

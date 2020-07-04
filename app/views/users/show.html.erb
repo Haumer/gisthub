@@ -1,3 +1,4 @@
+<%= render Gist::NewGistCountComponent.new(params[:new_gists_count]) %>
 <div class="refresh-gist">
   <%= link_to "refresh", [ :get_gists, slug: @user.githubname ], method: :post %>
 </div>
@@ -5,9 +6,3 @@
   <%= render "groups/form", group: Group.new %>
   <%= render "labels/form", label: Label.new %>
 </div>
-
-<% if @gists.present? %>
-  <% @gists.each do |gist| %>
-    <%= render Gist::CardComponent.new(gist) %>
-  <% end %>
-<% end %>

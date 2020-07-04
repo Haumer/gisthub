@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :users, param: :slug, only: [ :show ]
+  resources :users, param: :slug, only: [ :show ] do
+    resources :gists, only: [ :index ]
+  end
   resources :gist_files, only: [ :show, :test ]
   resources :groups, only: [ :new, :create ]
   resources :labels, only: [ :new, :create ]

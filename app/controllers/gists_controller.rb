@@ -3,6 +3,11 @@ class GistsController < ApplicationController
     @gist = Gist.create(gist_params)
   end
 
+  def index
+    @user = User.find_by_githubname(params[:user_slug])
+    @gists = @user.gists
+  end
+
   def hide
     @gist = Gist.find(params[:id])
     @gist.update(hide: !@gist.hide)
