@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   resources :gist_labels, only: [ :new, :create ]
 
   post "get_gists", to: "users#get_gists"
-  post "star_gist", to: "user_gists#star"
-  post "hide_gist", to: "user_gists#hide"
+  post "star_gist", to: "user_gists#toggle_star"
+  post "hide_gist", to: "user_gists#toggle_hide"
 end

@@ -8,13 +8,13 @@ class UserGistsController < ApplicationController
     @gists = @user.user_gists.order(date: :desc)
   end
 
-  def hide
+  def toggle_hide
     @gist = UserGist.find(params[:id])
     @gist.update(hide: !@gist.hide)
     redirect_back(fallback_location: user_path(current_user.githubname))
   end
 
-  def star
+  def toggle_star
     @gist = UserGist.find(params[:id])
     @gist.update(star: !@gist.star)
     redirect_back(fallback_location: user_path(current_user.githubname))

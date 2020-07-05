@@ -4,7 +4,7 @@ class GistLabelsController < ApplicationController
   end
 
   def create
-    @gist_label = GistLabel.create(gist_label_params)
+    @gist_label = GistLabel.new(gist_label_params)
     @gist = UserGist.find(params[:gist_label][:gist])
     @gist_label.gist = @gist
     if @gist_label.save
