@@ -1,0 +1,18 @@
+.user-create-option {
+  width: 56px;
+  margin: auto 16px;
+}
+
+.user-container-input {
+  width: 60%;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 24px 0;
+  .top-right {
+    display: block;
+  }
+}

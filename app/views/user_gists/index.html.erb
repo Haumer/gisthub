@@ -1,8 +1,10 @@
-<div class="refresh-gist github-cta-button">
-  <%= link_to "refresh", [ :get_gists, slug: @user.githubname ], method: :post %>
-</div>
-<% if @gists.present? %>
-  <% @gists.each do |gist| %>
-    <%= render Gist::CardComponent.new(gist) %>
+<div class="default-container">
+  <div class="refresh-gist github-cta-button">
+    <%= link_to "refresh", [ :get_gists, slug: @user.githubname ], method: :post %>
+  </div>
+  <% if @gists.present? %>
+    <% @gists.each do |gist| %>
+      <%= render Gist::CardComponent.new(gist) %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

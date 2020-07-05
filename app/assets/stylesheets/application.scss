@@ -1,6 +1,7 @@
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
+@import "config/default";
 @import "config/bootstrap_variables";
 
 // External libraries
@@ -13,11 +14,4 @@
 @import "pages/index";
 @import "view_components/index";
 @import "groups/index";
-
-a {
-  text-decoration: none;
-  color: black;
-  &:hover, &:visited {
-    color: black;
-  }
-}
+@import "users/index";

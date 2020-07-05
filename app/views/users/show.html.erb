@@ -1,26 +1,32 @@
-<%= render Gist::NewGistCountComponent.new(params[:new_gists_count], @user) %>
-Your Groups
-<div class="user-groups">
-  <% @user.groups.each do |group| %>
-    <%= render Groups::LabelComponent.new(group) %>
+<div class="default-container user-container">
+  <%= render Gist::NewGistCountComponent.new(params[:new_gists_count], @user) %>
+  <div class="top">
+    <div class="top-left">
+      <h2>Your Groups</h2>
+      <div class="user-groups">
+        <% @user.groups.each do |group| %>
+          <%= render Groups::LabelComponent.new(group) %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="top-right">
+      <div class="user-create-options">
+        <%= render "groups/form", group: Group.new %>
+        <%= render "labels/form", label: Label.new %>
+      </div>
+    </div>
+  </div>
+
+  <% if @star_gists.present? %>
+    <% @star_gists.each do |gist| %>
+      <%= render Gist::CardComponent.new(gist) %>
+    <% end %>
+  <% end %>
+
+  <% if @gists.present? %>
+    <% @gists.each do |gist| %>
+      <%= render Gist::CardComponent.new(gist) %>
+    <% end %>
   <% end %>
 </div>
-
-<div class="d-flex">
-  <%= render "groups/form", group: Group.new %>
-  <%= render "labels/form", label: Label.new %>
-</div>
-
-<% if @star_gists.present? %>
-  <% @star_gists.each do |gist| %>
-    <%= render Gist::CardComponent.new(gist) %>
-  <% end %>
-<% end %>
-
-<% if @gists.present? %>
-  <% @gists.each do |gist| %>
-    <%= render Gist::CardComponent.new(gist) %>
-  <% end %>
-<% end %>
-
-

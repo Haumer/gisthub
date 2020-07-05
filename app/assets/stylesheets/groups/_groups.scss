@@ -2,7 +2,10 @@
   display: flex;
   a {
     text-decoration: none;
-    margin: 4px 16px;
+    color: black;
+    &:hover, &:visited {
+      color: black;
+    }
   }
 }
 
@@ -50,4 +53,13 @@
 
 .group-container {
   margin: 24px;
+  a {
+    text-decoration: none;
+    color: black;
+    transition: .2s ease-in-out;
+    &:hover, &:visited {
+      color: black;
+      opacity: 0.8;
+    }
+  }
 }
