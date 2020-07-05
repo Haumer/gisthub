@@ -1,0 +1,8 @@
+<div class="created_at">
+  <div class="gist-author">
+    <%= @user.githubname %>
+  </div>
+  <div class="gist-time">
+    <%= @gist.updated_at.strftime("%e %b %Y %H:%M:%S%p") %> (<%= distance_of_time_in_words(@gist.updated_at, DateTime.now) %>)
+  </div>
+</div>

@@ -1,3 +1,14 @@
-<div class="group-member-label">
-  <img src="<%= @group.user.avatar_url %>" alt=""> <%= @group.user.githubname %>
+<div class="group-container">
+  <h2>Members of <%= @group.name %></h2>
+  <%= link_to user_path(@group.user.githubname) do %>
+    <div class="group-member-label">
+      <img src="<%= @group.user.avatar_url %>" alt=""> <%= @group.user.githubname %>
+    </div>
+  <% end %>
+  <div class="feed">
+    <% @group_gists.each do |gist| %>
+      <%= render GistFiles::CreatedAtComponent.new(gist) %>
+      <%= render GistFiles::FileComponent.new(gist) %>
+    <% end %>
+  </div>
 </div>

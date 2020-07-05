@@ -1,7 +1,8 @@
 .user-groups {
   display: flex;
   a {
-    text-decoration: none
+    text-decoration: none;
+    margin: 4px 16px;
   }
 }
 
@@ -12,6 +13,7 @@
   height: 36px;
   border: 1px solid;
   border-radius: 3px;
+  padding: 8px;
 }
 
 .group-member-label {
@@ -38,4 +40,14 @@
     height: 32px;
     border-radius: 50%;
   }
+}
+
+.feed {
+  margin: auto;
+  width: 60%;
+  border-radius: 5px;
+}
+
+.group-container {
+  margin: 24px;
 }
