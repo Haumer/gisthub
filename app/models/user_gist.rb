@@ -1,7 +1,7 @@
-class Gist < ApplicationRecord
+class UserGist < ApplicationRecord
   belongs_to :user
-  has_many :gist_files
-  has_many :gist_labels
+  has_many :gist_files, dependent: :destroy
+  has_many :gist_labels, dependent: :destroy
   has_many :labels, through: :gist_labels
 
   def languages

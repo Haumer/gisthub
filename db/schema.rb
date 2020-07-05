@@ -10,32 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_05_100450) do
+ActiveRecord::Schema.define(version: 2020_07_04_075921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "gist_files", force: :cascade do |t|
-    t.bigint "gist_id", null: false
+    t.bigint "user_gist_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "filename", default: ""
     t.string "raw_url", default: ""
     t.integer "size", default: 0
     t.string "language", default: ""
-    t.index ["gist_id"], name: "index_gist_files_on_gist_id"
+    t.index ["user_gist_id"], name: "index_gist_files_on_user_gist_id"
   end
 
   create_table "gist_labels", force: :cascade do |t|
     t.bigint "label_id", null: false
-    t.bigint "gist_id", null: false
+    t.bigint "user_gist_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["gist_id"], name: "index_gist_labels_on_gist_id"
     t.index ["label_id"], name: "index_gist_labels_on_label_id"
+    t.index ["user_gist_id"], name: "index_gist_labels_on_user_gist_id"
   end
 
-  create_table "gists", force: :cascade do |t|
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_labels_on_user_id"
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
+    t.string "img_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_gists", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -48,32 +71,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_100450) do
     t.string "comments_url", default: "", null: false
     t.string "date", default: "", null: false
     t.string "gist_id", default: "", null: false
-    t.boolean "hide", default: true
-    t.boolean "star", default: true
-    t.index ["user_id"], name: "index_gists_on_user_id"
-  end
-
-  create_table "groups", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_groups_on_user_id"
-  end
-
-  create_table "labels", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_labels_on_user_id"
-  end
-
-  create_table "languages", force: :cascade do |t|
-    t.string "name"
-    t.string "img_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_gists_on_user_id"
   end
 
   create_table "usergroups", force: :cascade do |t|
@@ -101,12 +99,12 @@ ActiveRecord::Schema.define(version: 2020_07_05_100450) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "gist_files", "gists"
-  add_foreign_key "gist_labels", "gists"
+  add_foreign_key "gist_files", "user_gists"
   add_foreign_key "gist_labels", "labels"
-  add_foreign_key "gists", "users"
+  add_foreign_key "gist_labels", "user_gists"
   add_foreign_key "groups", "users"
   add_foreign_key "labels", "users"
+  add_foreign_key "user_gists", "users"
   add_foreign_key "usergroups", "groups"
   add_foreign_key "usergroups", "users"
 end

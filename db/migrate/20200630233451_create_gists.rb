@@ -1,6 +1,6 @@
 class CreateGists < ActiveRecord::Migration[6.0]
   def change
-    create_table :gists do |t|
+    create_table :user_gists do |t|
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

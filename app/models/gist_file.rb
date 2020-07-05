@@ -1,3 +1,3 @@
 class GistFile < ApplicationRecord
-  belongs_to :gist
+  belongs_to :user_gist
 end
