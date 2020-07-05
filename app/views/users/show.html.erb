@@ -1,7 +1,4 @@
 <%= render Gist::NewGistCountComponent.new(params[:new_gists_count], @user) %>
-<div class="refresh-gist github-cta-button">
-  <%= link_to "refresh", [ :get_gists, slug: @user.githubname ], method: :post %>
-</div>
 <div class="user-groups">
   <% @user.groups.each do |group| %>
     <div class="user-group">

@@ -11,6 +11,6 @@ class UsersController < ApplicationController
     @user.get_gists
     new_gists_count = (@user.user_gists.count - count).positive? ? (@user.user_gists.count - count).positive? : 0
 
-    redirect_to user_path(slug: @user.githubname, new_gists_count: new_gists_count)
+    redirect_to user_user_gists_path(user_slug: @user.githubname, new_gists_count: new_gists_count)
   end
 end
