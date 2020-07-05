@@ -6,7 +6,7 @@ class GistLabelsController < ApplicationController
   def create
     @gist_label = GistLabel.create(gist_label_params)
     @gist = UserGist.find(params[:gist_label][:gist])
-    @gist_label.gist = @gist
+    @gist_label.user_gist = @gist
     if @gist_label.save
       redirect_back(fallback_location: root_path)
     else
