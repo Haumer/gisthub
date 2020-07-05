@@ -1,5 +1,0 @@
-<% if @gists.present? %>
-  <% @gists.each do |gist| %>
-    <%= render Gist::CardComponent.new(gist) %>
-  <% end %>
-<% end %>

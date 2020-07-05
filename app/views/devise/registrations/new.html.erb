@@ -1,3 +1,7 @@
+<div class="github-cta-button ">
+  <%= link_to "Sign in with Github", user_github_omniauth_authorize_path %>
+</div>
+
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>

@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, :omniauth_providers => [:github]
-  has_many :gists
+  has_many :user_gists, dependent: :destroy
   has_many :groups
 
   def self.from_omniauth(auth)
@@ -16,7 +16,7 @@ class User < ApplicationRecord
       user.avatar_url = auth.info.image # assuming the user model has an image
       # If you are using confirmable and the provider(s) you use validate emails,
       # uncomment the line below to skip the confirmation emails.
-      user.skip_confirmation!
+      # user.skip_confirmation!
       user.save
     end
   end
@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
   def get_gists
     gist_api.each do |gist|
-      created_gist = Gist.find_or_create_by(
+      created_gist = UserGist.find_or_create_by(
         gist_id: gist["id"],
         date: gist["created_at"],
         comments_url: gist["comments_url"],
@@ -47,7 +47,7 @@ class User < ApplicationRecord
             language: v["language"],
             raw_url: v["raw_url"],
             size: v["size"],
-            gist: created_gist
+            user_gist: created_gist
           )
         end
       end
@@ -57,7 +57,7 @@ class User < ApplicationRecord
 
   def check_gists
     gist_api.each do |gist|
-      found_gist = Gist.find_by_gist_id(gist["id"])
+      found_gist = UserGist.find_by_gist_id(gist["id"])
       if found_gist
         found_gist.update(
           comments: gist["comments"],
