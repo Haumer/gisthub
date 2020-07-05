@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by_githubname(params[:slug])
-    @star_gists = @user.gists.where(star: true).order(date: :desc)
+    @star_gists = @user.gists.where(star: true, hide: false).order(date: :desc)
     @gists = @user.gists.where(hide: false).order(date: :desc) - @star_gists
   end
 
