@@ -26,6 +26,11 @@ module Github
           )
 
           if created_gist
+            # FIXME: (haumer): if file name changes we dont want dead files
+            # so currently we just destory all and recreate. maybe explore
+            # comparing and then updating?
+            created_gist.gist_files.destroy_all
+            created_gist.update(gist_id: gist["id"])
             gist["files"].each do |_k, v|
               GistFile.find_or_create_by(
                 filename: v["filename"],

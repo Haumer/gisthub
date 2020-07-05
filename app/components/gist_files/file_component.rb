@@ -1,10 +1,10 @@
 class GistFiles::FileComponent < ViewComponent::Base
-  def initialize(file)
-    @file = file
-    @user = file.user_gist.user
+  def initialize(gist)
+    @gist = gist
+    @user = gist.user
   end
 
   def render?
-    @file.present?
+    @gist.present?
   end
 end

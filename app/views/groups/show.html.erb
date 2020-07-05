@@ -3,3 +3,8 @@
     <img src="<%= @group.user.avatar_url %>" alt=""> <%= @group.user.githubname %>
   </div>
 <% end %>
+<div class="feed">
+  <% @group_gists.each do |gist| %>
+    <%= render GistFiles::FileComponent.new(gist) %>
+  <% end %>
+</div>
