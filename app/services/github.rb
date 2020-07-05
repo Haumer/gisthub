@@ -22,7 +22,7 @@ module Github
             html_url: gist["html_url"],
             url: gist["url"],
             forks_url: gist["forks_url"],
-            user: self
+            user: @user
           )
 
           if created_gist

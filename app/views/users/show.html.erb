@@ -1,9 +1,8 @@
 <%= render Gist::NewGistCountComponent.new(params[:new_gists_count], @user) %>
+Your Groups
 <div class="user-groups">
   <% @user.groups.each do |group| %>
-    <div class="user-group">
-      <%= group.name %>
-    </div>
+    <%= render Groups::LabelComponent.new(group) %>
   <% end %>
 </div>
 
