@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :user_gists, only: [ :index ]
   end
   get ":slug", to: "users#show"
-  resources :gist_files, only: [ :show, :test ]
+  resources :gist_files, only: [ :show ]
   resources :groups, only: [ :new, :create, :show ]
   resources :labels, only: [ :new, :create ]
   resources :gist_labels, only: [ :new, :create ]

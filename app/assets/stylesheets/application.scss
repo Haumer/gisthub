@@ -16,4 +16,8 @@
 
 a {
   text-decoration: none;
+  color: black;
+  &:hover, &:visited {
+    color: black;
+  }
 }
