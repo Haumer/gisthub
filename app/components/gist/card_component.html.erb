@@ -36,7 +36,11 @@
       <div class="add-label">
         <%= render "gist_labels/form", gist_label: GistLabel.new, gist: @gist, class: "hidden" %>
       </div>
-
+      <div class="edit-gist">
+        <%= link_to @edit_url do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="date">
