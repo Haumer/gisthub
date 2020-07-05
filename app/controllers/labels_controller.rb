@@ -4,7 +4,7 @@ class LabelsController < ApplicationController
   end
 
   def create
-    @label = Label.create(label_params)
+    @label = Label.new(label_params)
     @label.user = current_user
     if @label.save!
       redirect_to user_path(slug: @label.user.githubname)
