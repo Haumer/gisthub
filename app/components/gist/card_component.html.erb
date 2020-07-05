@@ -7,7 +7,7 @@
     </div>
     <div class="gist-star">
       <%= link_to star_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", method: :post, remote: true do %>
-        <i class="<%= @gist.hide ? "fas" : "far" %> fa-star"></i>
+        <i class="<%= @gist.star ? "fas" : "far" %> fa-star"></i>
       <% end %>
     </div>
     <div class="language">

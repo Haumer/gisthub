@@ -5,19 +5,19 @@ class GistsController < ApplicationController
 
   def index
     @user = User.find_by_githubname(params[:user_slug])
-    @gists = @user.gists
+    @gists = @user.gists.order(date: :desc)
   end
 
   def hide
     @gist = Gist.find(params[:id])
     @gist.update(hide: !@gist.hide)
-    redirect_to user_path(slug: @gist.user.githubname, anchor: "gist#{@gist.id}")
+    redirect_back(fallback_location: user_path(current_user.githubname))
   end
 
   def star
     @gist = Gist.find(params[:id])
     @gist.update(star: !@gist.star)
-    redirect_to user_path(slug: @gist.user.githubname, anchor: "gist#{@gist.id}")
+    redirect_back(fallback_location: user_path(current_user.githubname))
   end
 
   private
