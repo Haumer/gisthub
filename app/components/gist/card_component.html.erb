@@ -20,7 +20,7 @@
     <div class="files">
       <%= pluralize(@gist.gist_files.count, "File") %>:
       <% @gist.gist_files.first(3).each do |file| %>
-        <%= link_to file do %>
+        <%= link_to file, data: { turbolinks: false } do %>
           <%= file.filename %>
         <% end %>
       <% end %>

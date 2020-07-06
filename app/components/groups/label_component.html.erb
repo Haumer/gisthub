@@ -1,5 +1,5 @@
 <div class="user-group">
-  <%= link_to [ @group ] do %>
+  <%= link_to [ @group ], data: { turbolinks: false } do %>
     <%= @group.name %>
   <% end %>
 </div>
