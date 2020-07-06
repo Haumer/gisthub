@@ -2,7 +2,7 @@
   <%= simple_form_for group do |f| %>
     <div class="form-group string optional group_name d-flex">
       <label class="string optional user-create-option" for="group_name">Group</label>
-      <input class="form-control string optional user-container-input" type="text" name="<%= group.name %>" id="group_name">
+      <input class="form-control string optional user-container-input" type="text" name="group[name]" id="group_name">
     </div>
   <% end %>
 <% else %>

@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
   end
 
   def update
-    if @group.update(group_params)
+    if @group.update(update_group_params)
       redirect_back(fallback_location: root_path)
     else
       render :edit
@@ -40,6 +40,10 @@ class GroupsController < ApplicationController
   end
 
   def group_params
+    params.require(:group).permit(:name)
+  end
+
+  def update_group_params
     params.require(:group).permit(:name, :alias, :slug)
   end
 end

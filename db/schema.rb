@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 2020_07_06_223236) do
     t.string "comments_url", default: "", null: false
     t.string "date", default: "", null: false
     t.string "gist_id", default: "", null: false
-    t.boolean "hide", default: true
-    t.boolean "star", default: true
+    t.boolean "hide", default: false
+    t.boolean "star", default: false
     t.index ["user_id"], name: "index_user_gists_on_user_id"
   end
 
