@@ -34,6 +34,15 @@ module Github
             # comparing and then updating?
             created_gist.gist_files.destroy_all
             created_gist.update(gist_id: gist["id"])
+            group = check_for_group(gist)
+
+            if group
+              GroupGist.find_or_create_by(
+                group: group,
+                user_gist: created_gist
+              )
+            end
+
             gist["files"].each do |_k, v|
               GistFile.find_or_create_by(
                 filename: v["filename"],
@@ -46,6 +55,15 @@ module Github
           end
         end
         check_gists
+      end
+
+      def check_for_group(gist)
+        group = gist["files"].map do |k, _v|
+          if k.match?(/\A([a-zA-Z]*\d*_)(\w*)\.(\w*)/)
+            group_id = k.match(/\A([a-zA-Z]*\d*)_(\w*)\.(\w*)/)[1]
+            Group.find_by_slug(group_id)
+          end
+        end.compact.first
       end
 
       def check_gists

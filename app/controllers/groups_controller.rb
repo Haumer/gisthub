@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :set_group, only: [ :show, :edit, :update ]
+
   def new
     @group = Group.new
   end
@@ -14,15 +16,30 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @group.update(group_params)
+      redirect_back(fallback_location: root_path)
+    else
+      render :edit
+    end
+  end
+
   def show
     @group = Group.find(params[:id])
     @users = @group.users
-    @group_gists = @group.group_gists
+    @group_gists = @group.gists
   end
 
   private
 
+  def set_group
+    @group = Group.find(params[:id])
+  end
+
   def group_params
-    params.require(:group).permit(:name)
+    params.require(:group).permit(:name, :alias, :slug)
   end
 end

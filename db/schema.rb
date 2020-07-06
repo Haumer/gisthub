@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_04_075921) do
+ActiveRecord::Schema.define(version: 2020_07_06_223236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,11 +35,22 @@ ActiveRecord::Schema.define(version: 2020_07_04_075921) do
     t.index ["user_gist_id"], name: "index_gist_labels_on_user_gist_id"
   end
 
+  create_table "group_gists", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "user_gist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_group_gists_on_group_id"
+    t.index ["user_gist_id"], name: "index_group_gists_on_user_gist_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.string "alias"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
@@ -104,6 +115,8 @@ ActiveRecord::Schema.define(version: 2020_07_04_075921) do
   add_foreign_key "gist_files", "user_gists"
   add_foreign_key "gist_labels", "labels"
   add_foreign_key "gist_labels", "user_gists"
+  add_foreign_key "group_gists", "groups"
+  add_foreign_key "group_gists", "user_gists"
   add_foreign_key "groups", "users"
   add_foreign_key "labels", "users"
   add_foreign_key "user_gists", "users"
