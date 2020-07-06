@@ -7,7 +7,7 @@ module Github
       end
 
       def edit_gist_url(gist)
-        "https://gist.github.com/#{gist.user}/#{gist.gist_id}/edit"
+        "https://gist.github.com/#{gist.user.githubname}/#{gist.gist_id}/edit"
       end
 
       def call_api
