@@ -3,6 +3,7 @@ class UserGist < ApplicationRecord
   has_many :gist_files, dependent: :destroy
   has_many :gist_labels, dependent: :destroy
   has_many :group_gists, dependent: :destroy
+  has_many :groups, through: :group_gists
   has_many :labels, through: :gist_labels
 
   def languages

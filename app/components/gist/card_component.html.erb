@@ -43,6 +43,13 @@
           <i class="far fa-edit"></i>
         <% end %>
       </div>
+      <div class="group-slugs">
+        <% @gist.groups.each do |group|%>
+          <%= link_to group, data: { turbolinks: false } do %>
+            <%= group.slug %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="date">
