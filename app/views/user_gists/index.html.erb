@@ -1,7 +1,9 @@
 <%= render Gist::NewGistCountComponent.new(params[:new_gists_count], @user) %>
 <div class="default-container">
-  <div class="refresh-gist github-cta-button">
-    <%= link_to @gists.present? ? "Refresh" : "Import gists", [ :get_gists, slug: @user.githubname ], method: :post %>
+  <div class="actions">
+    <div class="refresh-gist github-cta-button">
+      <%= link_to @gists.present? ? "Refresh" : "Import gists", [ :get_gists, slug: @user.githubname ], method: :post %>
+    </div>
   </div>
   <% if @gists.present? %>
     <% @gists.each do |gist| %>

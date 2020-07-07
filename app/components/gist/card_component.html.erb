@@ -39,7 +39,7 @@
         <%= render "gist_labels/form", gist_label: GistLabel.new, gist: @gist, class: "hidden" %>
       </div>
       <div class="edit-gist">
-        <%= link_to @edit_url do %>
+        <%= link_to @edit_url, target: "_blank" do %>
           <i class="far fa-edit"></i>
         <% end %>
       </div>

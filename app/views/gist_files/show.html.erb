@@ -1,1 +1,13 @@
-<%= render GistFiles::FileComponent.new(@gist_file.user_gist) %>
+<div class="feed">
+  <% unless @gist_file.user_gist.description.empty? %>
+    <div class="gist-about">
+      <h3>About this gist</h3>
+      <div class="gist-description">
+        <%= @gist_file.user_gist.description %>
+      </div>
+    </div>
+  <% end %>
+  <div class="gists">
+    <%= render GistFiles::FileComponent.new(@gist_file.user_gist) %>
+  </div>
+</div>

@@ -5,6 +5,11 @@
   line-height: 36px;
   padding: 2px 8px;
   justify-content: space-between;
+  border-bottom: solid 1px #f4f4f4;
+  border-radius: 2px;
+  &:last-of-type {
+    border-bottom: none;
+  }
 }
 
 .gist-info {
