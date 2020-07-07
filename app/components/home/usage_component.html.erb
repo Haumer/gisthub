@@ -1,0 +1,57 @@
+<h2>
+  Usage
+</h2>
+<span>
+‌  To upload the contents of a.rb just:
+</span>
+<div class="code-block">
+  gist a.rb
+</div>
+<span>
+‌  Upload multiple files:
+</span>
+<div class="code-block">
+  gist a b c
+  <br>
+  gist *.rb
+</div>
+<span>
+  Alternatively, you can just paste from the clipboard:
+</span>
+‌<div class="code-block">
+  gist -P
+</div>
+<span>
+  Use -d to add a description:
+</span>
+‌<div class="code-block">
+  gist -d "Random rbx bug" a.rb
+</div>
+<span>
+  You can update existing gists with -u:
+</span>
+<div class="code-block">
+  gist -u GIST_ID FILE_NAME
+  <br>
+  gist -u 42f2c239d2eb57299408 test.txt
+</div>
+‌<span>
+  If you'd like to copy the resulting URL to your clipboard, use -c.
+</span>
+<div class="code-block">
+  <%= "gist -c <a.rb" %>
+</div>
+<span>
+  ‌And you can just ask gist to open a browser window directly with -o.
+</span>
+<div class="code-block">
+  <%= "gist -o <a.rb" %>
+</div>
+<span>
+  To list (public gists or all gists for authed user) gists for user
+</span>
+<div class="code-block">
+  gist -l <%= "#=>" %> all gists for authed user
+  <br>
+  gist -l defunkt <%= "#=>" %> list defunkt's public gists
+</div>
