@@ -8,6 +8,15 @@
         <% end %>
       </div>
     </div>
+    <% unless @user.user_gists.present? %>
+      <div class="center-section">
+        <div class="github-cta-button">
+          <%= link_to user_user_gists_path(current_user.githubname) do %>
+            Import your gists!
+          <% end %>
+        </div>
+      </div>
+    <% end %>
 
     <div class="top-right">
       <div class="user-create-options">
