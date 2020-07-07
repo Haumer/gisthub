@@ -1,0 +1,16 @@
+<h2>Get Started</h2>
+<% if @user_signed_in %>
+  <div class="profile-cta">
+    <div class="github-cta-button">
+      <%= link_to user_path(@current_user.githubname) do %>
+        Visit your Profile!
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="login-cta">
+    <div class="github-cta-button">
+      <%= link_to "Sign in with Github", user_github_omniauth_authorize_path %>
+    </div>
+  </div>
+<% end %>

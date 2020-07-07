@@ -1,6 +1,7 @@
 .home {
   display: flex;
   background-color: white;
+  padding: 0 0 36px 0;
   section {
     width: 40%;
     &:first-of-type {
@@ -14,4 +15,8 @@
       display: flex;
     }
   }
+}
+
+.get-started {
+  margin-top: 24px;
 }

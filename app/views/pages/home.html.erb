@@ -1,8 +1,13 @@
 <div class="home">
-  <section class="how-to">
-    <%= render Home::HowToComponent.new %>
+  <section class="home-left">
+    <div class="how-to">
+      <%= render Home::HowToComponent.new %>
+    </div>
+    <div class="get-started">
+      <%= render Home::GetStartedComponent.new(user_signed_in?, current_user) %>
+    </div>
   </section>
-  <section class="usage">
+  <section class="home-right">
     <%= render Home::UsageComponent.new %>
   </section>
 </div>
