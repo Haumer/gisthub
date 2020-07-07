@@ -17,11 +17,11 @@ class UserGistPolicy < ApplicationPolicy
     !user.nil?
   end
 
-  def toggle_hide
-    record.user == user?
+  def update?
+    record.user == user
   end
 
-  def toggle_star
-    record.user == user?
+  def toggle_star?
+    record.user == user
   end
 end

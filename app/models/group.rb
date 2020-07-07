@@ -5,7 +5,7 @@ class Group < ApplicationRecord
   has_many :user_gists, through: :group_gists
   has_many :users, through: :usergroups, source: :user
 
-  validates :name, presence: true, length: { minimum: 2 }
+  validates :name, presence: true, length: { minimum: 2 }, uniqueness: true
   validates :slug, length: { minimum: 2 }, format: { with: /.(\d+)./,
     message: "only allows letters" }, on: :update
 

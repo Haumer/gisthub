@@ -3,10 +3,12 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    authorize @group
   end
 
   def create
     @group = Group.new(group_params)
+    authorize @group
     @group.user = current_user
     if @group.save!
       Usergroup.create(group: @group, user: current_user)
@@ -37,6 +39,7 @@ class GroupsController < ApplicationController
 
   def set_group
     @group = Group.find(params[:id])
+    authorize @group
   end
 
   def group_params

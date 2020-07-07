@@ -1,11 +1,13 @@
 class UserGistsController < ApplicationController
+  after_action :authorize_gist, only: [ :create, :toggle_hide, :toggle_star ]
+
   def create
     @gist = UserGist.create(gist_params)
   end
 
   def index
     @user = User.find_by_githubname(params[:user_slug])
-    @gists = @user.user_gists.order(date: :desc)
+    @gists = policy_scope(UserGist).where(user: @user).order(date: :desc)
   end
 
   def toggle_hide
@@ -21,6 +23,10 @@ class UserGistsController < ApplicationController
   end
 
   private
+
+  def authorize_gist
+    authorize @gist
+  end
 
   def gist_params
     params.require(:gist).permit()
