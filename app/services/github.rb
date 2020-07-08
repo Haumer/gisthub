@@ -36,7 +36,7 @@ module Github
             created_gist.update(gist_id: gist["id"])
             group = check_for_group(gist)
 
-            if group
+            if group && group.members.include?(@user)
               GroupGist.find_or_create_by(
                 group: group,
                 user_gist: created_gist

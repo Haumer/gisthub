@@ -24,4 +24,8 @@ class UserGistPolicy < ApplicationPolicy
   def toggle_star?
     record.user == user
   end
+
+    def toggle_hide?
+    record.user == user
+  end
 end

@@ -1,7 +1,7 @@
 <div class="gist-card">
   <div class="gist-info">
     <div class="gist-hide">
-      <%= link_to hide_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", method: :post, remote: true do %>
+      <%= link_to hide_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", method: :post do %>
         <i class="fas <%= @gist.hide ? "fa-eye-slash" : "fa-eye" %>"></i>
       <% end %>
     </div>

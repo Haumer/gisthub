@@ -1,7 +1,10 @@
 <div class="group-container" data-turbolinks="false">
   <h2>Members of <%= @group.name %></h2>
-  <button type="button" class="group-member-label" data-toggle="modal" data-target="#exampleModalCenter">
+  <button type="button" class="group-member-label" data-toggle="modal" data-target="#GroupDetailsModal">
     Group Details
+  </button>
+  <button type="button" class="group-member-label" data-toggle="modal" data-target="#AddMemberModal">
+    Add Members
   </button>
   <%= link_to user_path(@group.user.githubname) do %>
     <div class="group-member-label">
@@ -16,8 +19,8 @@
   </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- GroupDetails Modal -->
+<div class="modal fade" id="GroupDetailsModal" tabindex="-1" role="dialog" aria-labelledby="GroupDetails" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -28,6 +31,23 @@
       </div>
       <div class="modal-body">
         <%= render "form", group: @group %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AddMemberModal -->
+<div class="modal fade" id="AddMemberModal" tabindex="-1" role="dialog" aria-labelledby="GroupDetails" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Group Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render "user_groups/form", group: @group, user_group: Usergroup.new %>
       </div>
     </div>
   </div>

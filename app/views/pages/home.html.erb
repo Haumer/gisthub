@@ -5,6 +5,7 @@
     </div>
     <div class="get-started">
       <%= render Home::GetStartedComponent.new(user_signed_in?, current_user) %>
+      <%= link_to "view this project on github", "https://github.com/Haumer/gisthub" %>
     </div>
   </section>
   <section class="home-right">

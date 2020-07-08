@@ -17,4 +17,8 @@ class Group < ApplicationRecord
     # users.map(&:user_gists).flatten.reject(&:hide).sort_by(&:updated_at).reverse
     user_gists.reject(&:hide).sort_by(&:updated_at).reverse
   end
+
+  def members
+    users + [user]
+  end
 end
