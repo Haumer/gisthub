@@ -47,6 +47,6 @@ class GroupsController < ApplicationController
   end
 
   def update_group_params
-    params.require(:group).permit(:name, :alias, :slug)
+    params.require(:group).permit(:name, :alias, :slug, :color)
   end
 end

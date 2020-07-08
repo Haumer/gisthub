@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_07_06_223236) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.string "alias"
+    t.string "color", default: "#fff"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 

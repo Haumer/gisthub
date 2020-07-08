@@ -46,7 +46,9 @@
       <div class="group-slugs">
         <% @gist.groups.each do |group|%>
           <%= link_to group, data: { turbolinks: false } do %>
-            <%= group.slug %>
+            <div class="group-slug" style="border-bottom: 3px solid <%= group.color %>">
+              <%= group.slug %>
+            </div>
           <% end %>
         <% end %>
       </div>
