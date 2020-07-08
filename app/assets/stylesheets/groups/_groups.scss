@@ -10,6 +10,7 @@
 }
 
 .user-group {
+  margin-right: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,6 +18,10 @@
   border: 1px solid;
   border-radius: 3px;
   padding: 8px;
+  transition: opacity 0.3s ease;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .group-member-label {
@@ -57,7 +62,7 @@
   a {
     text-decoration: none;
     color: black;
-    transition: .2s ease-in-out;
+    transition: opacity 0.3s ease;
     &:hover, &:visited {
       color: black;
       opacity: 0.8;
@@ -69,6 +74,10 @@
   .group-slug {
     height: 33px;
     margin: 4px;
+    transition: opacity 0.3s ease;
+    &:hover {
+      opacity: 0.7;
+    }
   }
   a {
     text-decoration: none;
