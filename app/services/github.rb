@@ -43,6 +43,8 @@ module Github
               )
             end
 
+            @user.update(avatar_url: gist["owner"]["avatar_url"]) unless @user.avatar_url.present?
+
             gist["files"].each do |_k, v|
               GistFile.find_or_create_by(
                 filename: v["filename"],
@@ -77,6 +79,22 @@ module Github
           end
         end
       end
+    end
+  end
+
+  class Api
+    def initalize(user)
+      @user = user
+      @github_url = "https://api.github.com/users/#{@user.githubname}".freeze
+    end
+
+    def call_api
+      uri = URI("#{@gist_url}/gists")
+      @data = JSON.parse(Net::HTTP.get(uri))
+    end
+
+    def fetch_user_img
+      @user.update(avatar_url: call_api["avatar_url"])
     end
   end
 end
