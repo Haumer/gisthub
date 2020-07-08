@@ -6,10 +6,13 @@
   <button type="button" class="group-member-label" data-toggle="modal" data-target="#AddMemberModal">
     Add Members
   </button>
-  <%= link_to user_path(@group.user.githubname) do %>
-    <div class="group-member-label">
-      <img src="<%= @group.user.avatar_url %>" alt=""> <%= @group.user.githubname %>
-    </div>
+
+  <% @group.members.each do |member| %>
+    <%= link_to user_path(member.githubname) do %>
+      <div class="group-member-label">
+        <img src="<%= member.avatar_url %>" alt=""> <%= member.githubname %>
+      </div>
+    <% end %>
   <% end %>
   <div class="feed">
     <% @group_gists.each do |gist| %>

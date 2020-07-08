@@ -3,6 +3,7 @@ class UsergroupsController < ApplicationController
     @group = Group.find(params[:group_id])
     @usergroup = Usergroup.new(user: User.find(strong_params["user"].to_i))
     @usergroup.group = @group
+    authorize @usergroup
     if @usergroup.save!
       flash[:notice] = "Success"
       redirect_back(fallback_location: root_path)
