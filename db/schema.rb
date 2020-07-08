@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 2020_07_06_223236) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "slug"
+    t.string "slug", default: ""
     t.string "alias"
-    t.string "color", default: "#fff"
+    t.string "color", default: "#000000"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
