@@ -8,7 +8,7 @@
 <% else %>
   <%= simple_form_for group do |f| %>
     <%= f.input :name %>
-    <%= f.input :slug, hint: "Set a unique prefix, to automatically import your gists" %>
+    <%= f.input :slug, hint: "Set a unique prefix, to automatically import your gists. Min. length 3." %>
     Select a color
     <%= f.color_field :color, label: "Color", hint: "Set a color" %>
     <br>
