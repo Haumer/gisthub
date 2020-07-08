@@ -4,8 +4,12 @@
       <%= render Home::HowToComponent.new %>
     </div>
     <div class="get-started">
+      <!-- Github visit repo link -->
       <%= render Home::GetStartedComponent.new(user_signed_in?, current_user) %>
-      <%= link_to "view this project on github", "https://github.com/Haumer/gisthub" %>
+      <!-- Github star repo link -->
+      <iframe src="https://ghbtns.com/github-btn.html?user=twbs&repo=gisthub&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
+      <!-- Github follow user link -->
+      <iframe src="https://ghbtns.com/github-btn.html?user=haumer&type=follow&count=true" frameborder="0" scrolling="0" width="170" height="20" title="GitHub"></iframe>
     </div>
   </section>
   <section class="home-right">

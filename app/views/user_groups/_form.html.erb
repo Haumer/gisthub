@@ -2,6 +2,7 @@
   <%= f.input :user,
               collection: User.all - [group.user],
               label_method: :githubname,
+              value_method: :id,
               hint: "This user can display gists on this group" %>
   <%= f.submit "Save" %>
 <% end %>
