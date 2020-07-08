@@ -1,14 +1,14 @@
 <div class="default-container user-container">
   <div class="top">
     <div class="top-left">
-      <h2>Your Groups</h2>
+      <h2><%= policy(@user).user_owns_profile? ? "Your" : "#{@user.githubname.capitalize}'s" %> Groups</h2>
       <div class="user-groups">
         <% @user.groups.each do |group| %>
           <%= render Groups::LabelComponent.new(group) %>
         <% end %>
       </div>
     </div>
-    <% unless @user.user_gists.present? %>
+    <% if !@user.user_gists.present? && policy(@user).get_gists? %>
       <div class="center-section">
         <div class="github-cta-button">
           <%= link_to user_user_gists_path(current_user.githubname) do %>
@@ -19,10 +19,12 @@
     <% end %>
 
     <div class="top-right">
-      <div class="user-create-options">
-        <%= render "groups/form", group: Group.new %>
-        <%= render "labels/form", label: Label.new %>
-      </div>
+      <% if policy(@user).update? %>
+        <div class="user-create-options">
+          <%= render "groups/form", group: Group.new %>
+          <%= render "labels/form", label: Label.new %>
+        </div>
+      <% end %>
     </div>
   </div>
 

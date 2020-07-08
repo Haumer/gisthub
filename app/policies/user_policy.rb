@@ -9,7 +9,15 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def update?
+    user_owns_profile?
+  end
+
   def get_gists?
-    !user.nil? && user.githubname.present?
+    !user.nil? && user.githubname.present? && user_owns_profile?
+  end
+
+  def user_owns_profile?
+    record == user
   end
 end

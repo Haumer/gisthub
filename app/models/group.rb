@@ -19,6 +19,6 @@ class Group < ApplicationRecord
   end
 
   def members
-    users + [user]
+    users
   end
 end

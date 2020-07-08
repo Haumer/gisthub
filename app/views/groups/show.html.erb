@@ -10,10 +10,12 @@
   <% @group.members.each do |member| %>
     <%= link_to user_path(member.githubname) do %>
       <div class="group-member-label">
-        <img src="<%= member.avatar_url %>" alt=""> <%= member.githubname %>
+        <img src="<%= member.avatar_url.present? ? member.avatar_url : 'https://avatars3.githubusercontent.com/u/583231?v=4' %>" alt="">
+        <span><%= member.githubname %></span>
       </div>
     <% end %>
   <% end %>
+
   <div class="feed">
     <% @group_gists.each do |gist| %>
       <%= render GistFiles::CreatedAtComponent.new(gist) %>

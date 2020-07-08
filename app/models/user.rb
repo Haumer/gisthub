@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:github]
   has_many :user_gists, dependent: :destroy
   has_many :groups
+  has_many :usergroups, through: :groups
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

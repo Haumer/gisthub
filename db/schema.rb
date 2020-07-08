@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2020_07_06_223236) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "githubname", default: "", null: false
-    t.string "avatar_url", default: ""
+    t.string "avatar_url", default: "https://avatars3.githubusercontent.com/u/583231?v=4"
     t.string "provider"
     t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
