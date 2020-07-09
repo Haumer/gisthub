@@ -4,6 +4,6 @@
                       collection: Label.where(user: current_user) - gist.labels,
                       label: false %>
     <%= f.input :gist, :as => :hidden, :input_html => { :value => gist.id } %>
-    <%= f.submit "create" %>
+    <%= f.submit "Add Label" %>
   </div>
 <% end %>

@@ -32,6 +32,7 @@
       <%= @gist.comments %> <i class="far fa-comment"></i>
     </div>
     <div class="gist-label d-flex">
+    <% unless permitted? %>
       <% @gist.labels.each do |label| %>
         <%= label.name %>
       <% end %>
@@ -43,6 +44,7 @@
           <i class="far fa-edit"></i>
         <% end %>
       </div>
+    <% end %>
       <div class="group-slugs">
         <% @gist.groups.each do |group|%>
           <%= link_to group, data: { turbolinks: false } do %>

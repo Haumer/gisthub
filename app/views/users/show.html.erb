@@ -10,11 +10,11 @@
     </div>
     <% if !@user.user_gists.present? && policy(@user).get_gists? %>
       <div class="center-section">
-        <div class="github-cta-button">
-          <%= link_to user_user_gists_path(current_user.githubname) do %>
+        <%= link_to user_user_gists_path(current_user.githubname) do %>
+          <div class="github-cta-button">
             Import your gists!
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
 
@@ -30,13 +30,13 @@
 
   <% if @star_gists.present? %>
     <% @star_gists.each do |gist| %>
-      <%= render Gist::CardComponent.new(gist) %>
+      <%= render Gist::CardComponent.new(gist: gist, user: current_user) %>
     <% end %>
   <% end %>
 
   <% if @gists.present? %>
     <% @gists.each do |gist| %>
-      <%= render Gist::CardComponent.new(gist) %>
+      <%= render Gist::CardComponent.new(gist: gist, user: current_user) %>
     <% end %>
   <% end %>
 </div>

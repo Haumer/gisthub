@@ -8,7 +8,7 @@ class Group < ApplicationRecord
   has_many :users, through: :usergroups, source: :user
 
   validates :name, presence: true, length: { minimum: 2 }, uniqueness: true
-  validates :slug, length: { minimum: 2 }, format: { with: /.(\d+)./,
+  validates :slug, length: { minimum: 2 }, format: { with: /\w+{3,}/,
     message: "need at least one letter and one digit" }, on: :update, uniqueness: true
 
   def slug_changed?
