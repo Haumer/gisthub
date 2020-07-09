@@ -2,9 +2,11 @@
 <div class="default-container">
   <div class="actions">
     <% if policy(@user).get_gists? %>
-      <div class="refresh-gist github-cta-button">
-        <%= link_to @gists.present? ? "Refresh" : "Import gists", [ :get_gists, slug: @user.githubname ], method: :post %>
-      </div>
+      <%= link_to [ :get_gists, slug: @user.githubname ], method: :post do %>
+        <div class="refresh-gist github-cta-button">
+          <%= @gists.present? ? "Refresh" : "Import gists" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <% if @gists.present? %>
