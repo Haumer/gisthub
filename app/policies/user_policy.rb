@@ -18,7 +18,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def user_owns_profile_or_admin?
-    user_owns_profile? || user.admin
+    user_owns_profile? || user&.admin
   end
 
   def user_owns_profile?
