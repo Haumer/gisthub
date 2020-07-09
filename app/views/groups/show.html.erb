@@ -1,11 +1,13 @@
 <div class="group-container" data-turbolinks="false">
   <h2>Members of <%= @group.name %></h2>
-  <button type="button" class="group-member-label" data-toggle="modal" data-target="#GroupDetailsModal">
-    Group Details
-  </button>
-  <button type="button" class="group-member-label" data-toggle="modal" data-target="#AddMemberModal">
-    Add Members
-  </button>
+  <% if policy(@group).logged_in_and_owner? %>
+    <button type="button" class="group-member-label" data-toggle="modal" data-target="#GroupDetailsModal">
+      Group Details
+    </button>
+    <button type="button" class="group-member-label" data-toggle="modal" data-target="#AddMemberModal">
+      Add Members
+    </button>
+  <% end %>
 
   <% @group.members.each do |member| %>
     <%= link_to user_path(member.githubname) do %>
