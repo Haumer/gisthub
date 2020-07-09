@@ -1,8 +1,9 @@
-if ENV['development']
-  Language.destroy_all
-  (User.all - User.where(githubname: "haumer")).destroy_all
-  users = %w(barangerbenjamin roosce lucien-george julioeq ssaunier)
+if Rails.env.development?
 
+  Language.destroy_all
+
+  User.all.destroy_all
+  users = %w(barangerbenjamin roosce lucien-george julioeq ssaunier)
   users.each do |user|
     User.create(
       email: "#{user}@gmail.com",

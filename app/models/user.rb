@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, :omniauth_providers => [:github]
   has_many :user_gists, dependent: :destroy
-  has_many :groups
+  has_many :groups, dependent: :destroy
   has_many :usergroups, through: :groups
 
   def self.from_omniauth(auth)
