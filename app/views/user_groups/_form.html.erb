@@ -3,6 +3,7 @@
               collection: User.all - [group.user],
               label_method: :githubname,
               value_method: :id,
+              label: false,
               hint: "This user can display gists on this group" %>
   <%= f.submit "Save" %>
 <% end %>
