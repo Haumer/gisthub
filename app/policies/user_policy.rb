@@ -18,6 +18,10 @@ class UserPolicy < ApplicationPolicy
   end
 
   def user_owns_profile_or_admin?
-    record == user || user.admin
+    user_owns_profile? || user.admin
+  end
+
+  def user_owns_profile?
+    record == user
   end
 end

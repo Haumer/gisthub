@@ -1,5 +1,5 @@
 <div class="feed">
-  <% unless @gist_file.user_gist.description.present? %>
+  <% if @gist_file.user_gist.description.present? %>
     <div class="gist-about">
       <h3>About this gist</h3>
       <div class="gist-description">

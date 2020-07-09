@@ -1,22 +1,28 @@
 <div class="group-container" data-turbolinks="false">
-  <h2>Members of <%= @group.name %></h2>
-  <% if policy(@group).logged_in_and_owner_or_admin? %>
-    <button type="button" class="group-member-label" data-toggle="modal" data-target="#GroupDetailsModal">
-      Group Details
-    </button>
-    <button type="button" class="group-member-label" data-toggle="modal" data-target="#AddMemberModal">
-      Add Members
-    </button>
-  <% end %>
-
-  <% @group.members.each do |member| %>
-    <%= link_to user_path(member.githubname) do %>
-      <div class="group-member-label">
-        <img src="<%= member.avatar_url.present? ? member.avatar_url : 'https://avatars3.githubusercontent.com/u/583231?v=4' %>" alt="">
-        <span><%= member.githubname %></span>
-      </div>
-    <% end %>
-  <% end %>
+  <div class="top">
+    <div class="top-left">
+      <h2><%= @group.name %> Contributors</h2>
+      <% @group.members.each do |member| %>
+        <%= link_to user_path(member.githubname) do %>
+          <div class="group-member-label">
+            <img src="<%= member.avatar_url.present? ? member.avatar_url : 'https://avatars3.githubusercontent.com/u/583231?v=4' %>" alt="">
+            <span><%= member.githubname %></span>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="top-right">
+      <% if policy(@group).logged_in_and_owner_or_admin? %>
+      <h2>Options</h2>
+        <button type="button" class="group-member-label" data-toggle="modal" data-target="#GroupDetailsModal">
+          Group Details
+        </button>
+        <button type="button" class="group-member-label" data-toggle="modal" data-target="#AddMemberModal">
+          Add Members
+        </button>
+      <% end %>
+    </div>
+  </div>
 
   <div class="feed">
     <% @group_gists.each do |gist| %>

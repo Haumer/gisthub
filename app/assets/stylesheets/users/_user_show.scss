@@ -18,5 +18,15 @@
   margin: 0 0 24px 0;
   .top-right {
     display: block;
+    width: 33%;
+    text-align: right
   }
+  .top-left {
+    width: 33%;
+  }
+}
+
+.no-user-gists {
+  width: 100%;
+  text-align: center;
 }

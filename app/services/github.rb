@@ -10,6 +10,10 @@ module Github
         "https://gist.github.com/#{gist.user.githubname}/#{gist.gist_id}/edit"
       end
 
+      def gist_url(gist)
+        "https://gist.github.com/#{gist.user.githubname}/#{gist.gist_id}"
+      end
+
       def call_api
         uri = URI("#{@gist_url}/gists")
         @data = JSON.parse(Net::HTTP.get(uri))

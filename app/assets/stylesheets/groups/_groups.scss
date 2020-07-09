@@ -44,10 +44,15 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  transition: opacity 0.3s ease-in-out;
 
   img {
     height: 32px;
     border-radius: 50%;
+  }
+
+  &:hover {
+    opacity: 0.7;
   }
 }
 

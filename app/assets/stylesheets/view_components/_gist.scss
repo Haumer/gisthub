@@ -21,8 +21,14 @@
   margin: 0 0 0 6px;
   display: flex;
   align-items: center;
+  transition: opacity 0.3s ease-in-out;
   a {
+    color: black;
     margin: 0 0 0 6px;
+    &:hover {
+      opacity: 0.6;
+      text-decoration: none;
+    }
   }
 
   .far.fa-comment {
