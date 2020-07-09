@@ -37,6 +37,6 @@ class GroupPolicy < ApplicationPolicy
   end
 
   def user_is_admin?
-    user.admin
+    user&.admin
   end
 end
