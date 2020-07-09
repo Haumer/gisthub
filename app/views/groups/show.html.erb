@@ -1,6 +1,6 @@
 <div class="group-container" data-turbolinks="false">
   <h2>Members of <%= @group.name %></h2>
-  <% if policy(@group).logged_in_and_owner? %>
+  <% if policy(@group).logged_in_and_owner_or_admin? %>
     <button type="button" class="group-member-label" data-toggle="modal" data-target="#GroupDetailsModal">
       Group Details
     </button>

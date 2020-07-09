@@ -21,8 +21,8 @@ class GroupPolicy < ApplicationPolicy
     user_is_owner?
   end
 
-  def logged_in_and_owner?
-    user_logged_in? && user_is_owner?
+  def logged_in_and_owner_or_admin?
+    user_logged_in? && user_is_owner? || user_is_admin?
   end
 
   private
@@ -34,5 +34,9 @@ class GroupPolicy < ApplicationPolicy
 
   def user_is_owner?
     record.user == user
+  end
+
+  def user_is_admin?
+    user.admin
   end
 end

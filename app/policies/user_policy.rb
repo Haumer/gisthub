@@ -10,14 +10,14 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    user_owns_profile?
+    user_owns_profile_or_admin?
   end
 
   def get_gists?
-    !user.nil? && user.githubname.present? && user_owns_profile?
+    !user.nil? && user.githubname.present? && user_owns_profile_or_admin?
   end
 
-  def user_owns_profile?
-    record == user
+  def user_owns_profile_or_admin?
+    record == user || user.admin
   end
 end

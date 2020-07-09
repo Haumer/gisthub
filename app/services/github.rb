@@ -43,7 +43,7 @@ module Github
               )
             end
 
-            @user.update(avatar_url: gist["owner"]["avatar_url"]) unless @user.avatar_url.present?
+            @user.update(avatar_url: gist["owner"]["avatar_url"]) if @user.avatar_url == "https://avatars3.githubusercontent.com/u/583231?v=4"
 
             gist["files"].each do |_k, v|
               GistFile.find_or_create_by(
