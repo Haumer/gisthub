@@ -14,13 +14,39 @@ module Github
         "https://gist.github.com/#{gist.user.githubname}/#{gist.gist_id}"
       end
 
+      def found_group_slugs
+        # uri = URI("#{@gist_url}/gists")
+        # @data = JSON.parse(Net::HTTP.get(uri))
+        @data.select do |gist|
+          gist["files"].select do |k, _v|
+            next unless k.match?(/\A([a-zA-Z]*\d*_)(\w*)\.(\w*)/)
+
+            group_id = k.match(/\A([a-zA-Z]*\d*)_(\w*)\.(\w*)/)[1]
+            @user.groups.pluck(:slug).include?(group_id)
+          end.present?
+        end
+      end
+
       def call_api
         uri = URI("#{@gist_url}/gists")
         @data = JSON.parse(Net::HTTP.get(uri))
       end
 
       def save_gists
-        call_api.each do |gist|
+        return if @user.stop_import
+
+        call_api
+        if @user.auto_import && !@user.only_group_import
+          create_gists
+        elsif @user.auto_import && @user.only_group_import
+          return unless found_group_slugs.present?
+          @data = found_group_slugs
+          create_gists
+        end
+      end
+
+      def create_gists
+        @data.each do |gist|
           created_gist = UserGist.find_or_create_by(
             gist_id: gist["id"],
             date: gist["created_at"],
