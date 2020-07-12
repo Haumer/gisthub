@@ -7,7 +7,7 @@ namespace :api do
 
     desc "Create and update gists"
     task :create_and_update, [:user_id] => :environment do |t, args|
-      CheckForUserGistsJob.perform_later(user_id: args[:user_id])
+      CheckForUserGistsJob.perform_now(user_id: args[:user_id])
     end
   end
 end
