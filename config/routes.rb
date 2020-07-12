@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
 
   resources :users, param: :slug, only: [ :show ] do
     resources :user_gists, only: [ :index ]
   end
-  get ":slug", to: "users#show"
   resources :gist_files, only: [ :show ]
   resources :groups, only: [ :new, :create, :show, :update ] do
     resources :usergroups, only: [ :create ]

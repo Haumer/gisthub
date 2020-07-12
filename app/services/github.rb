@@ -53,6 +53,8 @@ module Github
       end
 
       def create_gists
+        return if @data.is_a?(Hash)
+
         @data.each do |gist|
           next unless gist["updated_at"] > @latest_gist_date
           created_gist = UserGist.find_or_create_by(
