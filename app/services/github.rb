@@ -47,15 +47,6 @@ module Github
         end
       end
 
-      # def gist_has_group_attached?(gist)
-      #   gist["files"].select do |k, _v|
-      #     next unless k.match?(GROUP_SLUG_REGEX)
-
-      #     group_id = k.match(GROUP_SLUG_REGEX)[1]
-      #     @user.groups.pluck(:slug).include?(group_id)
-      #   end.present?
-      # end
-
       def call_api
         uri = URI("#{@gist_url}/gists")
         @data = JSON.parse(Net::HTTP.get(uri))
