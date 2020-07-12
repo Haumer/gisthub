@@ -1,9 +1,15 @@
 module Github
   module Gists
     class Api
+      GROUP_SLUG_REGEX = /\A([a-zA-Z]*\d*)_(\w*)\.(\w*)/.freeze
+
       def initialize(user)
         @user = user
         @gist_url = "https://api.github.com/users/#{@user.githubname}".freeze
+      end
+
+      def set_lastest_gist_date
+        @latest_gist_date = @user.user_gists.present? ?  @user.user_gists.order(date: :desc).first.date : "2000-00-00T00:00:00Z"
       end
 
       def edit_gist_url(gist)
@@ -14,13 +20,43 @@ module Github
         "https://gist.github.com/#{gist.user.githubname}/#{gist.gist_id}"
       end
 
+      def save_gists
+        return if @user.stop_import
+
+        call_api
+        set_lastest_gist_date
+        if !@user.only_group_import
+          create_gists
+        elsif @user.only_group_import
+          return unless found_group_slugs.present?
+          @data = found_group_slugs
+          create_gists
+        end
+      end
+
+      private
+
+      def found_group_slugs
+        @data.select do |gist|
+          gist["files"].select do |k, _v|
+            next unless k.match?(GROUP_SLUG_REGEX)
+
+            group_id = k.match(GROUP_SLUG_REGEX)[1]
+            @user.groups.pluck(:slug).include?(group_id)
+          end.present?
+        end
+      end
+
       def call_api
         uri = URI("#{@gist_url}/gists")
         @data = JSON.parse(Net::HTTP.get(uri))
       end
 
-      def save_gists
-        call_api.each do |gist|
+      def create_gists
+        return if @data.is_a?(Hash)
+
+        @data.each do |gist|
+          next unless gist["updated_at"] > @latest_gist_date
           created_gist = UserGist.find_or_create_by(
             gist_id: gist["id"],
             date: gist["created_at"],

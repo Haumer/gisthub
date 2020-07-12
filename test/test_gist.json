@@ -1,0 +1,70 @@
+[
+  {
+  "url": "https://api.github.com/gists/6c4d8fa9753ca599eb96b59d5805849d",
+  "forks_url": "https://api.github.com/gists/6c4d8fa9753ca599eb96b59d5805849d/forks",
+  "commits_url": "https://api.github.com/gists/6c4d8fa9753ca599eb96b59d5805849d/commits",
+  "id": "6c4d8fa9753ca599eb96b59d5805849d",
+  "node_id": "MDQ6R2lzdDZjNGQ4ZmE5NzUzY2E1OTllYjk2YjU5ZDU4MDU4NDlk",
+  "git_pull_url": "https://gist.github.com/6c4d8fa9753ca599eb96b59d5805849d.git",
+  "git_push_url": "https://gist.github.com/6c4d8fa9753ca599eb96b59d5805849d.git",
+  "html_url": "https://gist.github.com/6c4d8fa9753ca599eb96b59d5805849d",
+  "files": {
+  "article.txt": {
+  "filename": "article.txt",
+  "type": "text/plain",
+  "language": "Text",
+  "raw_url": "https://gist.githubusercontent.com/Haumer/6c4d8fa9753ca599eb96b59d5805849d/raw/d5de20103eff9eb5a47f75fc28a9a8d2413e1478/article.txt",
+  "size": 1462
+  },
+  "frequencies.rb": {
+  "filename": "frequencies.rb",
+  "type": "application/x-ruby",
+  "language": "Ruby",
+  "raw_url": "https://gist.githubusercontent.com/Haumer/6c4d8fa9753ca599eb96b59d5805849d/raw/aee9f856951682e585664619a9ad83ea2fa1a778/frequencies.rb",
+  "size": 665
+  },
+  "frequencies_spec.rb": {
+  "filename": "frequencies_spec.rb",
+  "type": "application/x-ruby",
+  "language": "Ruby",
+  "raw_url": "https://gist.githubusercontent.com/Haumer/6c4d8fa9753ca599eb96b59d5805849d/raw/62e5ecf4f8b96718434276b8ff8aae132e6149f7/frequencies_spec.rb",
+  "size": 455
+  },
+  "interface.rb": {
+  "filename": "B423_interface.rb",
+  "type": "application/x-ruby",
+  "language": "Ruby",
+  "raw_url": "https://gist.githubusercontent.com/Haumer/6c4d8fa9753ca599eb96b59d5805849d/raw/8799ae60f6e25c549587bcaa3c2b3f2f4c819df4/interface.rb",
+  "size": 282
+  }
+  },
+  "public": true,
+  "created_at": "2020-07-10T20:12:41Z",
+  "updated_at": "2020-07-10T20:12:41Z",
+  "description": null,
+  "comments": 0,
+  "user": null,
+  "comments_url": "https://api.github.com/gists/6c4d8fa9753ca599eb96b59d5805849d/comments",
+  "owner": {
+  "login": "Haumer",
+  "id": 28539586,
+  "node_id": "MDQ6VXNlcjI4NTM5NTg2",
+  "avatar_url": "https://avatars2.githubusercontent.com/u/28539586?v=4",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/Haumer",
+  "html_url": "https://github.com/Haumer",
+  "followers_url": "https://api.github.com/users/Haumer/followers",
+  "following_url": "https://api.github.com/users/Haumer/following{/other_user}",
+  "gists_url": "https://api.github.com/users/Haumer/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/Haumer/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/Haumer/subscriptions",
+  "organizations_url": "https://api.github.com/users/Haumer/orgs",
+  "repos_url": "https://api.github.com/users/Haumer/repos",
+  "events_url": "https://api.github.com/users/Haumer/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/Haumer/received_events",
+  "type": "User",
+  "site_admin": false
+  },
+  "truncated": false
+  }
+]
