@@ -1,0 +1,6 @@
+<%= simple_form_for user, url: user_path(slug: @user.githubname) do |f| %>
+  <%= f.input :auto_import %>
+  <%= f.input :only_group_import %>
+  <%= f.input :stop_import %>
+  <%= f.submit %>
+<% end %>
