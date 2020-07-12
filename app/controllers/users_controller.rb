@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [ :show, :edit, :update, :get_gists ]
+  before_action :set_user, only: [ :show, :update, :get_gists ]
 
   def show
     @star_gists = @user.user_gists.where(star: true, hide: false).order(date: :desc)
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def get_gists
     count = @user.user_gists.count
-    Github::Gists::Api.new(@user).save_gists
+    CheckForUserGistsJob.perform_now(@user)
     new_gists_count = (@user.user_gists.count - count).positive? ? (@user.user_gists.count - count) : 0
 
     redirect_to user_user_gists_path(user_slug: @user.githubname, new_gists_count: new_gists_count)
