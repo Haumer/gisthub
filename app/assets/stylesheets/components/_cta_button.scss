@@ -28,3 +28,37 @@
     text-decoration: none;
   }
 }
+
+.github-login {
+  display:block;
+  width:100%;
+  max-width:680px;
+  margin:20px auto;
+  height:50px;
+  cursor:pointer;
+  font-size:14px;
+  font-family: 'Montserrat', sans-serif;
+  border-radius:8px;
+  border:none;
+  line-height:40px;
+  background:#25282d;
+  color:white;
+  box-shadow:0 4px 15px rgba(#25282d,.36);
+  transition:.2s linear;
+  &:hover {
+    box-shadow:0 0 0 rgba(#25282d,.0);
+  }
+
+  .github-social {
+    font-size:20px;
+    padding:0 5px 0 0 ;
+  }
+}
+
+.github-link {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+

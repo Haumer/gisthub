@@ -1,7 +1,10 @@
 <div class="offset-sm-4 col-sm-4">
-  <div class="github-cta-button">
-    <%= link_to "Sign in with Github", user_github_omniauth_authorize_path %>
-  </div>
+  <%= link_to user_github_omniauth_authorize_path, class: "github-link" do %>
+    <button class="github-login">
+      <i class="fab fa-github github-social"></i>
+      Sign in with GitHub
+    </button>
+  <% end %>
   <h2>Log in</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
