@@ -129,8 +129,13 @@ module Github
     end
 
     def call_api
-      uri = URI("#{@gist_url}/gists")
+      uri = URI("#{@gist_url}")
       @data = JSON.parse(Net::HTTP.get(uri))
+    end
+
+    def check_for_valid_githubname(githubname)
+      uri = URI("https://api.github.com/users/#{githubname}")
+      JSON.parse(Net::HTTP.get(uri))
     end
 
     def fetch_user_img

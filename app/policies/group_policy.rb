@@ -6,7 +6,7 @@ class GroupPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record.public_group || record.members.include?(user)
   end
 
   def new?

@@ -4,9 +4,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, :omniauth_providers => [:github]
+  validates :githubname, presence: true, uniqueness: true
+  before_validation :valid_githubname?
   has_many :user_gists, dependent: :destroy
   has_many :groups, dependent: :destroy
   has_many :usergroups, through: :groups
+
+  def valid_githubname?
+    data = Github::Api.new.check_for_valid_githubname(self.githubname)
+
+    unless data["message"].nil?
+      errors.add(:githubname, "does not seem to be valid!")
+    end
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
