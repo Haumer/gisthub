@@ -1,17 +1,24 @@
 <%= render Gist::NewGistCountComponent.new(params[:new_gists_count], @user) %>
 <div class="default-container">
-  <div class="actions">
-    <% if policy(@user).get_gists? %>
-      <%= link_to [ :get_gists, slug: @user.githubname ], method: :post do %>
-        <div class="refresh-gist github-cta-button">
-          <%= @gists.present? ? "Refresh" : "Import gists" %>
-        </div>
+  <div class="top">
+    <div class="top-left">
+      <% if policy(@user).get_gists? %>
+        <%= link_to [ :get_gists, slug: @user.githubname ], method: :post do %>
+          <div class="refresh-gist github-cta-button">
+            <%= @gists.present? ? "Refresh" : "Import gists" %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
     <div class="center-section">
-      <button type="button" class="group-member-label" data-toggle="modal" data-target="#ImportSettings">
-        Import Settings
-      </button>
+
+    </div>
+    <div class="top-right">
+      <% if policy(@user).import_settings? %>
+        <button type="button" class="group-member-label" data-toggle="modal" data-target="#ImportSettings">
+          Import Settings
+        </button>
+      <% end %>
     </div>
   </div>
   <% if @gists.present? %>

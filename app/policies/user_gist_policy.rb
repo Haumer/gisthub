@@ -18,14 +18,20 @@ class UserGistPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    admin_is_owner_or_admin?
   end
 
   def toggle_star?
-    record.user == user
+    admin_is_owner_or_admin?
   end
 
-    def toggle_hide?
+  def toggle_hide?
+    admin_is_owner_or_admin?
+  end
+
+  private
+
+  def admin_is_owner_or_admin?
     record.user == user
   end
 end

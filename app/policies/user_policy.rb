@@ -13,9 +13,15 @@ class UserPolicy < ApplicationPolicy
     user_owns_profile_or_admin?
   end
 
+  def import_settings?
+    user_owns_profile_or_admin?
+  end
+
   def get_gists?
     !user.nil? && user.githubname.present? || user_owns_profile_or_admin?
   end
+
+  private
 
   def user_owns_profile_or_admin?
     user_owns_profile? || user&.admin
