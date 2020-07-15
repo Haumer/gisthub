@@ -1,15 +1,17 @@
 <div class="gist-card">
   <div class="gist-info">
-    <div class="gist-hide">
-      <%= link_to hide_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", method: :post do %>
-        <i class="fas <%= @gist.hide ? "fa-eye-slash" : "fa-eye" %>"></i>
-      <% end %>
-    </div>
-    <div class="gist-star">
-      <%= link_to star_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", method: :post, remote: true do %>
-        <i class="<%= @gist.star ? "fas" : "far" %> fa-star"></i>
-      <% end %>
-    </div>
+    <% unless controller_is_users_show?(params) %>
+      <div class="gist-hide">
+        <%= link_to hide_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", method: :post do %>
+          <i class="fas <%= @gist.hide ? "fa-eye-slash" : "fa-eye" %>"></i>
+        <% end %>
+      </div>
+      <div class="gist-star">
+        <%= link_to star_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", method: :post, remote: true do %>
+          <i class="<%= @gist.star ? "fas" : "far" %> fa-star"></i>
+        <% end %>
+      </div>
+    <% end %>
     <div class="language">
       <% @gist.languages_percent.each do |language, percent| %>
         <% if Language.find_by_name(language.capitalize) %>
@@ -34,19 +36,21 @@
       <% end %>
     </div>
     <div class="gist-label d-flex">
-    <% if permitted? %>
-      <% @gist.labels.each do |label| %>
-        <%= label.name %>
-      <% end %>
-      <div class="add-label">
-        <%= render "gist_labels/form", gist_label: GistLabel.new, gist: @gist, class: "hidden" %>
-      </div>
-      <div class="edit-gist">
-        <%= link_to @edit_url, target: "_blank" do %>
-          <i class="far fa-edit"></i>
+      <% unless controller_is_users_show?(params) %>
+        <% if permitted? %>
+          <% @gist.labels.each do |label| %>
+            <%= label.name %>
+          <% end %>
+          <div class="add-label">
+            <%= render "gist_labels/form", gist_label: GistLabel.new, gist: @gist, class: "hidden" %>
+          </div>
+          <div class="edit-gist">
+            <%= link_to @edit_url, target: "_blank" do %>
+              <i class="far fa-edit"></i>
+            <% end %>
+          </div>
         <% end %>
-      </div>
-    <% end %>
+      <% end %>
       <div class="group-slugs">
         <% @gist.groups.each do |group|%>
           <%= link_to group, data: { turbolinks: false } do %>
