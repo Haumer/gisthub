@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   post "get_gists", to: "users#get_gists"
   post "star_gist", to: "user_gists#toggle_star"
   post "hide_gist", to: "user_gists#toggle_hide"
+  get "howto", to: "pages#howto"
 end
