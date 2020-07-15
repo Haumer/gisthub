@@ -1,6 +1,10 @@
 .created_at{
+  display: flex;
   .gist-author {
+    display: flex;
+    align-items: center;
     font-size: 14px;
     font-weight: 600;
+    margin-right: 6px;
   }
 }

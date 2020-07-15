@@ -57,9 +57,18 @@
 }
 
 .feed {
+  display: flex;
   margin: 24px auto;
-  width: 60%;
-  border-radius: 5px;
+  .user-feed {
+    width: 20%;
+  }
+  .group-feed {
+    width: 60%;
+    border-radius: 5px;
+  }
+  .right-feed {
+    width: 20%;
+  }
 }
 
 .group-container {

@@ -24,12 +24,19 @@
     </div>
   </div>
 
-  <div class="feed">
-    <% @group_gists.each do |gist| %>
-      <%= render GistFiles::CreatedAtComponent.new(gist) %>
-      <%= render GistFiles::FileComponent.new(gist) %>
-    <% end %>
-  </div>
+  <% @group_gists.each do |gist| %>
+    <div class="feed">
+      <div class="user-feed">
+        <%= gist.user.githubname %>
+      </div>
+      <div class="group-feed">
+          <%= render GistFiles::CreatedAtComponent.new(gist) %>
+          <%= render GistFiles::FileComponent.new(gist) %>
+      </div>
+      <div class="right-feed">
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <!-- GroupDetails Modal -->
