@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
+  # Admin
+  get "dashboard", to: "users#dashboard", as: "dashboard"
+  post "import_for_user", to: "user#import_for_user"
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
 

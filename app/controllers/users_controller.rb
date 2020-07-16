@@ -27,6 +27,14 @@ class UsersController < ApplicationController
     redirect_to user_user_gists_path(user_slug: @user.githubname, new_gists_count: new_gists_count)
   end
 
+  def dashboard
+    authorize current_user
+  end
+
+  def import_for_user
+
+  end
+
   private
 
   def set_user

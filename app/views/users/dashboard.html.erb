@@ -1,0 +1,7 @@
+Import for:
+<%= form_tag import_for_user_path do %>
+  <%= select_tag Group.all, options_from_collection_for_select(Group.all, "id", "name") %>
+  <%= label_tag "Githubname" %>
+  <%= text_field_tag :githubname %>
+<% end %>
+

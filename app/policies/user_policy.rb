@@ -21,13 +21,22 @@ class UserPolicy < ApplicationPolicy
     !user.nil? && user.githubname.present? || user_owns_profile_or_admin?
   end
 
+  def dashboard?
+    admin?
+  end
+
   private
 
   def user_owns_profile_or_admin?
-    user_owns_profile? || user&.admin
+    user_owns_profile? || admin?
   end
 
   def user_owns_profile?
     record == user
+  end
+
+
+  def admin?
+    user&.admin
   end
 end
