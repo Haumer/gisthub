@@ -14,7 +14,7 @@
     <% end %>
     <div class="language">
       <% @gist.languages_percent.each do |language, percent| %>
-        <% if Language.find_by_name(language.capitalize) %>
+        <% if Language.find_by_name(language&.capitalize) %>
           <img class="language-icon" src="<%= Language.find_by_name(language.capitalize).img_url %>" alt="<%= language %>"> <%= percent.to_i %>%
         <% end %>
       <% end %>

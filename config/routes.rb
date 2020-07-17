@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   # Admin
   get "dashboard", to: "users#dashboard", as: "dashboard"
-  post "import_for_user", to: "user#import_for_user"
+  post "import_for_group", to: "users#import_for_group"
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'

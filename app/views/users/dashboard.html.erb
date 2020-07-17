@@ -1,7 +1,7 @@
-Import for:
-<%= form_tag import_for_user_path do %>
-  <%= select_tag Group.all, options_from_collection_for_select(Group.all, "id", "name") %>
-  <%= label_tag "Githubname" %>
-  <%= text_field_tag :githubname %>
-<% end %>
+<div class="admin-container">
+  <%= simple_form_for :import, url: import_for_group_path do |f| %>
+    <%= f.input :user_id, collection: User.all, label_method: :githubname, label: false %>
 
+    <%= f.submit "import" %>
+  <% end %>
+</div>

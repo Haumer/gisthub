@@ -25,6 +25,10 @@ class UserPolicy < ApplicationPolicy
     admin?
   end
 
+  def import_for_group?
+    admin?
+  end
+
   private
 
   def user_owns_profile_or_admin?

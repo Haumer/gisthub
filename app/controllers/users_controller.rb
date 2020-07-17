@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def get_gists
     count = @user.user_gists.count
-    CheckForUserGistsJob.perform_now(@user)
+    CheckForUserGistsJob.perform_now(user_id: @user.id)
     new_gists_count = (@user.user_gists.count - count).positive? ? (@user.user_gists.count - count) : 0
 
     redirect_to user_user_gists_path(user_slug: @user.githubname, new_gists_count: new_gists_count)
@@ -31,11 +31,22 @@ class UsersController < ApplicationController
     authorize current_user
   end
 
-  def import_for_user
-
+  def import_for_group
+    authorize current_user
+    if import_params.permitted?
+      ImportForGroupJob.perform_now(
+        import_params[:user_id]
+      )
+      flash[:notice] = "Successfully imported!"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
+
+  def import_params
+    params.require(:import).permit(:user_id)
+  end
 
   def set_user
     @user = User.find_by_githubname(params[:slug])
