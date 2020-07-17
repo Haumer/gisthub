@@ -6,6 +6,20 @@ class UsersController < ApplicationController
     @gists = @user.user_gists.where(hide: false).order(date: :desc) - @star_gists
   end
 
+  def admin_create
+    @user = User.new(create_params)
+    @user.email = "#{@user.githubname}@hubgist.com"
+    @user.password = "123456"
+    authorize @user
+    if @user.save!
+      flash[:notice] = "Successfully Created #{@user.githubname}!"
+      redirect_to dashboard_path
+    else
+      flash[:error] = "That didnt work!"
+      redirect_to dashboard_path
+    end
+  end
+
   def edit
   end
 
@@ -43,6 +57,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def create_params
+    params.require(:user).permit(:githubname)
+  end
 
   def import_params
     params.require(:import).permit(:user_id)

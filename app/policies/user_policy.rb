@@ -29,6 +29,10 @@ class UserPolicy < ApplicationPolicy
     admin?
   end
 
+  def admin_create?
+    admin?
+  end
+
   private
 
   def user_owns_profile_or_admin?
@@ -38,7 +42,6 @@ class UserPolicy < ApplicationPolicy
   def user_owns_profile?
     record == user
   end
-
 
   def admin?
     user&.admin

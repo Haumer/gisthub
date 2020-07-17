@@ -1,7 +1,20 @@
 <div class="admin-container">
-  <%= simple_form_for :import, url: import_for_group_path do |f| %>
-    <%= f.input :user_id, collection: User.all, label_method: :githubname, label: false %>
 
-    <%= f.submit "import" %>
-  <% end %>
+  <div class="col-sm-4">
+    Manual Import
+    <%= simple_form_for :import, url: import_for_group_path do |f| %>
+      <%= f.input :user_id, collection: User.all, label_method: :githubname, label: false %>
+
+      <%= f.submit "import" %>
+    <% end %>
+  </div>
+
+  <div class="col-sm-4">
+    Manual User Creation
+    <%= simple_form_for :user, url: admin_create_path, method: :post do |f| %>
+      <%= f.input :githubname, label: false %>
+
+      <%= f.submit "create" %>
+    <% end %>
+  </div>
 </div>

@@ -30,7 +30,7 @@
 
   <% unless @user.user_gists.present? %>
     <div class="no-user-gists">
-      <% if policy(@user).user_owns_profile? %>
+      <% if policy(@user).update? %>
         You dont have any gists yet!
       <% else %>
         <%= @user.githubname.capitalize %> doesnt have any gists yet!
