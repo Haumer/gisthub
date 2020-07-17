@@ -1,1 +1,27 @@
-<h4>How to use HubGist?!</h4>
+<div class="how-to-instructions">
+  <h2>How to use HubGist?!</h2>
+  <div class="row">
+    <div class="step-1 col-sm-4">
+      <%= render Home::InstallationComponent.new %>
+    </div>
+    <div class="step-2 col-sm-4">
+      <%= render Home::UsageComponent.new %>
+    </div>
+    <div class="step-3 col-sm-4">
+      <p>
+        HubGist allows you to automatically share gists to a Group:
+
+        Prefix One file in your gist with the Group <b>:slug</b>
+      </p>
+      <p>
+        For example if <b>B390</b> is my slug:
+      </p>
+      <div class="code-block">
+        gist B390_hello_world.rb index.html style.css
+      </div>
+      <p>
+
+      </p>
+    </div>
+  </div>
+</div>

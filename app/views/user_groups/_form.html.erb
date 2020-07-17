@@ -1,6 +1,6 @@
 <%= simple_form_for [ group, user_group ] do |f| %>
   <%= f.input :user,
-              collection: User.all - [group.user],
+              collection: User.all - group.members,
               label_method: :githubname,
               value_method: :id,
               label: false,
