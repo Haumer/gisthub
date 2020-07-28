@@ -1,4 +1,4 @@
-<div class="hom-container">
+<div class="home-container">
   <div class="banner" >
     <div class="banner-left" style="background: url(<%= asset_path('version_control.svg') %>); background-size: 100% 100%; height: calc(100vh -56px); background-repeat: no-repeat;">
 
@@ -15,21 +15,29 @@
           <div>
             Trace
           </div>
-          <%= link_to user_github_omniauth_authorize_path, class: "github-link" do %>
-            <button class="github-login">
-              <i class="fab fa-github github-social"></i>
-              Sign in with GitHub
-            </button>
-          <% end %>
         </div>
       </div>
       <div class="banner-bottom">
-        Top Contributors:
-        <% @users.each do |user| %>
-          <%= user.githubname %>
-          <%= user.user_gists.count %>
+        <%= link_to user_github_omniauth_authorize_path, class: "github-link" do %>
+          <button class="github-login">
+            <i class="fab fa-github github-social"></i>
+            Sign in with GitHub
+          </button>
         <% end %>
       </div>
+    </div>
+  </div>
+  <div class="top-contributors">
+    <%= link_to root_path(anchor: "top-contributors") do %>
+      <i class="fas fa-angle-double-down"></i>
+    <% end %>
+  </div>
+  <div id="top-contributors">
+    <h3>Top Contributors:</h3>
+    <div class="individual-contributors">
+      <% @users.each_with_index do |user, i| %>
+        <%= render Users::SmallCardComponent.new(user: user, rank: i + 1) %>
+      <% end %>
     </div>
   </div>
 </div>

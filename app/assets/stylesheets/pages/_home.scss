@@ -16,6 +16,37 @@
   align-items: center;
 }
 
+.banner-top {
+  height: 80%;
+}
+
+.banner-cta {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.top-contributors {
+  position: absolute;
+  right: calc(50% + 5px);
+  bottom: 25px;
+  a {
+    font-size: 24px;
+    color: black;
+  }
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-name: levitate;
+  animation-timing-function: linear;
+}
+
+@keyframes levitate {
+  0%   { transform: translateY(0); }
+  75%  { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
 
 .home {
   display: flex;

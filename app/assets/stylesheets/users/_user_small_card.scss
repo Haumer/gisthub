@@ -1,0 +1,18 @@
+.user-small-card {
+  height: 46px;
+  position: relative;
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+
+  img {
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

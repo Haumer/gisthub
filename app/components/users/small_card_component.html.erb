@@ -1,0 +1,7 @@
+<%= link_to user_path(slug: @user.githubname) do %>
+  <div class="user-small-card <%= user_rank(@rank) %>">
+    <%= image_tag @user.avatar_url %>
+    <%= @user.githubname %>
+    <%= @user.user_gists.count %>
+  </div>
+<% end %>
