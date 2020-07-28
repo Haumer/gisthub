@@ -1,19 +1,35 @@
-<div class="home">
-  <section class="home-left">
-    <div class="how-to">
-      <%= render Home::InstallationComponent.new %>
+<div class="hom-container">
+  <div class="banner" >
+    <div class="banner-left" style="background: url(<%= asset_path('version_control.svg') %>); background-size: 100% 100%; height: calc(100vh -56px); background-repeat: no-repeat;">
+
     </div>
-    <div class="get-started">
-      <!-- Github visit repo link -->
-      <%= render Home::GetStartedComponent.new(user_signed_in?, current_user) %>
+    <div class="banner-right">
+      <div class="banner-top">
+        <div class="banner-cta">
+          <div>
+            Share
+          </div>
+          <div>
+            Collaborate
+          </div>
+          <div>
+            Trace
+          </div>
+          <%= link_to user_github_omniauth_authorize_path, class: "github-link" do %>
+            <button class="github-login">
+              <i class="fab fa-github github-social"></i>
+              Sign in with GitHub
+            </button>
+          <% end %>
+        </div>
+      </div>
+      <div class="banner-bottom">
+        Top Contributors:
+        <% @users.each do |user| %>
+          <%= user.githubname %>
+          <%= user.user_gists.count %>
+        <% end %>
+      </div>
     </div>
-    <div class="github-links">
-      <!-- Github star repo link -->
-      <iframe src="https://ghbtns.com/github-btn.html?user=twbs&repo=gisthub&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-      <!-- Github follow user link -->
-      <iframe src="https://ghbtns.com/github-btn.html?user=haumer&type=follow&count=true" frameborder="0" scrolling="0" width="170" height="20" title="GitHub"></iframe>
-  </section>
-  <section class="home-right">
-    <%= render Home::UsageComponent.new %>
-  </section>
+  </div>
 </div>

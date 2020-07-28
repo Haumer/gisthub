@@ -1,3 +1,22 @@
+.banner {
+  display: flex;
+}
+
+.banner-left,
+.banner-right {
+  margin: 5px;
+  width: 50vw;
+  height: calc(100vh - 61px);
+}
+
+.banner-bottom,
+.banner-top {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
 .home {
   display: flex;
   background-color: white;
