@@ -1,4 +1,7 @@
 <div class="home-container">
+  <div class="home-title">
+    <h1>HubGist</h1>
+  </div>
   <div class="banner" >
     <div class="banner-left" style="background: url(<%= asset_path('version_control.svg') %>); background-size: 100% 100%; height: calc(100vh -56px); background-repeat: no-repeat;">
 
@@ -6,15 +9,15 @@
     <div class="banner-right">
       <div class="banner-top">
         <div class="banner-cta">
-          <div>
+          <h4>
             Share
-          </div>
-          <div>
-            Collaborate
-          </div>
-          <div>
-            Trace
-          </div>
+          </h4>
+          <h4>
+            Showcase
+          </h4>
+          <h4>
+            Contribute
+          </h4>
         </div>
       </div>
       <div class="banner-bottom">
@@ -27,17 +30,19 @@
       </div>
     </div>
   </div>
-  <div class="top-contributors">
-    <%= link_to root_path(anchor: "top-contributors") do %>
+  <div class="stats">
+    <%= link_to root_path(anchor: "stats") do %>
       <i class="fas fa-angle-double-down"></i>
     <% end %>
   </div>
-  <div id="top-contributors">
-    <h3>Top Contributors:</h3>
-    <div class="individual-contributors">
-      <% @users.each_with_index do |user, i| %>
-        <%= render Users::SmallCardComponent.new(user: user, rank: i + 1) %>
-      <% end %>
+  <div id="stats">
+    <div class="top-contributors">
+      <h3>Top Contributors:</h3>
+      <div class="individual-contributors">
+        <% @users.each_with_index do |user, i| %>
+          <%= render Users::SmallCardComponent.new(user: user, rank: i + 1) %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

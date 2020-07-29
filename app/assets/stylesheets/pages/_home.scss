@@ -9,6 +9,10 @@
   height: calc(100vh - 61px);
 }
 
+.banner-left {
+  margin-left: 20px;
+}
+
 .banner-bottom,
 .banner-top {
   display: flex;
@@ -21,14 +25,14 @@
 }
 
 .banner-cta {
-  height: 100%;
+  height: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
 
-.top-contributors {
+.stats {
   position: absolute;
   right: calc(50% + 5px);
   bottom: 25px;
@@ -42,10 +46,24 @@
   animation-timing-function: linear;
 }
 
+.individual-contributors {
+  display: flex;
+  flex-direction: column;
+}
+
 @keyframes levitate {
   0%   { transform: translateY(0); }
   75%  { transform: translateY(-3px); }
   100% { transform: translateY(0); }
+}
+
+.home-title {
+  position: absolute;
+  right: calc(70% - 48px);
+  top: 15%;
+  h1 {
+    font-weight: bold;
+  }
 }
 
 .home {
