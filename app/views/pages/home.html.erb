@@ -30,6 +30,9 @@
       </div>
     </div>
   </div>
+  <div class="spacer">
+
+  </div>
   <div class="stats">
     <%= link_to root_path(anchor: "stats") do %>
       <i class="fas fa-angle-double-down"></i>
@@ -37,7 +40,7 @@
   </div>
   <div id="stats" class="home-stats">
     <div class="top-contributors">
-      <h4>Most Gists:</h4>
+      <h4>Most Gists</h4>
       <div class="individual-contributors">
         <% @top_gist_users.each_with_index do |user, i| %>
           <%= render Users::SmallCardComponent.new(user: user, rank: i + 1, count: nil) %>
@@ -45,7 +48,7 @@
       </div>
     </div>
     <div class="top-contributors">
-      <h4>Most Lines:</h4>
+      <h4>Most Files</h4>
       <div class="individual-contributors">
         <% @top_lines_users.each_with_index do |info, i| %>
           <%= render Users::SmallCardComponent.new(user: info.first, rank: i + 1, count: info.last) %>
@@ -53,13 +56,13 @@
       </div>
     </div>
     <div class="top-contributors">
-      <h4>Most Used Language:</h4>
+      <h4>Most Used Language</h4>
       <div class="individual-contributors">
         <% @languages.each_with_index do |info, i| %>
-        <div class="user-small-card <%= user_rank(i + 1) %>">
-          <%= info.first %>
-          <%= info.last %>
-        </div>
+          <div class="user-small-card <%= user_rank(i + 1) %> languages">
+            <%= info.first %>
+            <%= info.last %>
+          </div>
         <% end %>
       </div>
     </div>
