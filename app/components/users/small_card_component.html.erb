@@ -2,6 +2,6 @@
   <div class="user-small-card <%= user_rank(@rank) %>">
     <%= image_tag @user.avatar_url %>
     <%= @user.githubname %>
-    <%= @user.user_gists.count %>
+    <%= @count.nil? ?  @user.user_gists.count : @count %>
   </div>
 <% end %>
