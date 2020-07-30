@@ -10,4 +10,11 @@ module ApplicationHelper
     when 3 then "bronze"
     end
   end
+
+  def active?(path, controller)
+    # FIXME (haumer): rework
+    if controller == path
+      "active"
+    end
+  end
 end
