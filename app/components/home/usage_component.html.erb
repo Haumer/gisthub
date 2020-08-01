@@ -4,7 +4,7 @@
   </h3>
 <% end %>
 <span>
-‌  To upload the contents of a.rb just:
+‌  To create a gist:
 </span>
 <div class="code-block">
   gist a.rb
@@ -13,9 +13,13 @@
 ‌  Upload multiple files:
 </span>
 <div class="code-block">
-  gist a b c
-  <br>
   gist *.rb
+</div>
+<span>
+  Use -d to add a description:
+</span>
+‌<div class="code-block">
+  gist -d "Random rbx bug" a.rb
 </div>
 <% if @long %>
   <span>
@@ -23,12 +27,6 @@
   </span>
   ‌<div class="code-block">
     gist -P
-  </div>
-  <span>
-    Use -d to add a description:
-  </span>
-  ‌<div class="code-block">
-    gist -d "Random rbx bug" a.rb
   </div>
 <% end %>
 

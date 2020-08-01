@@ -33,21 +33,32 @@
       </div>
     </div>
   </div>
-  <div class="spacer">
-
-  </div>
-  <div class="get-started-instructions">
-    <%= render Home::GetStartedComponent.new(user_signed_in: false, user: current_user) %>
-  </div>
-  <div class="spacer">
-
-  </div>
-  <div class="stats">
-    <%= link_to root_path(anchor: "stats") do %>
+  <div class="home-get-started">
+    <%= link_to root_path(anchor: "get-started-instructions"), data: { turbolinks: false }  do %>
       <i class="fas fa-angle-double-down"></i>
     <% end %>
   </div>
-  <div id="stats" class="home-stats">
+  <div class="spacer">
+
+  </div>
+  <section id="get-started-instructions" class="get-started-instructions">
+    <%= render Home::GetStartedComponent.new(user_signed_in: false, user: current_user) %>
+  </section>
+  <div class="spacer">
+
+  </div>
+  <section class="gist-example">
+    <h2>Here is an Example:</h2>
+    <div class="example">
+      <div class="left">
+        <script src="https://gist.github.com/Haumer/650264e99e90a141b8c951dbacdb07e7.js"></script>
+      </div>
+    </div>
+  </section>
+  <div class="spacer">
+
+  </div>
+  <section id="stats" class="home-stats">
     <div class="top-contributors">
       <h4>Most Gists</h4>
       <div class="individual-contributors">
@@ -75,7 +86,7 @@
         <% end %>
       </div>
     </div>
-  </div>
+  </section>
   <div class="spacer">
 
   </div>

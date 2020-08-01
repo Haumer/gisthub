@@ -32,7 +32,7 @@
   justify-content: space-around;
 }
 
-.stats {
+.home-get-started {
   position: absolute;
   right: calc(50% + 5px);
   bottom: 25px;
@@ -105,10 +105,26 @@
   width: 320px;
 }
 
-.get-started-instructions {
+section {
   margin: 0 24px;
 }
 
+.gist-example {
+  h2 {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .example {
+    display: flex;
+    justify-content: space-around;
+    .left {
+      width: 50%;
+    }
+    .right {
+      width: 50%
+    }
+  }
+}
 
 // .github-links {
 //   margin-top: 12px;
