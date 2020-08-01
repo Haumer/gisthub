@@ -1,19 +1,106 @@
-<div class="home">
-  <section class="home-left">
-    <div class="how-to">
-      <%= render Home::InstallationComponent.new %>
+<div class="home-container">
+  <div class="home-title">
+    <h1>HubGist</h1>
+  </div>
+  <div class="banner" >
+    <div class="banner-left" style="background: url(<%= asset_path('version_control.svg') %>); background-size: 100% 100%; height: calc(100vh -56px); background-repeat: no-repeat;">
+
     </div>
-    <div class="get-started">
-      <!-- Github visit repo link -->
-      <%= render Home::GetStartedComponent.new(user_signed_in?, current_user) %>
+    <div class="banner-right">
+      <div class="banner-top">
+        <div class="banner-cta">
+          <ul>
+            <li>
+              <h3>
+                <img src="https://img.icons8.com/bubbles/128/000000/create-new.png"/>
+                Create
+              </h3>
+            </li>
+            <li>
+              <h3>
+                <img src="https://img.icons8.com/cute-clipart/128/000000/show-property.png"/>Showcase
+              </h3>
+            </li>
+            <li>
+              <h3>
+                <img src="https://img.icons8.com/bubbles/128/000000/share.png"/>
+                Share
+              </h3>
+            </li>
+          </ul>
+          <h5>
+            <i>Your work!</i>
+          </h5>
+        </div>
+      </div>
+      <div class="banner-bottom">
+        <%= link_to user_github_omniauth_authorize_path, class: "github-link home-login-cta" do %>
+          <button class="github-login">
+            <i class="fab fa-github github-social"></i>
+            Sign in with GitHub
+          </button>
+        <% end %>
+      </div>
     </div>
-    <div class="github-links">
-      <!-- Github star repo link -->
-      <iframe src="https://ghbtns.com/github-btn.html?user=twbs&repo=gisthub&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-      <!-- Github follow user link -->
-      <iframe src="https://ghbtns.com/github-btn.html?user=haumer&type=follow&count=true" frameborder="0" scrolling="0" width="170" height="20" title="GitHub"></iframe>
+  </div>
+  <div class="home-get-started">
+    <%= link_to root_path(anchor: "get-started-instructions"), data: { turbolinks: false }  do %>
+      <i class="fas fa-angle-double-down"></i>
+    <% end %>
+  </div>
+  <div class="spacer">
+
+  </div>
+  <section id="get-started-instructions" class="get-started-instructions">
+    <%= render Home::GetStartedComponent.new(user_signed_in: false, user: current_user) %>
   </section>
-  <section class="home-right">
-    <%= render Home::UsageComponent.new %>
+  <div class="spacer">
+
+  </div>
+  <section class="gist-example">
+    <h2>Here is an Example:</h2>
+    <div class="example">
+      <div class="left">
+        <script src="https://gist.github.com/Haumer/650264e99e90a141b8c951dbacdb07e7.js"></script>
+      </div>
+    </div>
   </section>
+  <div class="spacer">
+
+  </div>
+  <section id="stats" class="home-stats">
+    <div class="top-contributors">
+      <h4>Most Gists</h4>
+      <div class="individual-contributors">
+        <% @top_gist_users.each_with_index do |user, i| %>
+          <%= render Users::SmallCardComponent.new(user: user, rank: i + 1, count: nil) %>
+        <% end %>
+      </div>
+    </div>
+    <div class="top-contributors">
+      <h4>Most Files</h4>
+      <div class="individual-contributors">
+        <% @top_lines_users.each_with_index do |info, i| %>
+          <%= render Users::SmallCardComponent.new(user: info.first, rank: i + 1, count: info.last) %>
+        <% end %>
+      </div>
+    </div>
+    <div class="top-contributors">
+      <h4>Most Used Language</h4>
+      <div class="individual-contributors">
+        <% @languages.each_with_index do |info, i| %>
+          <div class="user-small-card <%= user_rank(i + 1) %> languages">
+            <%= info.first %>
+            <%= info.last %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+  <div class="spacer">
+
+  </div>
+  <div class="footer">
+
+  </div>
 </div>

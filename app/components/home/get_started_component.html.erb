@@ -1,25 +1,28 @@
-<h2>Get Started</h2>
-<% if @user_signed_in %>
-  <div class="profile-cta">
-    <div class="github-cta-button">
-      <%= link_to user_path(@current_user.githubname) do %>
-        Visit your Profile!
+<div class="get-started-container">
+  <h2>Get Started</h2>
+  <div class="get-started">
+    <div class="get-started-installation">
+      <%= render Home::InstallationComponent.new(title:false, long: false) %>
+    </div>
+    <div class="get-started-usage">
+      <%= render Home::UsageComponent.new(title: false, long: false) %>
+    </div>
+    <div class="get-started-ctas">
+      <% if @user_signed_in %>
+        <div class="profile-cta">
+          <div class="github-cta-button">
+            <%= link_to user_path(@user.githubname) do %>
+              Visit your Profile!
+            <% end %>
+          </div>
+        </div>
       <% end %>
-    </div>
-    <div class="github-cta-button">
-      <%= link_to "View this project on github", "https://github.com/Haumer/gisthub" %>
-    </div>
-    <div class="github-cta-button">
-      <%= link_to "How to get started?!", howto_path %>
+      <div class="github-cta-button">
+        <%= link_to "View this project on github", "https://github.com/Haumer/gisthub" %>
+      </div>
+      <div class="github-cta-button">
+        <%= link_to "Gists Guide", howto_path %>
+      </div>
     </div>
   </div>
-<% else %>
-  <div class="login-cta">
-    <%= link_to user_github_omniauth_authorize_path, class: "github-link" do %>
-      <button class="github-login w-50 m-0">
-        <i class="fab fa-github github-social"></i>
-        Sign in with GitHub
-      </button>
-    <% end %>
-  </div>
-<% end %>
+</div>

@@ -15,3 +15,7 @@
 @import "view_components/index";
 @import "groups/index";
 @import "users/index";
+
+html {
+  scroll-behavior: smooth;
+}

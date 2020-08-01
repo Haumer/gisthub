@@ -1,0 +1,26 @@
+.user-small-card {
+  height: 46px;
+  width: 240px;
+  text-align: center;
+  margin: auto;
+  position: relative;
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  border: 2px grey;
+  border-bottom: solid;
+  // border-left: solid;
+  // border-right: solid;
+  // border-radius: 3px;
+  &.languages {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  img {
+    height: 32px;
+    border-radius: 50%;
+  }
+}
