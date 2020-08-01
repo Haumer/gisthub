@@ -1,6 +1,8 @@
-<h3>
-  Create Your first Gist
-</h3>
+<% if @title %>
+  <h3>
+    Create Your first Gist
+  </h3>
+<% end %>
 <span>
 ‌  To upload the contents of a.rb just:
 </span>
@@ -15,15 +17,18 @@
   <br>
   gist *.rb
 </div>
-<span>
-  Alternatively, you can just paste from the clipboard:
-</span>
-‌<div class="code-block">
-  gist -P
-</div>
-<span>
-  Use -d to add a description:
-</span>
-‌<div class="code-block">
-  gist -d "Random rbx bug" a.rb
-</div>
+<% if @long %>
+  <span>
+    Alternatively, you can just paste from the clipboard:
+  </span>
+  ‌<div class="code-block">
+    gist -P
+  </div>
+  <span>
+    Use -d to add a description:
+  </span>
+  ‌<div class="code-block">
+    gist -d "Random rbx bug" a.rb
+  </div>
+<% end %>
+

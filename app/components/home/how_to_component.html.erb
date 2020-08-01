@@ -1,5 +1,7 @@
 <div class="how-to-instructions">
-  <h2>How to use HubGist?!</h2>
+  <% if @title %>
+    <h2>How to use HubGist?!</h2>
+  <% end %>
   <div class="row">
     <div class="step-1 col-sm-4">
       <%= render Home::InstallationComponent.new %>
@@ -19,9 +21,6 @@
       <div class="code-block">
         gist B390_hello_world.rb index.html style.css
       </div>
-      <p>
-
-      </p>
     </div>
   </div>
 </div>

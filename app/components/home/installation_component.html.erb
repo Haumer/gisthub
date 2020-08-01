@@ -1,17 +1,22 @@
-<h3>
-  Installation
-</h3>
-<span>
-  If you have ruby installed:
-</span>
-<div class="code-block">
-  gem install gist
-</div>
-For OS X, gist lives in Homebrew
-<div class="code-block">
-  brew install gist
-</div>
-For FreeBSD, gist lives in ports
-<div class="code-block">
-  pkg install gist
-</div>
+<% if @title %>
+  <h3>
+    Installation
+  </h3>
+<% end %>
+<% unless @long %>
+  <span>
+    If you have ruby installed:
+  </span>
+  <div class="code-block">
+    gem install gist
+  </div>
+  For OS X, gist lives in Homebrew
+  <div class="code-block">
+    brew install gist
+  </div>
+  For FreeBSD, gist lives in ports
+  <div class="code-block">
+    pkg install gist
+  </div>
+<% end %>
+

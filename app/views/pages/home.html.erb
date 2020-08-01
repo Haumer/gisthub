@@ -9,19 +9,22 @@
     <div class="banner-right">
       <div class="banner-top">
         <div class="banner-cta">
-          <h4>
-            Share
-          </h4>
-          <h4>
+          <h3>
+            Create
+          </h3>
+          <h3>
             Showcase
-          </h4>
-          <h4>
-            Contribute
-          </h4>
+          </h3>
+          <h3>
+            Share
+          </h3>
+          <h5>
+            <i>Your work!</i>
+          </h5>
         </div>
       </div>
       <div class="banner-bottom">
-        <%= link_to user_github_omniauth_authorize_path, class: "github-link" do %>
+        <%= link_to user_github_omniauth_authorize_path, class: "github-link home-login-cta" do %>
           <button class="github-login">
             <i class="fab fa-github github-social"></i>
             Sign in with GitHub
@@ -29,6 +32,12 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <div class="spacer">
+
+  </div>
+  <div class="get-started-instructions">
+    <%= render Home::GetStartedComponent.new(user_signed_in: false, user: current_user) %>
   </div>
   <div class="spacer">
 
@@ -66,5 +75,8 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <div class="spacer">
+
   </div>
 </div>
