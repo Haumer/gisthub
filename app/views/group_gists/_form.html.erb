@@ -1,0 +1,4 @@
+<%= simple_form_for GroupGist.new do |f| %>
+  <%= f.input :group, collection: user.groups %>
+  <%= f.submit %>
+<% end %>

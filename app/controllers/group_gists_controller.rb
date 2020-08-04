@@ -1,0 +1,2 @@
+class GroupGistsController < ApplicationController
+end
