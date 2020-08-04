@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
   resources :labels, only: [ :new, :create ]
   resources :gist_labels, only: [ :new, :create ]
+  resources :group_gists
 
   post "get_gists", to: "users#get_gists"
   post "star_gist", to: "user_gists#toggle_star"

@@ -45,7 +45,7 @@
             <%= render "gist_labels/form", gist_label: GistLabel.new, gist: @gist, class: "hidden" %>
           </div>
           <div class="add-group">
-
+            <%= render "group_gists/form", user: @user %>
           </div>
           <div class="edit-gist">
             <%= link_to @edit_url, target: "_blank" do %>
