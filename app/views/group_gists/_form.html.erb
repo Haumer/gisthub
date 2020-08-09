@@ -1,6 +1,9 @@
 <%= simple_form_for GroupGist.new do |f| %>
   <div class="d-flex align-items-center">
-    <%= f.input :group, collection: user.groups, label: false %>
+    <%= f.association :group,
+                      collection: Group.where(user: current_user),
+                      label: false %>
+    <%= f.input :user_gist_id, as: :hidden, input_html: {  value: gist.id } %>
     <%= f.submit "Add to Group" %>
   </div>
 <% end %>

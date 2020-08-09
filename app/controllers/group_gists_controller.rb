@@ -1,13 +1,14 @@
 class GroupGistsController < ApplicationController
   def create
-    @group_gist = GroupGist.new(group: find_group, user: current_user)
+    @group_gist = GroupGist.create(group_gist_params)
+    authorize @group_gist
     @group_gist.save!
-    raise
+    redirect_back(fallback_location: root_path)
   end
 
   private
 
-  def find_group
-    Group.find(params.require("group_gist").permit(:group)[:group].to_i)
+  def group_gist_params
+    params.require("group_gist").permit(:group_id, :user_gist_id)
   end
 end
