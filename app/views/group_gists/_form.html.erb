@@ -1,4 +1,6 @@
 <%= simple_form_for GroupGist.new do |f| %>
-  <%= f.input :group, collection: user.groups %>
-  <%= f.submit %>
+  <div class="d-flex align-items-center">
+    <%= f.input :group, collection: user.groups, label: false %>
+    <%= f.submit "Add to Group" %>
+  </div>
 <% end %>
