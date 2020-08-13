@@ -6,15 +6,7 @@ class UserGist < ApplicationRecord
   has_many :groups, through: :group_gists
   has_many :labels, through: :gist_labels
 
-  include PgSearch::Model
-  pg_search_scope :global_search,
-    against: [ :description ],
-    associated_against: {
-      gist_files: [ :filename, :language ]
-    },
-    using: {
-      tsearch: { prefix: true }
-    }
+
 
   def languages
     gist_files.pluck(:language).uniq
@@ -28,4 +20,14 @@ class UserGist < ApplicationRecord
     end
     languages
   end
+
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [ :description ],
+    associated_against: {
+      gist_files: [ :filename, :language ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 end
