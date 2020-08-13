@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'pg_search', '~> 2.3.0'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'pundit'
