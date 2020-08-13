@@ -10,7 +10,7 @@ class UserGist < ApplicationRecord
   pg_search_scope :global_search,
     against: [ :description ],
     associated_against: {
-      gist_file: [ :filename, :language ]
+      gist_files: [ :filename, :language ]
     },
     using: {
       tsearch: { prefix: true }
