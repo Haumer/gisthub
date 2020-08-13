@@ -28,13 +28,6 @@
     </div>
   </div>
 
-  <div class="gist-search">
-    <%= simple_form_for :search do |f| %>
-      <%= f.input :keyword, label: false, placeholder: "Search your Gists" %>
-      <%= f.submit %>
-    <% end %>
-  </div>
-
   <% unless @user.user_gists.present? %>
     <div class="no-user-gists">
       <% if policy(@user).update? %>
