@@ -7,7 +7,11 @@ class UserGistsController < ApplicationController
 
   def index
     @user = User.find_by_githubname(params[:user_slug])
-    @gists = policy_scope(UserGist).where(user: @user).order(date: :desc)
+    if search_params
+      @gists = policy_scope(UserGist).global_search(search_params[:keyword]).where(user: @user)
+    else
+      @gists = policy_scope(UserGist).where(user: @user).order(date: :desc)
+    end
   end
 
   def toggle_hide
@@ -23,6 +27,10 @@ class UserGistsController < ApplicationController
   end
 
   private
+
+  def search_params
+    params.require(:search).permit(:keyword) if params[:search].present?
+  end
 
   def authorize_gist
     authorize @gist
