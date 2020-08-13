@@ -6,6 +6,16 @@ class UserGist < ApplicationRecord
   has_many :groups, through: :group_gists
   has_many :labels, through: :gist_labels
 
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [ :description ],
+    associated_against: {
+      gist_file: [ :filename, :language ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+
   def languages
     gist_files.pluck(:language).uniq
   end
@@ -18,5 +28,4 @@ class UserGist < ApplicationRecord
     end
     languages
   end
-  # emmbed: <script src="https://gist.github.com/barangerbenjamin/bed924d3f1028f2f9b4596526a94d169.js"></script>
 end
