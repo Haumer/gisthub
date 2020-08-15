@@ -114,13 +114,13 @@
 
 section {
   margin: 0 24px;
-}
-
-.gist-example {
-  h2 {
+    h2 {
     text-align: center;
     margin-bottom: 48px;
   }
+}
+
+.gist-example {
   .example {
     display: flex;
     justify-content: space-around;
@@ -131,6 +131,10 @@ section {
       width: 50%
     }
   }
+}
+
+#stats {
+  text-align: center;
 }
 
 // .github-links {

@@ -68,32 +68,35 @@
   <div class="spacer">
 
   </div>
-  <section id="stats" class="home-stats">
-    <div class="top-contributors">
-      <h4>Most Gists</h4>
-      <div class="individual-contributors">
-        <% @top_gist_users.each_with_index do |user, i| %>
-          <%= render Users::SmallCardComponent.new(user: user, rank: i + 1, count: nil) %>
-        <% end %>
+  <section id="stats">
+    <h2>Contributors:</h2>
+    <div class="home-stats">
+      <div class="top-contributors">
+        <h4>Most Gists</h4>
+        <div class="individual-contributors">
+          <% @top_gist_users.each_with_index do |user, i| %>
+            <%= render Users::SmallCardComponent.new(user: user, rank: i + 1, count: nil) %>
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div class="top-contributors">
-      <h4>Most Files</h4>
-      <div class="individual-contributors">
-        <% @top_lines_users.each_with_index do |info, i| %>
-          <%= render Users::SmallCardComponent.new(user: info.first, rank: i + 1, count: info.last) %>
-        <% end %>
+      <div class="top-contributors">
+        <h4>Most Files</h4>
+        <div class="individual-contributors">
+          <% @top_lines_users.each_with_index do |info, i| %>
+            <%= render Users::SmallCardComponent.new(user: info.first, rank: i + 1, count: info.last) %>
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div class="top-contributors">
-      <h4>Most Used Language</h4>
-      <div class="individual-contributors">
-        <% @languages.each_with_index do |info, i| %>
-          <div class="user-small-card <%= user_rank(i + 1) %> languages">
-            <%= info.first %>
-            <%= info.last %>
-          </div>
-        <% end %>
+      <div class="top-contributors">
+        <h4>Most Used Language</h4>
+        <div class="individual-contributors">
+          <% @languages.each_with_index do |info, i| %>
+            <div class="user-small-card <%= user_rank(i + 1) %> languages">
+              <%= info.first %>
+              <%= info.last %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </section>
