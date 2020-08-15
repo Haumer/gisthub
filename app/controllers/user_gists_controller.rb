@@ -29,7 +29,7 @@ class UserGistsController < ApplicationController
   private
 
   def search_params
-    params.require(:search).permit(:keyword) if params[:search].present?
+    params.require(:search).permit(:keyword) if params[:search].present? && !params[:search][:keyword].empty?
   end
 
   def authorize_gist
