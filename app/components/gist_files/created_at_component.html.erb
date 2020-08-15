@@ -3,6 +3,6 @@
     <%= @user.githubname %>
   </div>
   <div class="gist-time">
-    <%= @gist.updated_at.strftime("%e %b %Y %H:%M:%S%p") %> (<%= distance_of_time_in_words(@gist.updated_at, DateTime.now) %>)
+    <%= @gist.updated_at.strftime("%e %b %Y %H:%M:%S%p") %> (<%= distance_of_time_in_words(@gist.updated_at, DateTime.now) %> ago)
   </div>
 </div>

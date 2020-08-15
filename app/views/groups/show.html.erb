@@ -27,7 +27,7 @@
   <% @group_gists.each do |gist| %>
     <div class="feed">
       <div class="user-feed">
-        <%= gist.user.githubname %>
+        <%= gist.description %>
       </div>
       <div class="group-feed">
           <%= render GistFiles::CreatedAtComponent.new(gist) %>
