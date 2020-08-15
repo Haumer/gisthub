@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
   def show
     @star_gists = @user.user_gists.where(star: true, hide: false).order(date: :desc)
-    @gists = @user.user_gists.where(hide: false).order(date: :desc) - @star_gists
+    if search_params
+      @gists = policy_scope(UserGist).global_search(search_params[:keyword]).where(user: @user) - @star_gists
+    else
+      @gists = policy_scope(UserGist).where(user: @user).order(date: :desc) - @star_gists
+    end
   end
 
   def admin_create
@@ -57,6 +61,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def search_params
+    params.require(:search).permit(:keyword) if params[:search].present? && !params[:search][:keyword].empty?
+  end
 
   def create_params
     params.require(:user).permit(:githubname)

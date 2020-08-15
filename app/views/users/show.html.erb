@@ -28,6 +28,12 @@
     </div>
   </div>
 
+  <div class="gist-search">
+    <%= simple_form_for :search, url: user_path(slug: @user.githubname), method: :get do |f| %>
+      <%= f.input :keyword, label: false, placeholder: "Search your Gists" %>
+    <% end %>
+  </div>
+
   <% unless @user.user_gists.present? %>
     <div class="no-user-gists">
       <% if policy(@user).update? %>
