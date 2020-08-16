@@ -35,6 +35,6 @@ class User < ApplicationRecord
   end
 
   def create_personal_group
-    Group.create(user: self, name: "Personal")
+    Group.create(user: self, name: "Personal", personal: true)
   end
 end
