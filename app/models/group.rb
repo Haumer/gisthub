@@ -7,7 +7,7 @@ class Group < ApplicationRecord
   has_many :user_gists, through: :group_gists
   has_many :users, through: :usergroups, source: :user
 
-  validates :name, presence: true, length: { minimum: 2 }, uniqueness: true
+  validates :name, presence: true, length: { minimum: 2 }
   validates :slug, length: { minimum: 2 }, format: { with: /\w+{3,}/,
     message: "need at least one letter and one digit" }, on: :update, uniqueness: true
 
