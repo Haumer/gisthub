@@ -1,0 +1,14 @@
+.bookmark {
+  margin-top: 8px;
+  border: none;
+  background-color: transparent;
+  transition: all 0.6s ease;
+  i {
+    color: #a50104;
+  }
+
+  &:hover {
+    background-color: #dddddd;
+    border-radius: 3px;
+  }
+}

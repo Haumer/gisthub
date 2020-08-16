@@ -36,7 +36,9 @@
       <%= simple_form_for GroupGist.new do |f| %>
         <%= f.input :user_gist_id, as: :hidden, input_html: { value: gist.id } %>
         <%= f.input :group_id, as: :hidden, input_html: { value: current_user.personal_group.id } %>
-        <%= f.submit %>
+        <%= button_tag( :class => "bookmark") do %>
+          <i class="fas fa-bookmark"></i>
+        <% end %>
       <% end %>
     </div>
   </div>
