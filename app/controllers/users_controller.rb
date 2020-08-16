@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   def show
     @star_gists = @user.user_gists.where(star: true, hide: false).order(date: :desc)
     if search_params
-      @gists = policy_scope(UserGist).global_search(search_params[:keyword]).where(user: @user) - @star_gists
+      @gists = policy_scope(UserGist).global_search(search_params[:keyword]).where(user: @user, hide: false) - @star_gists
     else
-      @gists = policy_scope(UserGist).where(user: @user).order(date: :desc) - @star_gists
+      @gists = policy_scope(UserGist).where(user: @user, hide: false).order(date: :desc) - @star_gists
     end
   end
 
