@@ -1,74 +1,8 @@
 <div class="group-container" data-turbolinks="false">
-  <div class="top">
-    <div class="top-left">
-      <h2><%= @group.name %> Contributors</h2>
-      <% @group.members.each do |member| %>
-        <%= link_to user_path(member.githubname) do %>
-          <div class="group-member-label">
-            <img src="<%= member.avatar_url.present? ? member.avatar_url : 'https://avatars3.githubusercontent.com/u/583231?v=4' %>" alt="">
-            <span><%= member.githubname %></span>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="top-right">
-      <% if policy(@group).logged_in_and_owner_or_admin? %>
-      <h2>Options</h2>
-        <button type="button" class="group-member-label" data-toggle="modal" data-target="#GroupDetailsModal">
-          Group Details
-        </button>
-        <button type="button" class="group-member-label" data-toggle="modal" data-target="#AddMemberModal">
-          Add Members
-        </button>
-      <% end %>
-    </div>
-  </div>
-
-  <% @group_gists.each do |gist| %>
-    <div class="feed">
-      <div class="user-feed">
-        <%= gist.description %>
-      </div>
-      <div class="group-feed">
-          <%= render GistFiles::CreatedAtComponent.new(gist) %>
-          <%= render GistFiles::FileComponent.new(gist) %>
-      </div>
-      <div class="right-feed">
-      </div>
-    </div>
+  <% if @group.personal %>
+    <%= render "personal_group_show", group: @group, group_gists: @group_gists %>
+  <% else %>
+    <%= render "group_show", group: @group, group_gists: @group_gists %>
   <% end %>
 </div>
-
-<!-- GroupDetails Modal -->
-<div class="modal fade" id="GroupDetailsModal" tabindex="-1" role="dialog" aria-labelledby="GroupDetails" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Group Details</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render "form", group: @group %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- AddMemberModal -->
-<div class="modal fade" id="AddMemberModal" tabindex="-1" role="dialog" aria-labelledby="GroupDetails" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add A User</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render "user_groups/form", group: @group, user_group: Usergroup.new %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render "group_modals", group: @group, add: @group.personal, settings: true %>

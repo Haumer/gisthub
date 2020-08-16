@@ -27,7 +27,6 @@ class GroupPolicy < ApplicationPolicy
 
   private
 
-
   def user_logged_in?
     !user.nil?
   end

@@ -1,0 +1,36 @@
+<div class="top">
+  <div class="top-left">
+    <h2>Personal Collection</h2>
+    <% group.members.each do |member| %>
+      <%= link_to user_path(member.githubname) do %>
+        <div class="group-member-label">
+          <img src="<%= member.avatar_url.present? ? member.avatar_url : 'https://avatars3.githubusercontent.com/u/583231?v=4' %>" alt="">
+          <span><%= member.githubname %></span>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="top-right">
+    <% if policy(group).logged_in_and_owner_or_admin? %>
+    <h2>Options</h2>
+      <button type="button" class="group-member-label" data-toggle="modal" data-target="#GroupDetailsModal">
+        Group Details
+      </button>
+    <% end %>
+  </div>
+</div>
+
+<% @group_gists.each do |gist| %>
+  <div class="feed">
+    <div class="user-feed">
+      <%= gist.description %>
+    </div>
+    <div class="group-feed">
+        <%= render GistFiles::CreatedAtComponent.new(gist) %>
+        <%= render GistFiles::FileComponent.new(gist) %>
+    </div>
+    <div class="right-feed">
+    </div>
+  </div>
+<% end %>
+
