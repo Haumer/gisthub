@@ -34,6 +34,8 @@
     </div>
     <div class="right-feed">
       <%= simple_form_for GroupGist.new do |f| %>
+        <%= f.input :user_gist_id, as: :hidden, input_html: { value: gist.id } %>
+        <%= f.input :group_id, as: :hidden, input_html: { value: current_user.personal_group } %>
         <%= f.submit %>
       <% end %>
     </div>
