@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   post "import_for_group", to: "users#import_for_group"
   post "admin_create", to: "users#admin_create"
 
-
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
 
@@ -26,5 +25,6 @@ Rails.application.routes.draw do
   post "get_gists", to: "users#get_gists"
   post "star_gist", to: "user_gists#toggle_star"
   post "hide_gist", to: "user_gists#toggle_hide"
+  post "bookmark_gist", to: "user_gist#toggle_bookmark"
   get "howto", to: "pages#howto"
 end

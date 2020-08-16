@@ -6,7 +6,7 @@ class UserGist < ApplicationRecord
   has_many :groups, through: :group_gists
   has_many :labels, through: :gist_labels
 
-
+  acts_as_votable
 
   def languages
     gist_files.pluck(:language).uniq

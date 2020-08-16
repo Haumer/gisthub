@@ -65,6 +65,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    acts_as_votable (0.11.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (9.8.4)
@@ -297,6 +298,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_votable
   autoprefixer-rails
   bootsnap (>= 1.4.2)
   byebug

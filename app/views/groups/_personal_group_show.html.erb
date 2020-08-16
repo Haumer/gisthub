@@ -11,12 +11,10 @@
     <% end %>
   </div>
   <div class="top-right">
-    <% if policy(group).logged_in_and_owner_or_admin? %>
     <h2>Options</h2>
-      <button type="button" class="group-member-label" data-toggle="modal" data-target="#GroupDetailsModal">
-        Group Details
-      </button>
-    <% end %>
+    <button type="button" class="group-member-label" data-toggle="modal" data-target="#GroupDetailsModal">
+      Group Details
+    </button>
   </div>
 </div>
 

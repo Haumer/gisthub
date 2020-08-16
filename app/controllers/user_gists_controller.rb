@@ -26,6 +26,10 @@ class UserGistsController < ApplicationController
     redirect_back(fallback_location: user_path(current_user.githubname))
   end
 
+  def toggle_bookmark
+    @gist = UserGist.find(params[:id])
+  end
+
   private
 
   def search_params

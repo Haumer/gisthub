@@ -1,8 +1,8 @@
 <div class="group-container" data-turbolinks="false">
-  <% if @group.personal %>
+  <% if @group.personal && policy(@group).logged_in_and_owner_or_admin? %>
     <%= render "personal_group_show", group: @group, group_gists: @group_gists %>
   <% else %>
     <%= render "group_show", group: @group, group_gists: @group_gists %>
   <% end %>
 </div>
-<%= render "group_modals", group: @group, add: @group.personal, settings: true %>
+<%= render "group_modals", group: @group, add: !@group.personal, settings: true %>

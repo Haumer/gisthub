@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :usergroups, through: :groups
 
   after_create :create_personal_group
+  acts_as_voter
 
   def valid_githubname?
     data = Github::Api.new.check_for_valid_githubname(self.githubname)
@@ -32,6 +33,10 @@ class User < ApplicationRecord
       # user.skip_confirmation!
       user.save
     end
+  end
+
+  def personal_group
+    self.groups.find_by_personal(true)
   end
 
   def create_personal_group

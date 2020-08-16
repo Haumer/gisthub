@@ -29,10 +29,13 @@
       <%= gist.description %>
     </div>
     <div class="group-feed">
-        <%= render GistFiles::CreatedAtComponent.new(gist) %>
-        <%= render GistFiles::FileComponent.new(gist) %>
+      <%= render GistFiles::CreatedAtComponent.new(gist) %>
+      <%= render GistFiles::FileComponent.new(gist) %>
     </div>
     <div class="right-feed">
+      <%= simple_form_for GroupGist.new do |f| %>
+        <%= f.submit %>
+      <% end %>
     </div>
   </div>
 <% end %>
