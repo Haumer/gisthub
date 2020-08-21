@@ -1,6 +1,10 @@
 <div class="top">
   <div class="top-left">
-    <h2><%= @group.name %> Contributors</h2>
+    <% if @group.personal %>
+      <h2><%= @group.user.githubname %>'s Collection</h2>
+    <% else %>
+      <h2><%= @group.name %> Contributors</h2>
+    <% end %>
     <% @group.members.each do |member| %>
       <%= link_to user_path(member.githubname) do %>
         <div class="group-member-label">
@@ -22,30 +26,35 @@
     <% end %>
   </div>
 </div>
-
-<% @group_gists.each do |gist| %>
-  <div class="feed">
-    <div class="user-feed">
-      <%= gist.description %>
-    </div>
-    <div class="group-feed">
-      <%= render GistFiles::CreatedAtComponent.new(gist) %>
-      <%= render GistFiles::FileComponent.new(gist) %>
-    </div>
-    <div class="right-feed">
-      <% if current_user.already_personal_group_gist?(gist.id) %>
-          <button class="bookmark">
-            <i class="fas fa-bookmark"></i>
-          </button>
-      <% else %>
-        <%= simple_form_for GroupGist.new do |f| %>
-          <%= f.input :user_gist_id, as: :hidden, input_html: { value: gist.id } %>
-          <%= f.input :group_id, as: :hidden, input_html: { value: current_user.personal_group.id } %>
-          <%= button_tag( :class => "bookmark") do %>
-            <i class="far fa-bookmark"></i>
+<div class="text-center">
+  <% if @group_gists.empty? %>
+    Oh no! <b><%= @group.user.githubname %></b> doesnt have any gists yet!
+  <% else %>
+</div>
+  <% @group_gists.each do |gist| %>
+    <div class="feed">
+      <div class="user-feed">
+        <%= gist.description %>
+      </div>
+      <div class="group-feed">
+        <%= render GistFiles::CreatedAtComponent.new(gist) %>
+        <%= render GistFiles::FileComponent.new(gist) %>
+      </div>
+      <div class="right-feed">
+        <% if current_user.already_personal_group_gist?(gist.id) %>
+            <button class="bookmark">
+              <i class="fas fa-bookmark"></i>
+            </button>
+        <% else %>
+          <%= simple_form_for GroupGist.new do |f| %>
+            <%= f.input :user_gist_id, as: :hidden, input_html: { value: gist.id } %>
+            <%= f.input :group_id, as: :hidden, input_html: { value: current_user.personal_group.id } %>
+            <%= button_tag( :class => "bookmark") do %>
+              <i class="far fa-bookmark"></i>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
