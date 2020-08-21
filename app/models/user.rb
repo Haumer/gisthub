@@ -14,11 +14,9 @@ class User < ApplicationRecord
   acts_as_voter
 
   def valid_githubname?
-    data = Github::Api.new.check_for_valid_githubname(self.githubname)
+    github_user = Github::Api.new(self)
 
-    unless data["message"].nil?
-      errors.add(:githubname, "does not seem to be valid!")
-    end
+    errors.add(:githubname, "does not seem to be valid!") if github_user.valid?
   end
 
   def self.from_omniauth(auth)
@@ -33,6 +31,14 @@ class User < ApplicationRecord
       # user.skip_confirmation!
       user.save
     end
+  end
+
+  def already_personal_group_gist?(gist)
+    personal_group_gists.where(user_gist: gist).present?
+  end
+
+  def personal_group_gists
+    personal_group.group_gists
   end
 
   def personal_group

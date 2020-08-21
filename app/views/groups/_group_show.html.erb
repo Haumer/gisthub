@@ -33,11 +33,17 @@
       <%= render GistFiles::FileComponent.new(gist) %>
     </div>
     <div class="right-feed">
-      <%= simple_form_for GroupGist.new do |f| %>
-        <%= f.input :user_gist_id, as: :hidden, input_html: { value: gist.id } %>
-        <%= f.input :group_id, as: :hidden, input_html: { value: current_user.personal_group.id } %>
-        <%= button_tag( :class => "bookmark") do %>
-          <i class="fas fa-bookmark"></i>
+      <% if current_user.already_personal_group_gist?(gist.id) %>
+          <button class="bookmark">
+            <i class="fas fa-bookmark"></i>
+          </button>
+      <% else %>
+        <%= simple_form_for GroupGist.new do |f| %>
+          <%= f.input :user_gist_id, as: :hidden, input_html: { value: gist.id } %>
+          <%= f.input :group_id, as: :hidden, input_html: { value: current_user.personal_group.id } %>
+          <%= button_tag( :class => "bookmark") do %>
+            <i class="far fa-bookmark"></i>
+          <% end %>
         <% end %>
       <% end %>
     </div>

@@ -123,19 +123,19 @@ module Github
   end
 
   class Api
-    def initalize(user)
+    def initialize(user)
       @user = user
       @github_url = "https://api.github.com/users/#{@user.githubname}".freeze
+      @data = call_api
     end
 
     def call_api
-      uri = URI("#{@gist_url}")
-      @data = JSON.parse(Net::HTTP.get(uri))
+      uri = URI(@github_url)
+      JSON.parse(Net::HTTP.get(uri))
     end
 
-    def check_for_valid_githubname(githubname)
-      uri = URI("https://api.github.com/users/#{githubname}")
-      JSON.parse(Net::HTTP.get(uri))
+    def valid?
+      !@data["message"].nil?
     end
 
     def fetch_user_img
