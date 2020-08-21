@@ -1,5 +1,6 @@
 .user-groups {
   display: flex;
+  flex-wrap: wrap;
   a {
     text-decoration: none;
     color: black;
@@ -11,6 +12,7 @@
 
 .user-group {
   margin-right: 2px;
+  margin-top: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
