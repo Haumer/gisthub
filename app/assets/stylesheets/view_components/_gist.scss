@@ -76,7 +76,6 @@
 }
 
 .group-slugs,
-.add-label,
 .edit-gist {
   margin: 0 0 0 6px;
 }
@@ -86,4 +85,11 @@
   margin: 0px;
 }
 
-
+.gist-options-modal {
+  display: flex;
+  flex-direction: column;
+  #group_gist_group_id,
+  #gist_label_label_id {
+    min-width: 250px;
+  }
+}
