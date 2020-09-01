@@ -1,95 +1,19 @@
 .gist-card {
-  height: 48px;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  line-height: 36px;
-  padding: 2px 8px;
-  justify-content: space-between;
-  border-bottom: solid 1px #f4f4f4;
-  border-radius: 2px;
-  &:last-of-type {
-    border-bottom: none;
+  font-size: 14px;
+  width: 66vw;
+  margin: auto;
+  .gist-data.small-gist {
+    height: 119px;
+    overflow: hidden;
+  }
+  .timestamp {
+    font-size: 12px;
   }
 }
-
-.gist-info {
-  display: flex;
-}
-
-.gist-show {
-  width: 60%;
-  margin: 0 auto;
-}
-
-.comments,
-.files {
-  margin: 0 0 0 6px;
-  display: flex;
-  align-items: center;
-  transition: opacity 0.3s ease-in-out;
-  a {
-    color: black;
-    margin: 0 0 0 6px;
-    &:hover {
-      opacity: 0.6;
-      text-decoration: none;
-    }
-  }
-
-  .far.fa-comment {
-    margin: 0 0 0 3px;
-  }
-}
-
-.language {
-  display: flex;
-  align-items: center;
-
-  img {
-    height: 36px;
-    margin: 0 3px 0 0;
-  }
-}
-
-.gist-star,
-.gist-hide {
-  width: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-  a {
-    text-decoration: none;
-    color: black;
-  }
-
-  &:hover {
-    opacity: 0.7
-  }
-}
-
-.gist-label {
-  display: flex;
-  align-items: center;
-  margin: 0 0 0 6px;
-}
-
-.group-slugs,
-.edit-gist {
-  margin: 0 0 0 6px;
-}
-
-// forms
-.form-group.select.required.gist_label_label {
-  margin: 0px;
-}
-
-.gist-options-modal {
-  display: flex;
-  flex-direction: column;
-  #group_gist_group_id,
-  #gist_label_label_id {
-    min-width: 250px;
+.creator {
+  padding: 0px;
+  .creator-githubname {
+    font-size: 14px;
+    font-weight: bold;
   }
 }

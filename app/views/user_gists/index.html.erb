@@ -21,16 +21,18 @@
       <% end %>
     </div>
   </div>
-  <div class="gist-search">
-    <%= simple_form_for :search, url: user_user_gists_path(slug: @user.githubname), method: :get do |f| %>
-      <%= f.input :keyword, label: false, placeholder: "Search your Gists" %>
+  <div class="page-content">
+    <div class="gist-search">
+      <%= simple_form_for :search, url: user_user_gists_path(slug: @user.githubname), method: :get do |f| %>
+        <%= f.input :keyword, label: false, placeholder: "Search your Gists" %>
+      <% end %>
+    </div>
+    <% if @gists.present? %>
+      <% @gists.each do |gist| %>
+        <%= render Gist::CardComponent.new(gist: gist, user: current_user, full: true) %>
+      <% end %>
     <% end %>
   </div>
-  <% if @gists.present? %>
-    <% @gists.each do |gist| %>
-      <%= render Gist::CardComponent.new(gist: gist, user: current_user, full: true) %>
-    <% end %>
-  <% end %>
 </div>
 
 <div class="modal fade" id="ImportSettings" tabindex="-1" role="dialog" aria-labelledby="ImportSettings" aria-hidden="true">
