@@ -34,6 +34,16 @@ module Github
         end
       end
 
+      def create
+        uri = URI("https://github.com/login/oauth/access_token")
+        result = Net::HTTP.post_form(
+          uri,
+          client_id: ENV['APP_ID'],
+          client_secret: ENV['APP_SECRET'],
+          accept: :json
+        )
+      end
+
       private
 
       def found_group_slugs
