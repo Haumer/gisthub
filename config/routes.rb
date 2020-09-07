@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   post "star_gist", to: "user_gists#toggle_star"
   post "hide_gist", to: "user_gists#toggle_hide"
   get "howto", to: "pages#howto"
+  get "callback", to: "pages#callback", as: "callback"
 end

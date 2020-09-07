@@ -1,3 +1,17 @@
+.home-section {
+  background: rgba(3, 37, 108, 0.7);
+  padding-top: 128px;
+  h1 {
+    font-size: 72px;
+  }
+  .home-user-form {
+    background: white !important;
+  }
+  .home-banner-text {
+    font-size: 24px;
+  }
+}
+
 .banner {
   display: flex;
 }

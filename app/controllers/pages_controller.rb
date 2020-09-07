@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    @user_count = User.count
     @top_gist_users = User.joins(:user_gists).group('users.id').order("count(users.id) DESC").limit(5)
     # FIXME (haumer): convert into sql query
     @top_lines_users = User.all.map do |user|
@@ -13,5 +14,9 @@ class PagesController < ApplicationController
   end
 
   def howto
+  end
+
+  def callback
+    # raise
   end
 end
