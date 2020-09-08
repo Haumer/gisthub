@@ -1,12 +1,26 @@
-.navbar-lewagon {
+.navbar-hubgist {
   justify-content: space-between;
   background: rgb(3, 37, 108);
+  height: 56px;
+  color: white !important;
+  a {
+    color: white !important;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar {
+  height: 56px !important;
+}
+
+.navbar-hubgist .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-hubgist .navbar-brand img {
   width: 40px;
 }

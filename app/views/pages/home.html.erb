@@ -3,13 +3,13 @@
     <div class="p-responsive position-relative container-lg">
       <div class="d-md-flex flex-items-center gutter-md-spacious">
         <div class="col-md-7 text-center text-md-left">
-          <h1 class="mb-3">Built for developers</h1>
+          <h1 class="mb-3">Built for <br> developers</h1>
           <p class="home-banner-text mb-4">
-            HubGist is a code sharing platform inspired by your work. You review code, manage projects, and build software alongside <%= @user_count %> developers.
+            HubGist is a code sharing platform inspired by your work. You review code, manage projects, and build software alongside <%= @user_count < 100 ? "hundreds of" : @user_count %> developers.
           </p>
         </div>
         <div class="mx-auto col-sm-8 col-md-6 hide-sm">
-          <div class="home-user-form text-gray py-4 px-4 px-md-3 px-lg-4" style="background: white; border-radius: 6px;">
+          <div class="home-user-form text-gray py-4 px-4 px-md-3 px-lg-4" style="background: white; border-radius: 6px; color: black;">
             <%= render "devise/registrations/form", resource: User.new, resource_name: :user %>
           </div>
         </div>
