@@ -10,11 +10,23 @@
     display: flex;
     align-items: center;
     text-align: center;
+    &.bordered {
+      border: solid 1px white;
+      border-radius: 6px;
+      a {
+        padding: 0 8px;
+      }
+    }
+  }
+  .dropdown-menu {
+    a {
+      color: black !important;
+    }
   }
 }
 
 .navbar {
-  height: 56px !important;
+  height: 72px !important;
 }
 
 .navbar-hubgist .navbar-collapse {
