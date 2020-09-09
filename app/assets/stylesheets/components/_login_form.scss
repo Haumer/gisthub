@@ -1,7 +1,11 @@
-.login-form {
+.signin-form {
+  background-color: #ffffff;
   padding: 20px;
   border: 1px solid #d8dee2;
   border-radius: 6px;
+  h3 {
+    text-align: center;
+  }
   label.password.optional {
     font-weight: bold;
     display: flex;
@@ -36,4 +40,12 @@
   input:-webkit-autofill {
       background-color: #ffffff !important;
   }
+}
+
+.signup-form {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #d8dee2;
+  border-radius: 6px;
 }

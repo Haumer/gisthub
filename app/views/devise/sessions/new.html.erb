@@ -5,7 +5,7 @@
       Sign in with GitHub
     </button>
   <% end %>
-  <div class="login-form">
+  <div class="signin-form">
     <h3>Sign in to HubGist</h3>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
@@ -29,6 +29,9 @@
         <%= f.button :submit, "Sing in", class: "btn btn-login" %>
       </div>
     <% end %>
+  </div>
+  <div class="signup-form">
+    New to HubGist? <%= link_to "Create an account", new_user_registration_path %>.
   </div>
 </div>
 
