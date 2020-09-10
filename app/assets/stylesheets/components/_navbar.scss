@@ -10,6 +10,13 @@
     display: flex;
     align-items: center;
     text-align: center;
+  }
+  .dropdown-menu {
+    a {
+      color: black !important;
+    }
+  }
+  .nav-link {
     &.bordered {
       border: solid 1px white;
       border-radius: 6px;
@@ -17,11 +24,10 @@
         padding: 0 8px;
       }
     }
-  }
-  .dropdown-menu {
-    a {
-      color: black !important;
-    }
+    // &:hover, a:hover {
+    //   color: #a5a9ae !important;
+    //   border-color: #a5a9ae !important;
+    // }
   }
 }
 
