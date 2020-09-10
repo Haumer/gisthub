@@ -15,10 +15,12 @@
       font-size: 12px;
     }
   }
+  label.string.optional,
   label.email.optional {
     font-weight: bold;
   }
 
+  input.string.optional,
   input.email.optional,
   input.password.optional {
     padding: 5px 12px;

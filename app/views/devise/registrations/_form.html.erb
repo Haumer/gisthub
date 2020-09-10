@@ -7,19 +7,16 @@
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
     <%= f.input :githubname,
-                required: true,
+                required: false,
                 autofocus: true,
                 input_html: { autocomplete: "githubname" }%>
     <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%#= f.input :password_confirmation,
-                required: true,
+                required: false,
+                hint: ("Make sure it's at least 15 characters OR at least #{@minimum_password_length} characters including a number and a lowercase letter. " if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up", class: "github-cta-button" %>
+    <%= f.button :submit, "Sign up for HubGist", class: "btn btn-primary btn-login" %>
   </div>
 <% end %>

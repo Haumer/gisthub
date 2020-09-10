@@ -47,7 +47,7 @@
   transition:.2s linear;
   &:hover {
     box-shadow:0 1px 5px rgba(#25282d,.36);
-
+    text-decoration: none;
   }
 
   .github-social {
@@ -71,5 +71,10 @@
   background-color: #2ea44f;
   border-color: rgba(27,31,35,.15);
   box-shadow: 0 1px 0 rgba(27,31,35,.1),inset 0 1px 0 hsla(0,0%,100%,.03);
+  &:hover {
+    color: white;
+    background-color: #2c974b;
+    border-color: #2c974b;
+  }
 }
 

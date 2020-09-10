@@ -1,14 +1,18 @@
 <div class="offset-sm-4 col-sm-4">
-  <%= link_to user_github_omniauth_authorize_path do %>
+  <%= link_to user_github_omniauth_authorize_path, class: "github-link" do %>
     <button class="github-login">
       <i class="fab fa-github github-social"></i>
       Sign up with GitHub
     </button>
   <% end %>
 
-  <h2>Sign up</h2>
+  <div class="signin-form">
 
-  <%= render "devise/registrations/form", resource: resource, resource_name: :user %>
+    <h3>Create your account</h3>
 
-  <%= render "devise/shared/links" %>
+    <%= render "devise/registrations/form", resource: resource, resource_name: :user %>
+  </div>
+  <div class="signup-form">
+    Already have an account? <%= link_to "Sign in", new_user_session_path %>.
+  </div>
 </div>
