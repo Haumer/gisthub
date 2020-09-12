@@ -46,6 +46,16 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @user = current_user
+    authorize current_user
+    @groups = @user.groups
+    group_search = params.require(:group_search).permit(:keyword)
+    if group_search.present?
+      @groups = @groups.group_search(group_search[:keyword]) if group_search[:keyword].present?
+    end
+  end
+
+  def admin_dashboard
     authorize current_user
   end
 
@@ -75,7 +85,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find_by_githubname(params[:slug])
+    @user = User.find_by_githubname(params[:slug]) || current_user
     authorize @user
   end
 

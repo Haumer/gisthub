@@ -25,6 +25,10 @@ class UserPolicy < ApplicationPolicy
     admin?
   end
 
+  def admin_dashboard?
+    admin?
+  end
+
   def import_for_group?
     admin?
   end

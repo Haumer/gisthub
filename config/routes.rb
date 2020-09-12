@@ -3,13 +3,20 @@ Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.admin } do
     mount Sidekiq::Web => '/sidekiq'
   end
+
+  unauthenticated :user do
+    root "pages#home"
+  end
+  authenticated :user do
+    root to: "users#dashboard", as: :user_root
+  end
+
   # Admin
-  get "dashboard", to: "users#dashboard", as: "dashboard"
+  get "admin_dashboard", to: "users#admin_dashboard", as: "admin_dashboard"
   post "import_for_group", to: "users#import_for_group"
   post "admin_create", to: "users#admin_create"
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  root to: 'pages#home'
 
   resources :users, param: :slug, only: [ :create, :show, :edit, :update ] do
     resources :user_gists, only: [ :index ]

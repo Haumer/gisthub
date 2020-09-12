@@ -1,0 +1,22 @@
+.group-sidebar {
+  width: auto;
+  min-height: calc(100vh - 72px);
+  position: static;
+  top: 0px !important;
+  left: 0px;
+  border-right: 1px solid;
+  background-color: #ffffff;
+}
+
+.side.col,
+.side.col-md-4,
+.side.col-lg-3 {
+  padding-left: 0px !important;
+}
+
+.group-details {
+  li {
+    list-style: none;
+    font-weight: bold;
+  }
+}
