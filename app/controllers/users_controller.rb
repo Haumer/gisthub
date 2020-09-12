@@ -54,7 +54,7 @@ class UsersController < ApplicationController
       @groups = @groups.group_search(group_search[:keyword]) if group_search[:keyword].present?
     end
 
-    @gists = @user.user_gists.order(created_at: :desc)
+    @gists = @user.user_gists.group_by_day(&:date).to_a.reverse
   end
 
   def admin_dashboard

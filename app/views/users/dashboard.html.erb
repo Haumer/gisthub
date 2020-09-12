@@ -24,21 +24,29 @@
     </div>
     <div class="col-12 col-md-8 col-lg-6 p-responsive mt-3 border-bottom d-flex flex-auto">
       <div class="activity">
-        <% @gists.each do |gist| %>
-          <div class="gist-activity d-flex">
-            <div class="gist-owner">
-              <%= image_tag current_user.avatar_url , class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, height: 45, width: 45 %>
-            </div>
-            <div class="file-info">
-              <div class="gist-filename">
-                <%= link_to user_user_gists_path(user_slug: @user.githubname), data: { turbolinks: false } do %>
-                  <%= gist.gist_filenames.truncate(50, omission: '...') %>
-                <% end %>
+        <h4 class="f4 mt-md-3 mt-0 text-normal">Recent activity</h4>
+        <% @gists.each do |date_group| %>
+          <div class="timestamp">
+            Created <time-ago datetime="2020-08-24T09:26:53Z" class="no-wrap" title="24 Aug 2020, 10:26 BST"><%= distance_of_time_in_words(date_group.first, DateTime.now) %> ago</time-ago>
+          </div>
+          <div class="activity-group">
+            <% date_group.last.each do |gist| %>
+              <div class="gist-activity d-flex">
+                <div class="gist-owner">
+                  <%= image_tag current_user.avatar_url , class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, height: 45, width: 45 %>
+                </div>
+                <div class="file-info">
+                  <div class="gist-filename">
+                    <%= link_to user_user_gists_path(user_slug: @user.githubname), data: { turbolinks: false } do %>
+                      <%= gist.gist_filenames.truncate(50, omission: '...') %>
+                    <% end %>
+                  </div>
+                  <div class="files">
+                    You added <%= gist.gist_files.count %> <span>new Files</span>
+                  </div>
+                </div>
               </div>
-              <div class="files">
-                You added <%= gist.gist_files.count %> <span>new Files</span>
-              </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
       </div>
@@ -55,7 +63,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Create a new Group</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

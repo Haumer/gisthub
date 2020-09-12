@@ -114,6 +114,8 @@ GEM
     gist (5.1.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (4.1.1)
+      activesupport (>= 4.2)
     hashie (4.1.0)
     http (4.4.1)
       addressable (~> 2.3)
@@ -317,6 +319,7 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass
   gist
+  groupdate
   http
   jbuilder (~> 2.7)
   listen (~> 3.2)

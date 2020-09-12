@@ -12,19 +12,20 @@
   .gist-owner {
     margin-right: 8px;
   }
+  .activity-group {
+    margin: 16px 0;
+  }
   .gist-activity {
+    margin: 4px;
     background: white;
     background-color: #fff;
     border: 1px solid #e1e4e8;
     border-radius: 6px;
     box-sizing: border-box;
     padding: 16px;
-    margin: 16px 0;
     .files {
       font-size: 14px;
       color: #586069;
     }
   }
-
 }
-
