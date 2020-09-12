@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [ :show, :update, :get_gists ]
+  before_action :group_search, only: [ :dashboard ]
 
   def show
     @star_gists = @user.user_gists.where(star: true, hide: false).order(date: :desc)
@@ -49,10 +50,11 @@ class UsersController < ApplicationController
     @user = current_user
     authorize current_user
     @groups = @user.groups
-    group_search = params.require(:group_search).permit(:keyword)
     if group_search.present?
       @groups = @groups.group_search(group_search[:keyword]) if group_search[:keyword].present?
     end
+
+    @gists = @user.user_gists.order(created_at: :desc)
   end
 
   def admin_dashboard
@@ -71,6 +73,11 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def group_search
+    return unless params[:group_search].present?
+    params.require(:group_search).permit(:keyword)
+  end
 
   def search_params
     params.require(:search).permit(:keyword) if params[:search].present? && !params[:search][:keyword].empty?

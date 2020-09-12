@@ -12,6 +12,10 @@ class UserGist < ApplicationRecord
     gist_files.pluck(:language).uniq
   end
 
+  def gist_filenames
+    gist_files.map(&:filename).join(" ")
+  end
+
   def languages_percent
     all = gist_files.pluck(:language, :size)
     languages = Hash.new(0.000)

@@ -1,0 +1,30 @@
+.main {
+  width: auto;
+  background-color: #f6f8fa;
+}
+
+.activity {
+  width: 100%;
+  border-bottom: 1px solid #e1e4e8!important;
+  border-bottom-width: 1px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: rgb(225, 228, 232) !important;
+  .gist-owner {
+    margin-right: 8px;
+  }
+  .gist-activity {
+    background: white;
+    background-color: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding: 16px;
+    margin: 16px 0;
+    .files {
+      font-size: 14px;
+      color: #586069;
+    }
+  }
+
+}
+

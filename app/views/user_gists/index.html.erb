@@ -1,5 +1,5 @@
 <%= render Gist::NewGistCountComponent.new(params[:new_gists_count], @user) %>
-<div class="default-container">
+<div class="default-container" data-turbolinks="false">
   <div class="top">
     <div class="top-left">
       <% if policy(@user).get_gists? %>

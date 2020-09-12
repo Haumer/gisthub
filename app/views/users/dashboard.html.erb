@@ -2,9 +2,14 @@
   <div class="main d-flex">
     <div class="side col-12 col-md-4 col-lg-3 hide-sm">
       <div class="group-sidebar">
-        <h3>Group</h3>
+        <div class="group-top">
+          <span>Groups</span>
+          <div class="new-group-modal-trigger" data-toggle="modal" data-target="#newGroupModal">
+            <i class="fas fa-layer-group"></i> New
+          </div>
+        </div>
         <%= simple_form_for :group_search, method: :get do |f| %>
-          <%= f.input :keyword, label: false, placeholder: "search groups" %>
+          <%= f.input :keyword, label: false, placeholder: "Find a group..." %>
         <% end %>
         <div class="group-details">
           <ul class="group-results" >
@@ -18,8 +23,45 @@
       </div>
     </div>
     <div class="col-12 col-md-8 col-lg-6 p-responsive mt-3 border-bottom d-flex flex-auto">
-      <div class="history">
+      <div class="activity">
+        <% @gists.each do |gist| %>
+          <div class="gist-activity d-flex">
+            <div class="gist-owner">
+              <%= image_tag current_user.avatar_url , class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, height: 45, width: 45 %>
+            </div>
+            <div class="file-info">
+              <div class="gist-filename">
+                <%= link_to user_user_gists_path(user_slug: @user.githubname), data: { turbolinks: false } do %>
+                  <%= gist.gist_filenames.truncate(50, omission: '...') %>
+                <% end %>
+              </div>
+              <div class="files">
+                You added <%= gist.gist_files.count %> <span>new Files</span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="side col-12 col-md-4 col-lg-3 hide-sm">
+      <div class="group-sidebar right">
 
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="newGroupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render "groups/form", group: Group.new %>
       </div>
     </div>
   </div>
