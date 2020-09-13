@@ -10,15 +10,20 @@
   </div>
   <div class="group-main flex-column flex-md-row d-flex">
     <div class="flex-shrink-0 col-12 col-md-9 mb-4 mb-md-0">
-      <div class="group-main-nav mb-3 d-flex flex-items-start">
-        <span class="group-stats">
-          <%= @group.members.count %> Members
-        </span>
+      <div class="group-main-nav mb-3 d-flex justify-content-between flex-items-start">
+        <div class="d-flex">
+          <span class="group-stats">
+            <%= @group.members.count %> Members
+          </span>
 
-        <span class="group-stats">
-          <%= pluralize @group.gists.map(&:gist_files).flatten.count, "file" %>
-        </span>
+          <span class="group-stats">
+            <%= pluralize @group.gists.map(&:gist_files).flatten.count, "file" %>
+          </span>
+        </div>
 
+        <button type="button" class="group-stats modal-trigger" data-toggle="modal" data-target="#AddMemberModal">
+          Add Member
+        </button>
       </div>
       <div class="flex-shrink-0 col-12 col-md-12">
         <% if @group.gists.present? %>
@@ -43,11 +48,4 @@
   </div>
 </div>
 
-<div class="group-container" data-turbolinks="false">
-  <% if @group.personal && policy(@group).logged_in_and_owner_or_admin? %>
-    <%= render "personal_group_show", group: @group, group_gists: @group_gists %>
-  <% else %>
-    <%= render "group_show", group: @group, group_gists: @group_gists %>
-  <% end %>
-</div>
 <%= render "group_modals", group: @group, add: !@group.personal, settings: true %>

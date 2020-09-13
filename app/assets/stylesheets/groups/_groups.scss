@@ -10,6 +10,10 @@
       &:last-of-type {
         margin-left: 4px;
       }
+      &.modal-trigger {
+        background-color: #2ea44f;
+        color: #ffffff;
+      }
       color: #24292e;
       background-color: #fafbfc;
       border: 1px solid;
