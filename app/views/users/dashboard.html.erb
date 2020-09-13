@@ -15,7 +15,7 @@
           <ul class="group-results" >
             <% @groups.each do |group| %>
               <li>
-                <%= link_to "#{@user.githubname} / #{group.name}", group_path(group) %>
+                <%= link_to "#{group.owner.githubname} / #{group.name}", group_path(group) %>
               </li>
             <% end %>
           </ul>

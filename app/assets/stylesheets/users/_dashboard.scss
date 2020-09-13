@@ -3,6 +3,12 @@
   background-color: #f6f8fa;
 }
 
+.default-container {
+  .light {
+    font-weight: normal !important;
+  }
+}
+
 .activity {
   width: 100%;
   border-bottom: 1px solid #e1e4e8!important;

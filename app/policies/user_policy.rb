@@ -22,7 +22,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def dashboard?
-    admin?
+    !user.nil?
   end
 
   def admin_dashboard?

@@ -1,9 +1,9 @@
 <div class="default-container">
   <div class="pt-3 hide-full-screen mb-5">
     <div class="d-flex mb-3 px-3 px-md-4 px-lg-5">
-      <h4 class="d-flex flex-wrap flex-items-center break-word f3 text-normal">
+      <h4 class="d-flex flex-wrap flex-items-center text-normal">
         <span>
-          <%= link_to @user.githubname, user_path(slug: @user.githubname), data: { turbolinks: false } %> / <%= link_to @group.name, group_path(@group) %>
+          <%= link_to @user.githubname, user_path(slug: @user.githubname), data: { turbolinks: false }, class: "light" %> / <%= link_to @group.name, group_path(@group) %>
         </span>
       </h4>
     </div>
@@ -11,22 +11,23 @@
   <div class="main gutter-condensed gutter-lg flex-column flex-md-row d-flex">
     <div class="flex-shrink-0 col-12 col-md-9 mb-4 mb-md-0">
       <div class="file-navigation mb-3 d-flex flex-items-start">
-        <%= pluralize @group.gists.map(&:gist_files).flatten.count, "file" %>
+        <span>
+          <%=  %>
+        </span>
+        <span>
+          <%= pluralize @group.gists.map(&:gist_files).flatten.count, "file" %>
+        </span>
+
+      </div>
+      <div class="group-main flex-shrink-0 col-12 col-md-12">
+        <% if @group.gists.present? %>
+          <% @group.gists.each do |gist| %>
+            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: true) %>
+          <% end %>
+        <% end %>
       </div>
     </div>
-    <div class="group-main">
-      <% if @star_gists.present? %>
-        <% @star_gists.each do |gist| %>
-          <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false) %>
-        <% end %>
-      <% end %>
 
-      <% if @group.gists.present? %>
-        <% @group.gists.each do |gist| %>
-          <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false) %>
-        <% end %>
-      <% end %>
-    </div>
     <div class="flex-shrink-0 col-12 col-md-3">
       side
     </div>

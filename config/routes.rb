@@ -4,12 +4,15 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  unauthenticated :user do
-    root "pages#home"
-  end
-  authenticated :user do
-    root to: "users#dashboard", as: :user_root
-  end
+  root to: "pages#home"
+  # unauthenticated :user do
+  #   root to: "pages#home"
+  # end
+  # authenticated :user do
+  #   root to: "users#dashboard", as: :user_root
+  # end
+
+  get "dashboard", to: "users#dashboard"
 
   # Admin
   get "admin_dashboard", to: "users#admin_dashboard", as: "admin_dashboard"
@@ -34,5 +37,4 @@ Rails.application.routes.draw do
   post "star_gist", to: "user_gists#toggle_star"
   post "hide_gist", to: "user_gists#toggle_hide"
   get "howto", to: "pages#howto"
-  get "callback", to: "pages#callback", as: "callback"
 end

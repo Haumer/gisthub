@@ -47,9 +47,10 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    # raise
     @user = current_user
     authorize current_user
-    @groups = @user.groups
+    @groups = (@user.groups + @user.usergroups.map(&:group)).uniq
     if group_search.present?
       @groups = @groups.group_search(group_search[:keyword]) if group_search[:keyword].present?
     end

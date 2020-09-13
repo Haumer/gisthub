@@ -8,7 +8,7 @@ class User < ApplicationRecord
   before_validation :valid_githubname?
   has_many :user_gists, dependent: :destroy
   has_many :groups, dependent: :destroy
-  has_many :usergroups, through: :groups
+  has_many :usergroups
 
   after_create :create_personal_group
   acts_as_voter

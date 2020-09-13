@@ -11,4 +11,8 @@ class Gist::CardComponent < ViewComponent::Base
   def permitted?
     @gist.user == @user
   end
+
+  def render?
+    @gist.gist_files.map(&:size).sum < 10000
+  end
 end

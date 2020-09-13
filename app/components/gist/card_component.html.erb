@@ -1,7 +1,7 @@
 <div class="gist-card">
   <div class="creator flex-order-1 col-12 d-flex">
     <div class="d-lg-inline-block d-none v-align-top mt-1">
-        <a class="d-inline-block"><img class="avatar" src="https://avatars0.githubusercontent.com/u/28539586?s=60&amp;v=4"alt="<%= @gist.user.githubname %>"></a>
+        <a class="d-inline-block"><%= image_tag @user.avatar_url, class: "avatar" %></a>
     </div>
     <div class="d-inline-block px-lg-2 px-0 w-100">
       <div class="d-flex justify-content-between">
@@ -14,18 +14,20 @@
         </div>
       </div>
       <div class="timestamp">
-        Created <time-ago datetime="2020-08-24T09:26:53Z" class="no-wrap" title="24 Aug 2020, 10:26 BST"><%= distance_of_time_in_words(@gist.date, DateTime.now) %> ago</time-ago>
+        Created <time-ago><%= distance_of_time_in_words(@gist.date, DateTime.now) %> ago</time-ago>
       </div>
     </div>
   </div>
   <script src="https://gist.github.com/<%= @user.githubname %>/<%= @gist.gist_id %>.js"></script>
 </div>
 
-<script>
-  let gists<%= @gist.id %> = document.querySelectorAll(".gist-data")
-  gists<%= @gist.id %>.forEach((gist) => {
-    gist.classList.add("small-gist")
-  })
-  delete gists
-</script>
+<% unless @full %>
+  <script>
+    let gists<%= @gist.id %> = document.querySelectorAll(".gist-data")
+    gists<%= @gist.id %>.forEach((gist) => {
+      gist.classList.add("small-gist")
+    })
+    delete gists
+  </script>
+<% end %>
 <%= render Gist::GistOptionsModalComponent.new(gist: @gist, user: @user, permitted: true) %>

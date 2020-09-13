@@ -35,9 +35,7 @@ document.addEventListener('turbolinks:load', () => {
     element.style.color = invert(color, true)
     element.style.borderColor = invert(color, true)
   }
-  // if (typeof(labels) != 'undefined' && element != null) {
-    labels.forEach(invertColor)
-  // }
+  labels.forEach(invertColor)
 });
 
 import invert from 'invert-color';
