@@ -29,6 +29,28 @@
       appearance: none;
     }
   }
+  .right-box {
+    margin: 32px 48px 0 0;
+    span.group-about {
+      font-size: 16px !important;
+      font-weight: bolder;
+    }
+  }
+  .options {
+    color: #666666;
+    border: none;
+    background-color: transparent;
+    margin-left: 8px;
+    transition: transform 0.5s ease;
+    opacity: 0.9;
+    &:hover {
+      transform: rotate(45deg);
+      opacity: 1;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 .user-groups {

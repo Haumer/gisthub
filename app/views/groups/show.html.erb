@@ -30,7 +30,15 @@
     </div>
 
     <div class="flex-shrink-0 col-12 col-md-3">
-      About:
+      <div class="right-box">
+        <div class="d-flex justify-content-between">
+          <span class="group-about">About</span>
+          <div class="options" data-toggle="modal" data-target="#GroupDetailsModal">
+            <i class="fas fa-cog"></i>
+          </div>
+        </div>
+        <%= @group.description %>
+      </div>
     </div>
   </div>
 </div>
