@@ -17,8 +17,24 @@
 }
 .creator {
   padding: 0px;
+  width: 100%;
   .creator-githubname {
     font-size: 14px;
     font-weight: bold;
+  }
+  .options {
+    color: #666666;
+    border: none;
+    background-color: transparent;
+    margin-left: 8px;
+    transition: transform 0.5s ease;
+    opacity: 0.9;
+    &:hover {
+      transform: rotate(45deg);
+      opacity: 1;
+    }
+    &:focus {
+      outline: none;
+    }
   }
 }

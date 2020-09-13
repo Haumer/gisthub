@@ -4,17 +4,16 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Options</h5>
         <div class="edit-gist">
-                <%= link_to @edit_url, target: "_blank" do %>
-                  <i class="far fa-edit"></i>
-                <% end %>
-              </div>
+          <%= link_to @edit_url, target: "_blank" do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+        </div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="gist-options-modal">
-          <% unless controller_is_users_show?(params) %>
             <% if permitted? %>
               <% @gist.labels.each do |label| %>
                 <%= label.name %>
@@ -26,7 +25,6 @@
                 <%= render "group_gists/form", user: @user, gist: @gist %>
               </div>
             <% end %>
-          <% end %>
           <div class="group-slugs">
             <% @gist.groups.each do |group|%>
               <%= link_to group, data: { turbolinks: false } do %>

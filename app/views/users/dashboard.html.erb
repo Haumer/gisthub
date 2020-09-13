@@ -47,7 +47,9 @@
                 </div>
                 <div class="group-info">
                   <% gist.groups_of_owner.each do |group| %>
-                    <%= group.name %>
+                    <div class="group" style="background-color: <%= group.color %>; border: 1px solid;" data-color="<%= group.color %>">
+                      <%= group.name %>
+                    </div>
                   <% end %>
                 </div>
               </div>

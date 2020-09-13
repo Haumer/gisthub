@@ -1,13 +1,18 @@
 <div class="gist-card">
-  <div class="creator flex-order-1 col-lg-7 col-12 d-flex">
+  <div class="creator flex-order-1 col-12 d-flex">
     <div class="d-lg-inline-block d-none v-align-top mt-1">
         <a class="d-inline-block"><img class="avatar" src="https://avatars0.githubusercontent.com/u/28539586?s=60&amp;v=4"alt="<%= @gist.user.githubname %>"></a>
     </div>
-    <div class="d-inline-block px-lg-2 px-0">
-      <span>
-          <%= link_to "#{@gist.user.githubname}", "https://gist.github.com/#{@user.githubname}", class: "creator-githubname" %>
-          / <a href="https://gist.github.com/<%= @user.githubname %>/<%= @gist.gist_id %>"><strong><%= @gist.gist_id %></strong></a>
-      </span>
+    <div class="d-inline-block px-lg-2 px-0 w-100">
+      <div class="d-flex justify-content-between">
+        <span>
+            <%= link_to "#{@gist.user.githubname}", "https://gist.github.com/#{@user.githubname}", class: "creator-githubname" %>
+            / <a href="https://gist.github.com/<%= @user.githubname %>/<%= @gist.gist_id %>"><strong><%= @gist.gist_id %></strong></a>
+        </span>
+        <div data-toggle="modal" data-target="#Gist<%= @gist.id%>" class="options">
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
       <div class="timestamp">
         Created <time-ago datetime="2020-08-24T09:26:53Z" class="no-wrap" title="24 Aug 2020, 10:26 BST"><%= distance_of_time_in_words(@gist.date, DateTime.now) %> ago</time-ago>
       </div>
@@ -23,3 +28,4 @@
   })
   delete gists
 </script>
+<%= render Gist::GistOptionsModalComponent.new(gist: @gist, user: @user, permitted: true) %>

@@ -29,9 +29,19 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
-
+  let labels = Array.from(document.querySelectorAll(".group-info .group"))
+  function invertColor(element) {
+    let color = labels[0].dataset.color
+    element.style.color = invert(color, true)
+    element.style.borderColor = invert(color, true)
+  }
+  // if (typeof(labels) != 'undefined' && element != null) {
+    labels.forEach(invertColor)
+  // }
 });
 
+import invert from 'invert-color';
 import "controllers"
+
 
 

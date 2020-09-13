@@ -22,7 +22,7 @@
       <% end %>
 
       <% if @group.gists.present? %>
-        <% @gists.each do |gist| %>
+        <% @group.gists.each do |gist| %>
           <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false) %>
         <% end %>
       <% end %>
