@@ -1,58 +1,44 @@
-<div class="default-container user-container">
-  <div class="top">
-    <div class="top-left">
-      <h2><%= policy(@user).update? ? "Your" : "#{@user.githubname.capitalize}'s" %> Groups</h2>
-      <div class="user-groups">
-        <% @user.groups.each do |group| %>
-          <%= render Groups::LabelComponent.new(group) %>
-        <% end %>
-      </div>
-    </div>
-    <% if !@user.user_gists.present? && policy(@user).get_gists? %>
-      <div class="center-section">
-        <%= link_to user_user_gists_path(@user.githubname) do %>
-          <div class="github-cta-button">
-            Import your gists!
+<div class="dashboard-container">
+  <div class="main d-flex">
+    <div class="side col-12 col-md-4 col-lg-3 hide-sm">
+      <div class="group-sidebar">
+        <div class="user-info">
+          <div class="d-flex justify-content-center align-center">
+            <%= image_tag @user.avatar_url , class: "avatar avatar-xl" %>
           </div>
+          <h4><%= @user.githubname %></h4>
+        </div>
+        <div class="group-details">
+          <ul class="group-results" >
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-8 col-lg-6 p-responsive mt-3 border-bottom d-flex flex-auto">
+      <div class="gist-results">
+        <div class="gist-search">
+          <%= simple_form_for :search, url: user_path(slug: @user.githubname), method: :get do |f| %>
+            <%= f.input :keyword, label: false, placeholder: "Search your gists" %>
+          <% end %>
+        </div>
+        <% if @star_gists.present? %>
+          <% @star_gists.each do |gist| %>
+            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false, modal: true) %>
+          <% end %>
+        <% end %>
+
+        <% if @gists.present? %>
+          <% @gists.each do |gist| %>
+            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false, modal: true) %>
+          <% end %>
         <% end %>
       </div>
-    <% end %>
+    </div>
+    <div class="side col-12 col-md-4 col-lg-3 hide-sm">
+      <div class="group-sidebar right">
 
-    <div class="top-right">
-      <% if policy(@user).update? %>
-        <div class="user-create-options">
-          <%= render "groups/form", group: Group.new %>
-          <%= render "labels/form", label: Label.new %>
-        </div>
-      <% end %>
+      </div>
     </div>
   </div>
-
-  <div class="gist-search">
-    <%= simple_form_for :search, url: user_path(slug: @user.githubname), method: :get do |f| %>
-      <%= f.input :keyword, label: false, placeholder: "Search" %>
-    <% end %>
-  </div>
-
-  <% unless @user.user_gists.present? %>
-    <div class="no-user-gists">
-      <% if policy(@user).update? %>
-        You dont have any gists yet!
-      <% else %>
-        <%= @user.githubname.capitalize %> doesnt have any gists yet!
-      <% end %>
-    </div>
-  <% end %>
-
-  <% if @star_gists.present? %>
-    <% @star_gists.each do |gist| %>
-      <%= render Gist::CardComponent.new(gist: gist, user: current_user, full: false) %>
-    <% end %>
-  <% end %>
-
-  <% if @gists.present? %>
-    <% @gists.each do |gist| %>
-      <%= render Gist::CardComponent.new(gist: gist, user: current_user, full: false) %>
-    <% end %>
-  <% end %>
 </div>

@@ -1,10 +1,9 @@
 class Gist::GistOptionsModalComponent < ViewComponent::Base
   include ApplicationHelper
 
-  def initialize(user:, gist:, edit_url:, permitted:)
+  def initialize(user:, gist:, permitted:)
     @gist = gist
     @user = user
-    @edit_url = edit_url
     @permitted = permitted
   end
 

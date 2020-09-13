@@ -8,7 +8,7 @@ class User < ApplicationRecord
   before_validation :valid_githubname?
   has_many :user_gists, dependent: :destroy
   has_many :groups, dependent: :destroy
-  has_many :usergroups, through: :groups
+  has_many :usergroups
 
   after_create :create_personal_group
   acts_as_voter
@@ -16,7 +16,7 @@ class User < ApplicationRecord
   def valid_githubname?
     github_user = Github::Api.new(self)
 
-    errors.add(:githubname, "does not seem to be valid!") if github_user.valid?
+    errors.add(:githubname, "does not seem to be valid") if github_user.valid?
   end
 
   def self.from_omniauth(auth)
@@ -24,11 +24,8 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.githubname = auth.info.nickname.downcase
-      # user.name = auth.info.name   # assuming the user model has a name
-      user.avatar_url = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails,
-      # uncomment the line below to skip the confirmation emails.
-      # user.skip_confirmation!
+      # user.name = auth.info.name
+      user.avatar_url = auth.info.image
       user.save
     end
   end

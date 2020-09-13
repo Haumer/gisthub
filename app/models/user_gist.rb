@@ -12,6 +12,10 @@ class UserGist < ApplicationRecord
     gist_files.pluck(:language).uniq
   end
 
+  def gist_filenames
+    gist_files.map(&:filename).join(" ")
+  end
+
   def languages_percent
     all = gist_files.pluck(:language, :size)
     languages = Hash.new(0.000)
@@ -19,6 +23,10 @@ class UserGist < ApplicationRecord
       languages[language.first] += (language.last.to_f / gist_files.pluck(:size).sum.to_f) * 100
     end
     languages
+  end
+
+  def groups_of_owner
+    groups.where(user: self.user)
   end
 
   include PgSearch::Model

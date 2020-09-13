@@ -34,6 +34,15 @@ module Github
         end
       end
 
+      def access
+        if Rails.env.development?
+          result = RestClient.get("https://github.com/login/oauth/authorize?client_id=#{ENV['DEV_APP_ID']}&scope=user%20public_repo")
+          # JSON.parse(result)
+        else
+          RestClient.get("https://github.com/login/oauth/authorize?client_id=#{ENV['APP_ID']}&scope=user%20public_repo")
+        end
+      end
+
       private
 
       def found_group_slugs

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_203327) do
+ActiveRecord::Schema.define(version: 2020_09_13_160541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_08_16_203327) do
     t.string "color", default: "#000000"
     t.boolean "public_group", default: true
     t.boolean "personal", default: false
+    t.text "description", default: ""
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 

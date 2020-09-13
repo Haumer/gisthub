@@ -1,52 +1,37 @@
 <div class="gist-card">
-  <div class="gist-info">
-    <% unless controller_is_users_show?(params) %>
-      <div class="gist-hide">
-        <%= link_to hide_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", method: :post do %>
-          <i class="fas <%= @gist.hide ? "fa-eye-slash" : "fa-eye" %>"></i>
+  <div class="creator flex-order-1 col-12 d-flex">
+    <div class="d-lg-inline-block d-none v-align-top mt-1">
+        <a class="d-inline-block"><%= image_tag @user.avatar_url, class: "avatar" %></a>
+    </div>
+    <div class="d-inline-block px-lg-2 px-0 w-100">
+      <div class="d-flex justify-content-between">
+        <span>
+            <%= link_to "#{@gist.user.githubname}", "https://gist.github.com/#{@user.githubname}", class: "creator-githubname" %>
+            / <a href="https://gist.github.com/<%= @user.githubname %>/<%= @gist.gist_id %>"><strong><%= @gist.gist_id %></strong></a>
+        </span>
+        <% if @modal %>
+          <div data-toggle="modal" data-target="#Gist<%= @gist.id%>" class="options">
+            <i class="fas fa-cog"></i>
+          </div>
         <% end %>
       </div>
-      <div class="gist-star">
-        <%= link_to star_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", method: :post, remote: true do %>
-          <i class="<%= @gist.star ? "fas" : "far" %> fa-star"></i>
-        <% end %>
+      <div class="timestamp">
+        Created <time-ago><%= distance_of_time_in_words(@gist.date, DateTime.now) %> ago</time-ago>
       </div>
-    <% end %>
-    <div class="language">
-      <% @gist.languages_percent.each do |language, percent| %>
-        <% if Language.find_by_name(language&.capitalize) %>
-          <img class="language-icon" src="<%= Language.find_by_name(language.capitalize).img_url %>" alt="<%= language %>"> <%= percent.to_i %>%
-        <% end %>
-      <% end %>
     </div>
-    <div class="files">
-      <%= pluralize(@gist.gist_files.count, "File") %>:
-      <% @gist.gist_files.first(3).each do |file| %>
-        <%= link_to file, data: { turbolinks: false } do %>
-          <%= file.filename %>
-        <% end %>
-      <% end %>
-      <% if @gist.gist_files.count > 3 %>
-        ...
-      <% end %>
-    </div>
-    <div class="comments">
-      <%= link_to @gist_url, target: "_blank" do %>
-        <%= @gist.comments %> <i class="far fa-comment"></i>
-      <% end %>
-    </div>
-    <% if @full %>
-      <button type="button" class="gist-options" data-toggle="modal" data-target="#Gist<%=  @gist.id%>">
-        <i class="fas fa-cog"></i>
-      </button>
-    <% end %>
   </div>
-  <div class="date">
-    Created: <%= DateTime.strptime(@gist.date).strftime("%e %b %Y %H:%M:%S%p")
- %>
-  </div>
+  <script src="https://gist.github.com/<%= @user.githubname %>/<%= @gist.gist_id %>.js"></script>
 </div>
 
-<% if @full %>
-  <%= render Gist::GistOptionsModalComponent.new(gist: @gist, edit_url: @edit_url, user: @user, permitted: permitted?) %>
+<% unless @full %>
+  <script>
+    let gists<%= @gist.id %> = document.querySelectorAll(".gist-data")
+    gists<%= @gist.id %>.forEach((gist) => {
+      gist.classList.add("small-gist")
+    })
+    delete gists
+  </script>
+<% end %>
+<% if @modal %>
+  <%= render Gist::GistOptionsModalComponent.new(gist: @gist, user: @user, permitted: true) %>
 <% end %>

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [ :show, :update, :get_gists ]
+  before_action :group_search, only: [ :dashboard ]
 
   def show
     @star_gists = @user.user_gists.where(star: true, hide: false).order(date: :desc)
@@ -13,14 +14,14 @@ class UsersController < ApplicationController
   def admin_create
     @user = User.new(create_params)
     @user.email = "#{@user.githubname}@hubgist.com"
-    @user.password = "123456"
+    @user.password = "12345678"
     authorize @user
     if @user.save!
       flash[:notice] = "Successfully Created #{@user.githubname}!"
-      redirect_to dashboard_path
+      redirect_to admin_dashboard_path
     else
       flash[:error] = "That didnt work!"
-      redirect_to dashboard_path
+      redirect_to admin_dashboard_path
     end
   end
 
@@ -46,6 +47,18 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @user = current_user
+    authorize current_user
+    @groups = (@user.groups + @user.usergroups.map(&:group)).uniq
+    if group_search.present?
+      @groups = @groups.group_search(group_search[:keyword]) if group_search[:keyword].present?
+    end
+
+    @users = @user.groups.map(&:members).flatten.uniq
+    @gists = @users.map {|user| user.user_gists}.flatten.uniq.group_by_day(&:date).to_a.reverse
+  end
+
+  def admin_dashboard
     authorize current_user
   end
 
@@ -62,6 +75,11 @@ class UsersController < ApplicationController
 
   private
 
+  def group_search
+    return unless params[:group_search].present?
+    params.require(:group_search).permit(:keyword)
+  end
+
   def search_params
     params.require(:search).permit(:keyword) if params[:search].present? && !params[:search][:keyword].empty?
   end
@@ -75,7 +93,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find_by_githubname(params[:slug])
+    @user = User.find_by_githubname(params[:slug]) || current_user
     authorize @user
   end
 

@@ -1,9 +1,10 @@
 .avatar {
-  width: 40px;
+  width: 30px;
   border-radius: 50%;
+  object-fit: cover;
 }
 .avatar-large {
-  width: 56px;
+  width: 45px;
   border-radius: 50%;
 }
 .avatar-bordered {
@@ -17,4 +18,7 @@
   border-radius: 0px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
+}
+.avatar-xl {
+  width: 240px;
 }

@@ -1,0 +1,52 @@
+.main {
+  width: auto;
+  background-color: #f6f8fa;
+}
+
+.default-container {
+  .light {
+    font-weight: normal !important;
+  }
+  .bold {
+    font-weight: bolder !important;
+  }
+}
+
+.activity {
+  width: 100%;
+  border-bottom: 1px solid #e1e4e8!important;
+  border-bottom-width: 1px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: rgb(225, 228, 232) !important;
+  .gist-owner {
+    margin-right: 8px;
+  }
+  .activity-group {
+    margin: 16px 0;
+  }
+  .gist-activity {
+    margin: 4px;
+    background: white;
+    background-color: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding: 16px;
+    .files {
+      font-size: 14px;
+      color: #586069;
+    }
+  }
+  .timestamp {
+    margin-left: 4px;
+  }
+  .group-info {
+    .group {
+      padding: 0 7px;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 18px;
+      border-radius: 2em;
+    }
+  }
+}

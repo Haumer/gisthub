@@ -1,45 +1,18 @@
 <div class="home-container">
-  <div class="home-title">
-    <h1>HubGist</h1>
-  </div>
-  <div class="banner" >
-    <div class="banner-left" style="background: url(<%= asset_path('version_control.svg') %>); background-size: 100% 100%; height: calc(100vh -56px); background-repeat: no-repeat;">
-
-    </div>
-    <div class="banner-right">
-      <div class="banner-top">
-        <div class="banner-cta">
-          <ul>
-            <li>
-              <h3>
-                <img src="https://img.icons8.com/bubbles/128/000000/create-new.png"/>
-                Create
-              </h3>
-            </li>
-            <li>
-              <h3>
-                <img src="https://img.icons8.com/cute-clipart/128/000000/show-property.png"/>Showcase
-              </h3>
-            </li>
-            <li>
-              <h3>
-                <img src="https://img.icons8.com/bubbles/128/000000/share.png"/>
-                Share
-              </h3>
-            </li>
-          </ul>
-          <h5>
-            <i>Your work!</i>
-          </h5>
+  <div class="home-section">
+    <div class="p-responsive position-relative container-lg">
+      <div class="d-md-flex flex-items-center gutter-md-spacious">
+        <div class="col-md-7 text-center text-md-left">
+          <h1 class="mb-3">Built for <br> developers</h1>
+          <p class="home-banner-text mb-4">
+            HubGist is a code sharing platform inspired by your work. You review code, manage projects, and build software alongside <%= @user_count < 100 ? "hundreds of" : @user_count %> developers.
+          </p>
         </div>
-      </div>
-      <div class="banner-bottom">
-        <%= link_to user_github_omniauth_authorize_path, class: "github-link home-login-cta" do %>
-          <button class="github-login">
-            <i class="fab fa-github github-social"></i>
-            Sign in with GitHub
-          </button>
-        <% end %>
+        <div class="mx-auto col-sm-8 col-md-6 hide-sm">
+          <div class="home-user-form text-gray py-4 px-4 px-md-3 px-lg-4" style="background: white; border-radius: 6px; color: black;">
+            <%= render "devise/registrations/form", resource: User.new, resource_name: :user %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
