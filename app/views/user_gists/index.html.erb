@@ -29,7 +29,7 @@
     </div>
     <% if @gists.present? %>
       <% @gists.each do |gist| %>
-        <%= render Gist::CardComponent.new(gist: gist, user: current_user, full: true) %>
+        <%= render Gist::CardComponent.new(gist: gist, user: current_user, full: true, modal: false) %>
       <% end %>
     <% end %>
   </div>
