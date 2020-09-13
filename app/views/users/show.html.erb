@@ -24,13 +24,13 @@
         </div>
         <% if @star_gists.present? %>
           <% @star_gists.each do |gist| %>
-            <%= render Gist::CardComponent.new(gist: gist, user: current_user, full: false) %>
+            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false) %>
           <% end %>
         <% end %>
 
         <% if @gists.present? %>
           <% @gists.each do |gist| %>
-            <%= render Gist::CardComponent.new(gist: gist, user: current_user, full: false) %>
+            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false) %>
           <% end %>
         <% end %>
       </div>
@@ -41,64 +41,4 @@
       </div>
     </div>
   </div>
-</div>
-
-
-<div class="default-container user-container" data-turbolinks="false">
-  <div class="top">
-    <div class="top-left">
-      <h2><%= policy(@user).update? ? "Your" : "#{@user.githubname.capitalize}'s" %> Groups</h2>
-      <div class="user-groups">
-        <% @user.groups.each do |group| %>
-          <%= render Groups::LabelComponent.new(group) %>
-        <% end %>
-      </div>
-    </div>
-    <% if !@user.user_gists.present? && policy(@user).get_gists? %>
-      <div class="center-section">
-        <%= link_to user_user_gists_path(@user.githubname) do %>
-          <div class="github-cta-button">
-            Import your gists!
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-
-    <div class="top-right">
-      <% if policy(@user).update? %>
-        <div class="user-create-options">
-          <%= render "groups/form", group: Group.new %>
-          <%= render "labels/form", label: Label.new %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="gist-search">
-    <%= simple_form_for :search, url: user_path(slug: @user.githubname), method: :get do |f| %>
-      <%= f.input :keyword, label: false, placeholder: "Search" %>
-    <% end %>
-  </div>
-
-  <% unless @user.user_gists.present? %>
-    <div class="no-user-gists">
-      <% if policy(@user).update? %>
-        You dont have any gists yet!
-      <% else %>
-        <%= @user.githubname.capitalize %> doesnt have any gists yet!
-      <% end %>
-    </div>
-  <% end %>
-
-  <% if @star_gists.present? %>
-    <% @star_gists.each do |gist| %>
-      <%= render Gist::CardComponent.new(gist: gist, user: current_user, full: false) %>
-    <% end %>
-  <% end %>
-
-  <% if @gists.present? %>
-    <% @gists.each do |gist| %>
-      <%= render Gist::CardComponent.new(gist: gist, user: current_user, full: false) %>
-    <% end %>
-  <% end %>
 </div>

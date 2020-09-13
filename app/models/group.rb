@@ -31,6 +31,10 @@ class Group < ApplicationRecord
     users
   end
 
+  def owner
+    user
+  end
+
   include PgSearch::Model
   pg_search_scope :group_search,
     against: [ :name, :slug ],
