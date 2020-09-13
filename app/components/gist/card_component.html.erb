@@ -6,7 +6,7 @@
     <div class="d-inline-block px-lg-2 px-0">
       <span>
           <%= link_to "#{@gist.user.githubname}", "https://gist.github.com/#{@gist.user.githubname}", class: "creator-githubname" %>
-          / <a href="https://gist.github.com/<%= @gist.user.githubname %>/4d6c499af9135a74339e4eb832e7c79f"><strong><%= @gist.gist_id %></strong></a>
+          / <a href="https://gist.github.com/<%= @gist.user.githubname %>/<%= @gist.gist_id %>"><strong><%= @gist.gist_id %></strong></a>
       </span>
       <div class="timestamp">
         Created <time-ago datetime="2020-08-24T09:26:53Z" class="no-wrap" title="24 Aug 2020, 10:26 BST"><%= distance_of_time_in_words(@gist.date, DateTime.now) %> ago</time-ago>

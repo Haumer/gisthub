@@ -33,17 +33,20 @@
             <% date_group.last.each do |gist| %>
               <div class="gist-activity d-flex">
                 <div class="gist-owner">
-                  <%= image_tag current_user.avatar_url , class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, height: 45, width: 45 %>
+                  <%= image_tag gist.user.avatar_url , class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, height: 45, width: 45 %>
                 </div>
                 <div class="file-info">
                   <div class="gist-filename">
-                    <%= link_to user_user_gists_path(user_slug: @user.githubname), data: { turbolinks: false } do %>
+                    <%= link_to user_user_gists_path(user_slug: gist.user.githubname), data: { turbolinks: false }, data: { turbolinks: false } do %>
                       <%= gist.gist_filenames.truncate(50, omission: '...') %>
                     <% end %>
                   </div>
                   <div class="files">
-                    You added <%= gist.gist_files.count %> <span>new Files</span>
+                    <%= gist.user == current_user ? "You" : gist.user.githubname %> added <span><%= pluralize(gist.gist_files.count, "new file") %></span>
                   </div>
+                </div>
+                <div class="group-info">
+                  <%= gist.groups.each do || %>
                 </div>
               </div>
             <% end %>

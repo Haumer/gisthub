@@ -25,6 +25,10 @@ class UserGist < ApplicationRecord
     languages
   end
 
+  def groups_of_owner
+    groups.where(user: self.user)
+  end
+
   include PgSearch::Model
   pg_search_scope :global_search,
     against: [ :description ],

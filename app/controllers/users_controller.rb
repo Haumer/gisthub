@@ -14,14 +14,14 @@ class UsersController < ApplicationController
   def admin_create
     @user = User.new(create_params)
     @user.email = "#{@user.githubname}@hubgist.com"
-    @user.password = "123456"
+    @user.password = "12345678"
     authorize @user
     if @user.save!
       flash[:notice] = "Successfully Created #{@user.githubname}!"
-      redirect_to dashboard_path
+      redirect_to admin_dashboard_path
     else
       flash[:error] = "That didnt work!"
-      redirect_to dashboard_path
+      redirect_to admin_dashboard_path
     end
   end
 
@@ -54,7 +54,8 @@ class UsersController < ApplicationController
       @groups = @groups.group_search(group_search[:keyword]) if group_search[:keyword].present?
     end
 
-    @gists = @user.user_gists.group_by_day(&:date).to_a.reverse
+    @users = @user.groups.map(&:members).flatten.uniq
+    @gists = @users.map {|user| user.user_gists}.flatten.uniq.group_by_day(&:date).to_a.reverse
   end
 
   def admin_dashboard
