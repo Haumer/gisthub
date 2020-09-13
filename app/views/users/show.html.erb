@@ -24,13 +24,13 @@
         </div>
         <% if @star_gists.present? %>
           <% @star_gists.each do |gist| %>
-            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false) %>
+            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false, modal: true) %>
           <% end %>
         <% end %>
 
         <% if @gists.present? %>
           <% @gists.each do |gist| %>
-            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false) %>
+            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false, modal: true) %>
           <% end %>
         <% end %>
       </div>

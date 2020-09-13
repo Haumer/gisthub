@@ -9,9 +9,11 @@
             <%= link_to "#{@gist.user.githubname}", "https://gist.github.com/#{@user.githubname}", class: "creator-githubname" %>
             / <a href="https://gist.github.com/<%= @user.githubname %>/<%= @gist.gist_id %>"><strong><%= @gist.gist_id %></strong></a>
         </span>
-        <div data-toggle="modal" data-target="#Gist<%= @gist.id%>" class="options">
-          <i class="fas fa-cog"></i>
-        </div>
+        <% if @modal %>
+          <div data-toggle="modal" data-target="#Gist<%= @gist.id%>" class="options">
+            <i class="fas fa-cog"></i>
+          </div>
+        <% end %>
       </div>
       <div class="timestamp">
         Created <time-ago><%= distance_of_time_in_words(@gist.date, DateTime.now) %> ago</time-ago>
@@ -30,4 +32,6 @@
     delete gists
   </script>
 <% end %>
-<%= render Gist::GistOptionsModalComponent.new(gist: @gist, user: @user, permitted: true) %>
+<% if @modal %>
+  <%= render Gist::GistOptionsModalComponent.new(gist: @gist, user: @user, permitted: true) %>
+<% end %>

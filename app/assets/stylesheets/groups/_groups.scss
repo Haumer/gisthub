@@ -1,3 +1,36 @@
+.group-main {
+  background-color: #ffffff;
+  padding-left: 50px;
+  .group-main-nav {
+    margin: 32px 16px;
+    .group-stats {
+      &:first-of-type {
+        margin-right: 4px;
+      }
+      &:last-of-type {
+        margin-left: 4px;
+      }
+      color: #24292e;
+      background-color: #fafbfc;
+      border: 1px solid;
+      border-color: rgba(27,31,35,.15);
+      border-radius: 6px;
+      box-shadow: 0 1px 0 rgba(27,31,35,.04), inset 0 1px 0 hsla(0,0%,100%,.25);
+      transition: background-color .2s cubic-bezier(.3,0,.5,1);
+      position: relative;
+      display: inline-block;
+      padding: 5px 16px;
+      font-size: 14px;
+      font-weight: bolder;
+      line-height: 20px;
+      white-space: nowrap;
+      vertical-align: middle;
+      user-select: none;
+      appearance: none;
+    }
+  }
+}
+
 .user-groups {
   display: flex;
   flex-wrap: wrap;

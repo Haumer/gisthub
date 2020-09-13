@@ -1,11 +1,12 @@
 class Gist::CardComponent < ViewComponent::Base
   include ApplicationHelper
-  def initialize(gist:, user:, full:)
+  def initialize(gist:, user:, full:, modal:)
     @gist = gist
     @edit_url = Github::Gists::Api.new(@gist.user).edit_gist_url(@gist)
     @gist_url = Github::Gists::Api.new(@gist.user).gist_url(@gist)
     @user = user
     @full = full
+    @modal = modal
   end
 
   def permitted?

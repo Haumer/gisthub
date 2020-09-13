@@ -15,7 +15,7 @@
           <ul class="group-results" >
             <% @groups.each do |group| %>
               <li>
-                <%= link_to "#{group.owner.githubname} / #{group.name}", group_path(group) %>
+                <%= link_to "#{group.owner.githubname} / #{group.name}", group_path(group), data: { turbolinks: false } %>
               </li>
             <% end %>
           </ul>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="file-info">
                   <div class="gist-filename">
-                    <%= link_to user_user_gists_path(user_slug: gist.user.githubname), data: { turbolinks: false }, data: { turbolinks: false } do %>
+                    <%= link_to user_user_gists_path(user_slug: gist.user.githubname), data: { turbolinks: false } do %>
                       <%= gist.gist_filenames.truncate(50, omission: '...') %>
                     <% end %>
                   </div>

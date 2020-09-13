@@ -47,7 +47,6 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    # raise
     @user = current_user
     authorize current_user
     @groups = (@user.groups + @user.usergroups.map(&:group)).uniq

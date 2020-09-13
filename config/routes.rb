@@ -4,13 +4,13 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  root to: "pages#home"
-  # unauthenticated :user do
-  #   root to: "pages#home"
-  # end
-  # authenticated :user do
-  #   root to: "users#dashboard", as: :user_root
-  # end
+  # root to: "pages#home"
+  unauthenticated :user do
+    root to: "pages#home"
+  end
+  authenticated :user do
+    root to: "users#dashboard", as: :user_root
+  end
 
   get "dashboard", to: "users#dashboard"
 
