@@ -45,8 +45,8 @@
                     <%= gist.user == current_user ? "You" : gist.user.githubname %> added <span><%= pluralize(gist.gist_files.count, "new file") %></span>
                   </div>
                 </div>
-                <div class="group-info">
-                  <% gist.groups_of_owner.each do |group| %>
+                <div class="group-info d-flex align-items-center hide-sm">
+                  <% gist.groups_of_owner.first(3).each do |group| %>
                     <div class="group" style="background-color: <%= group.color %>; border: 1px solid;" data-color="<%= group.color %>">
                       <%= group.name %>
                     </div>
