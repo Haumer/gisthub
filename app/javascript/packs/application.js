@@ -31,7 +31,7 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   let labels = Array.from(document.querySelectorAll(".group-info .group"))
   function invertColor(element) {
-    let color = labels[0].dataset.color
+    let color = element.dataset.color
     element.style.color = invert(color, true)
     element.style.borderColor = invert(color, true)
   }
