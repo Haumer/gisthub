@@ -25,12 +25,22 @@
         <% if @star_gists.present? %>
           <% @star_gists.each do |gist| %>
             <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false, modal: true) %>
+            <% if policy(current_user).update? %>
+              <%= render Gist::GistOptionsModalComponent.new(gist: gist, user: @user, permitted: true) %>
+            <% else %>
+              <%= render Gist::GistOptionsModalComponent.new(gist: gist, user: @user, permitted: false) %>
+            <% end %>
           <% end %>
         <% end %>
 
         <% if @gists.present? %>
           <% @gists.each do |gist| %>
             <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false, modal: true) %>
+            <% if policy(current_user).update? %>
+              <%= render Gist::GistOptionsModalComponent.new(gist: gist, user: @user, permitted: true) %>
+            <% else %>
+              <%= render Gist::GistOptionsModalComponent.new(gist: gist, user: @user, permitted: false) %>
+            <% end %>
           <% end %>
         <% end %>
       </div>

@@ -41,5 +41,18 @@ document.addEventListener('turbolinks:load', () => {
 import invert from 'invert-color';
 import "controllers"
 
+// let cards = document.querySelectorAll(".gist-card")
+// Array.from(cards).forEach(card => {
+//   let option = card.querySelector(".options")
+//   let modal = document.querySelectorAll(".gist-options")
+//   modal.id = `Gist${card.dataset.gist}`
+
+//   card.addEventListener("click", () => {
+//     console.log(modal.id)
+//   })
+// })
+
+
+
 
 

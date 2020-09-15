@@ -1,4 +1,4 @@
-<div class="gist-card">
+<div class="gist-card" data-gist="<%= @gist.id %>">
   <div class="creator flex-order-1 col-12 d-flex">
     <div class="d-lg-inline-block d-none v-align-top mt-1">
         <a class="d-inline-block"><%= image_tag @user.avatar_url, class: "avatar" %></a>
@@ -6,8 +6,8 @@
     <div class="d-inline-block px-lg-2 px-0 w-100">
       <div class="d-flex justify-content-between">
         <span>
-            <%= link_to "#{@gist.user.githubname}", "https://gist.github.com/#{@user.githubname}", class: "creator-githubname" %>
-            / <a href="https://gist.github.com/<%= @user.githubname %>/<%= @gist.gist_id %>"><strong><%= @gist.gist_id %></strong></a>
+            <%= link_to @gist.user.githubname, user_path(slug: @gist.user.githubname), class: "creator-githubname" %>
+            / <strong><%= link_to @gist.gist_id, user_user_gists_path(@user, @gist) %></strong>
         </span>
         <% if @modal %>
           <div data-toggle="modal" data-target="#Gist<%= @gist.id%>" class="options">
@@ -31,7 +31,4 @@
     })
     delete gists
   </script>
-<% end %>
-<% if @modal %>
-  <%= render Gist::GistOptionsModalComponent.new(gist: @gist, user: @user, permitted: true) %>
 <% end %>
