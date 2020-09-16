@@ -47,18 +47,19 @@
     </div>
     <div class="side col-12 col-md-4 col-lg-3 hide-sm">
       <div class="group-sidebar right">
-        <% if policy(@user).import_settings? %>
-          <%= render "users/edit", user: @user %>
-          <!-- <button type="button" class="group-member-label" data-toggle="modal" data-target="#ImportSettings">
-            Import Settings
-          </button> -->
-        <% end %>
         <% if policy(@user).get_gists? %>
           <%= link_to [ :get_gists, slug: @user.githubname ], method: :post do %>
             <div class="btn github-btn--green">
               <%= @gists.present? ? "Refresh" : "Import gists" %>
             </div>
           <% end %>
+        <% end %>
+        <br>
+        <br>
+        <br>
+        <h5>Import Settings</h5>
+        <% if policy(@user).import_settings? %>
+          <%= render "users/edit", user: @user %>
         <% end %>
       </div>
     </div>
