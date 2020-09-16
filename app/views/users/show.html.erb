@@ -9,7 +9,7 @@
           <h4><%= @user.githubname %></h4>
         </div>
         <div class="group-details">
-          <ul class="group-results" >
+          <ul class="group-results">
 
           </ul>
         </div>
@@ -47,7 +47,35 @@
     </div>
     <div class="side col-12 col-md-4 col-lg-3 hide-sm">
       <div class="group-sidebar right">
+        <% if policy(@user).import_settings? %>
+          <%= render "users/edit", user: @user %>
+          <!-- <button type="button" class="group-member-label" data-toggle="modal" data-target="#ImportSettings">
+            Import Settings
+          </button> -->
+        <% end %>
+        <% if policy(@user).get_gists? %>
+          <%= link_to [ :get_gists, slug: @user.githubname ], method: :post do %>
+            <div class="btn github-btn--green">
+              <%= @gists.present? ? "Refresh" : "Import gists" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="modal fade" id="ImportSettings" tabindex="-1" role="dialog" aria-labelledby="ImportSettings" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Import Settings</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render "users/edit", user: @user %>
       </div>
     </div>
   </div>

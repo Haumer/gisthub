@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     CheckForUserGistsJob.perform_now(user_id: @user.id)
     new_gists_count = (@user.user_gists.count - count).positive? ? (@user.user_gists.count - count) : 0
 
-    redirect_to user_user_gists_path(user_slug: @user.githubname, new_gists_count: new_gists_count)
+    redirect_back(fallback_location: user_user_gists_path(user_slug: @user.githubname, new_gists_count: new_gists_count))
   end
 
   def dashboard
