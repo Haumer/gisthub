@@ -9,7 +9,7 @@ module Github
       end
 
       def set_lastest_gist_date
-        @latest_gist_date = @user.user_gists.present? ?  @user.user_gists.order(date: :desc).first.date : "2000-00-00T00:00:00Z"
+        @latest_gist_date = @user.user_gists.present? ? @user.user_gists.order(date: :desc).first.date : "2000-00-00T00:00:00Z"
       end
 
       def edit_gist_url(gist)
@@ -37,7 +37,6 @@ module Github
       def access
         if Rails.env.development?
           result = RestClient.get("https://github.com/login/oauth/authorize?client_id=#{ENV['DEV_APP_ID']}&scope=user%20public_repo")
-          # JSON.parse(result)
         else
           RestClient.get("https://github.com/login/oauth/authorize?client_id=#{ENV['APP_ID']}&scope=user%20public_repo")
         end

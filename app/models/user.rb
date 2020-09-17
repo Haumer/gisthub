@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:github]
   validates :githubname, presence: true, uniqueness: true
   before_validation :valid_githubname?
+  after_create :import_gists
   has_many :user_gists, dependent: :destroy
   has_many :groups, dependent: :destroy
   has_many :usergroups
@@ -44,5 +45,9 @@ class User < ApplicationRecord
 
   def create_personal_group
     Group.create(user: self, name: "Personal", personal: true)
+  end
+
+  def import_gists
+    ImportForGroupJob.perform_later(self.id)
   end
 end

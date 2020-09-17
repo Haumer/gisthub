@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     end
 
     @users = @user.groups.map(&:members).flatten.uniq
-    @gists = @users.map {|user| user.user_gists}.flatten.uniq.group_by_day(&:date).to_a.reverse
+    @gists = (@users.map {|user| user.user_gists}.flatten.uniq + @user.user_gists).group_by_day(&:date).to_a.reverse
   end
 
   def admin_dashboard

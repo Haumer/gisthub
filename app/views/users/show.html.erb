@@ -6,11 +6,12 @@
           <div class="d-flex justify-content-center align-center">
             <%= image_tag @user.avatar_url , class: "avatar avatar-xl" %>
           </div>
-          <h4><%= @user.githubname %></h4>
+          <h4 class="text-center"><%= @user.githubname %></h4>
         </div>
         <div class="group-details">
           <ul class="group-results">
-
+            <li>Gists: <%= @user.user_gists.count %></li>
+            <li>Files: <%= @user.user_gists.count(&:gist_files) %></li>
           </ul>
         </div>
       </div>
@@ -47,20 +48,22 @@
     </div>
     <div class="side col-12 col-md-4 col-lg-3 hide-sm">
       <div class="group-sidebar right">
-        <% if policy(@user).get_gists? %>
-          <%= link_to [ :get_gists, slug: @user.githubname ], method: :post do %>
-            <div class="btn github-btn--green">
-              <%= @gists.present? ? "Refresh" : "Import gists" %>
-            </div>
+        <div class="settings">
+          <% if policy(@user).get_gists? %>
+            <%= link_to [ :get_gists, slug: @user.githubname ], method: :post do %>
+              <div class="btn github-btn--green">
+                <%= @gists.present? ? "Refresh" : "Import gists" %>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
-        <br>
-        <br>
-        <br>
-        <h5>Import Settings</h5>
-        <% if policy(@user).import_settings? %>
-          <%= render "users/edit", user: @user %>
-        <% end %>
+          <br>
+          <br>
+          <br>
+          <h5>Import Settings</h5>
+          <% if policy(@user).import_settings? %>
+            <%= render "users/edit", user: @user %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
