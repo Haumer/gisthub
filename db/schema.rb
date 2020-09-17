@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_160541) do
+ActiveRecord::Schema.define(version: 2020_09_17_233301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "gist_file_languages", force: :cascade do |t|
+    t.bigint "gist_file_id", null: false
+    t.bigint "language_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gist_file_id"], name: "index_gist_file_languages_on_gist_file_id"
+    t.index ["language_id"], name: "index_gist_file_languages_on_language_id"
+  end
 
   create_table "gist_files", force: :cascade do |t|
     t.bigint "user_gist_id", null: false
@@ -137,6 +146,8 @@ ActiveRecord::Schema.define(version: 2020_09_13_160541) do
     t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
   end
 
+  add_foreign_key "gist_file_languages", "gist_files"
+  add_foreign_key "gist_file_languages", "languages"
   add_foreign_key "gist_files", "user_gists"
   add_foreign_key "gist_labels", "labels"
   add_foreign_key "gist_labels", "user_gists"
