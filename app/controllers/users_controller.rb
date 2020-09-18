@@ -53,7 +53,6 @@ class UsersController < ApplicationController
     if group_search.present?
       @groups = @groups.group_search(group_search[:keyword]) if group_search[:keyword].present?
     end
-
     @users = @user.groups.map(&:members).flatten.uniq
     @gists = (@users.map {|user| user.user_gists}.flatten.uniq + @user.user_gists).group_by_day(&:date).to_a.reverse
   end

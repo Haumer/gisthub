@@ -94,13 +94,16 @@ module Github
             @user.update(avatar_url: gist["owner"]["avatar_url"]) if @user.avatar_url == "https://avatars3.githubusercontent.com/u/583231?v=4"
 
             gist["files"].each do |_k, v|
-              GistFile.find_or_create_by(
+              file = GistFile.find_or_create_by(
                 filename: v["filename"],
-                language: v["language"],
                 raw_url: v["raw_url"],
                 size: v["size"],
                 user_gist: created_gist
               )
+              language = Language.find_by_name(v["language"])
+              if language
+                GistFileLanguage.create(language: language, gist_file: file)
+              end
             end
           end
         end
