@@ -11,7 +11,11 @@ class PagesController < ApplicationController
 
     @minimum_password_length = Devise.password_length.first
 
-    @languages = GistFile.group(:language).count(:language).sort_by { |l, v| -v }.first(5)
+    if GistFile.all.map(&:language).present?
+      @languages = GistFile.group(:language).count(:language).sort_by { |l, v| -v }.first(5)
+    else
+      @languages = []
+    end
   end
 
   def howto
