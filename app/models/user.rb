@@ -9,7 +9,7 @@ class User < ApplicationRecord
   after_create :import_gists
   has_many :user_gists, dependent: :destroy
   has_many :groups, dependent: :destroy
-  has_many :usergroups
+  has_many :usergroups, dependent: :destroy
 
   after_create :create_personal_group
   acts_as_voter
