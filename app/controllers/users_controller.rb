@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       @gists = policy_scope(UserGist).where(user: @user).order(date: :desc) - @star_gists
     end
     if @gists.present?
-      @gists = current_user == @user ? @gists : policy_scope(UserGist).where(user: @user, hide: false).order(date: :desc) - @star_gists
+      @gists = policy(@user).update? ? @gists : policy_scope(UserGist).where(user: @user, hide: false).order(date: :desc) - @star_gists
     end
   end
 
