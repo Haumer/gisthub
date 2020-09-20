@@ -7,7 +7,7 @@
       <div class="d-flex justify-content-between">
         <span>
           <%= link_to @gist.user.githubname, user_path(slug: @gist.user.githubname), class: "creator-githubname", data: { turbolinks: false } %>
-            / <strong><%= link_to @gist.gist_id, user_user_gist_path(@gist.user.githubname, @gist) %></strong>
+            / <strong><%= link_to @gist.gist_id, user_user_gist_path(@gist.user.githubname, @gist), data: { turbolinks: false } %></strong>
         </span>
         <% if @modal %>
         <div class="d-flex">
