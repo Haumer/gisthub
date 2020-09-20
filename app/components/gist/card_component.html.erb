@@ -6,18 +6,20 @@
     <div class="d-inline-block px-lg-2 px-0 w-100">
       <div class="d-flex justify-content-between">
         <span>
-            <%= link_to @gist.user.githubname, user_path(slug: @gist.user.githubname), class: "creator-githubname" %>
+          <%= link_to @gist.user.githubname, user_path(slug: @gist.user.githubname), class: "creator-githubname" %>
             / <strong><%= link_to @gist.gist_id, user_user_gists_path(@user, @gist) %></strong>
         </span>
         <% if @modal %>
         <div class="d-flex">
-          <%= link_to hide_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", method: :post do %>
-            <i class="fas <%= @gist.hide ? "fa-eye-slash" : "fa-eye" %>"></i>
-          <% end %>
+          <% if permitted? %>
+            <%= link_to hide_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", method: :post do %>
+              <i class="fas <%= @gist.hide ? "fa-eye-slash" : "fa-eye" %>"></i>
+            <% end %>
 
-          <div data-toggle="modal" data-target="#Gist<%= @gist.id%>" class="options">
-            <i class="fas fa-cog"></i>
-          </div>
+            <div data-toggle="modal" data-target="#Gist<%= @gist.id%>" class="options">
+              <i class="fas fa-cog"></i>
+            </div>
+          <% end %>
         </div>
         <% end %>
       </div>

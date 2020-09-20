@@ -32,6 +32,6 @@ class UserGistPolicy < ApplicationPolicy
   private
 
   def admin_is_owner_or_admin?
-    record.user == user
+    record.user == user || user.admin
   end
 end

@@ -1,16 +1,18 @@
 class Gist::CardComponent < ViewComponent::Base
   include ApplicationHelper
-  def initialize(gist:, user:, full:, modal:)
+  include Devise
+  def initialize(gist:, user:, full:, modal:, permitted:)
     @gist = gist
     @edit_url = Github::Gists::Api.new(@gist.user).edit_gist_url(@gist)
     @gist_url = Github::Gists::Api.new(@gist.user).gist_url(@gist)
     @user = user
     @full = full
     @modal = modal
+    @permitted = permitted
   end
 
   def permitted?
-    @gist.user == @user
+    @permitted
   end
 
   def render?

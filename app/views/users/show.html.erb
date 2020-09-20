@@ -25,7 +25,7 @@
         </div>
         <% if @star_gists.present? %>
           <% @star_gists.each do |gist| %>
-            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false, modal: true) %>
+            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false, modal: true, permitted: policy(gist).update?) %>
             <% if policy(current_user).update? %>
               <%= render Gist::GistOptionsModalComponent.new(gist: gist, user: @user, permitted: true) %>
             <% else %>
@@ -36,7 +36,7 @@
 
         <% if @gists.present? %>
           <% @gists.each do |gist| %>
-            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false, modal: true) %>
+            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false, modal: true, permitted: policy(gist).update?) %>
             <% if policy(current_user).update? %>
               <%= render Gist::GistOptionsModalComponent.new(gist: gist, user: @user, permitted: true) %>
             <% else %>
@@ -55,13 +55,13 @@
                 <%= @gists.present? ? "Refresh" : "Import gists" %>
               </div>
             <% end %>
-          <% end %>
-          <br>
-          <br>
-          <br>
-          <h5>Import Settings</h5>
-          <% if policy(@user).import_settings? %>
-            <%= render "users/edit", user: @user %>
+            <br>
+            <br>
+            <br>
+            <h5>Import Settings</h5>
+            <% if policy(@user).import_settings? %>
+              <%= render "users/edit", user: @user %>
+            <% end %>
           <% end %>
         </div>
       </div>
