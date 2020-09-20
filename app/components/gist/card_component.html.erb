@@ -1,4 +1,4 @@
-<div class="gist-card" data-gist="<%= @gist.id %>">
+<div class="gist-card <%= 'disabled' if @gist.hide %>" data-gist="<%= @gist.id %>">
   <div class="creator flex-order-1 col-12 d-flex">
     <div class="d-lg-inline-block d-none v-align-top mt-1">
         <a class="d-inline-block"><%= image_tag @user.avatar_url, class: "avatar" %></a>
@@ -10,9 +10,15 @@
             / <strong><%= link_to @gist.gist_id, user_user_gists_path(@user, @gist) %></strong>
         </span>
         <% if @modal %>
+        <div class="d-flex">
+          <%= link_to hide_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", method: :post do %>
+            <i class="fas <%= @gist.hide ? "fa-eye-slash" : "fa-eye" %>"></i>
+          <% end %>
+
           <div data-toggle="modal" data-target="#Gist<%= @gist.id%>" class="options">
             <i class="fas fa-cog"></i>
           </div>
+        </div>
         <% end %>
       </div>
       <div class="timestamp">
