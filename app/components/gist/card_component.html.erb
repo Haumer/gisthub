@@ -6,8 +6,8 @@
     <div class="d-inline-block px-lg-2 px-0 w-100">
       <div class="d-flex justify-content-between">
         <span>
-          <%= link_to @gist.user.githubname, user_path(slug: @gist.user.githubname), class: "creator-githubname" %>
-            / <strong><%= link_to @gist.gist_id, user_user_gists_path(@user, @gist) %></strong>
+          <%= link_to @gist.user.githubname, user_path(slug: @gist.user.githubname), class: "creator-githubname", data: { turbolinks: false } %>
+            / <strong><%= link_to @gist.gist_id, user_user_gist_path(@gist.user.githubname, @gist) %></strong>
         </span>
         <% if @modal %>
         <div class="d-flex">

@@ -14,6 +14,12 @@ class UserGistsController < ApplicationController
     end
   end
 
+  def show
+    @gist = UserGist.find(params[:slug])
+    authorize @gist
+    @user = User.find_by_githubname(params[:user_slug])
+  end
+
   def toggle_hide
     @gist = UserGist.find(params[:id])
     @gist.update(hide: !@gist.hide)
