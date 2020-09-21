@@ -21,17 +21,12 @@ class PagesController < ApplicationController
   def howto
   end
 
-  # def access
-  #   result = RestClient.post("https://github.com/login/oauth/access_token", {
-  #     client_id: ENV["DEV_APP_ID"],
-  #     client_secret: ENV["DEV_APP_SECRET"],
-  #     code: params[:code],
-  #     redirect_uri: "http://localhost:3000/access"
-  #   })
-
-  #   res = RestClient.post("https://gist.github.com/gists", { access_token: result["access_token"] })
-
-  #   # result = Github::Gists::Api.new(current_user).access
-  #   # redirect_back(fallback_location: root_path)
-  # end
+  def access
+    # result = RestClient.post("https://github.com/login/oauth/access_token", {
+    #   client_id: ENV["DEV_APP_ID"],
+    #   client_secret: ENV["DEV_APP_SECRET"],
+    #   code: params[:code],
+    #   redirect_uri: "http://localhost:3000/access"
+    # })
+  end
 end
