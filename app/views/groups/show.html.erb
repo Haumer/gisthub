@@ -3,7 +3,7 @@
     <div class="d-flex mb-3 px-3 px-md-4 px-lg-5">
       <h4 class="d-flex flex-wrap flex-items-center text-normal">
         <span>
-          <%= link_to @user.githubname, user_path(slug: @user.githubname), data: { turbolinks: false }, class: "light" %> / <%= link_to @group.name, group_path(@group), class: "bold" %>
+          <%= link_to @user.githubname, user_path(slug: @user.githubname), data: { turbolinks: false }, class: "light" %> / <%= link_to @group.name, group_path(@group), class: "bold", data: { turbolinks: false } %>
         </span>
       </h4>
     </div>
