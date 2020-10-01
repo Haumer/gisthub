@@ -23,13 +23,6 @@
             <%= f.input :keyword, label: false, placeholder: "Search your gists" %>
           <% end %>
         </div>
-        <% if @star_gists.present? %>
-          <% @star_gists.each do |gist| %>
-            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false, modal: true, permitted: policy(gist).update?) %>
-            <%= render Gist::GistOptionsModalComponent.new(gist: gist, user: @user, permitted: policy(current_user).update?) %>
-          <% end %>
-        <% end %>
-
         <% if @gists.present? %>
           <% @gists.each do |gist| %>
             <%= render Gist::CardComponent.new(gist: gist, user: @user, full: false, modal: true, permitted: policy(gist).update?) %>
