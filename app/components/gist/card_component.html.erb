@@ -12,7 +12,7 @@
         <% if @modal %>
         <div class="d-flex">
           <% if permitted? %>
-            <%= link_to hide_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}" do %>
+            <%= link_to hide_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", data: { turbolinks: false } do %>
               <i class="fas <%= @gist.hide ? "fa-eye-slash" : "fa-eye" %>"></i>
             <% end %>
 
@@ -30,6 +30,8 @@
   </div>
   <script src="https://gist.github.com/<%= @gist.user.githubname %>/<%= @gist.gist_id %>.js"></script>
 </div>
+
+<%= render Gist::GistOptionsModalComponent.new(gist: @gist, user: @user, permitted: @permitted) %>
 
 <% unless @full %>
   <script>

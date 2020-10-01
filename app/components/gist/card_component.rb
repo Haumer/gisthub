@@ -1,6 +1,8 @@
 class Gist::CardComponent < ViewComponent::Base
   include ApplicationHelper
-  include Devise
+
+  with_collection_parameter :gist
+
   def initialize(gist:, user:, full:, modal:, permitted:)
     @gist = gist
     @edit_url = Github::Gists::Api.new(@gist.user).edit_gist_url(@gist)
