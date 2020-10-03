@@ -33,7 +33,9 @@
             <% date_group.last.each do |gist| %>
               <div class="gist-activity d-flex">
                 <div class="gist-owner">
-                  <%= image_tag gist.user.avatar_url , class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, height: 45, width: 45 %>
+                  <%= link_to user_path(slug: gist.user.githubname) do %>
+                    <%= image_tag gist.user.avatar_url , class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, height: 45, width: 45 %>
+                  <% end %>
                 </div>
                 <div class="file-info">
                   <div class="gist-filename">
