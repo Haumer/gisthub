@@ -33,7 +33,7 @@
             <% date_group.last.each do |gist| %>
               <div class="gist-activity d-flex">
                 <div class="gist-owner">
-                    <%= image_tag gist.user.avatar_url , class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, height: 45, width: 45 %>
+                  <%= image_tag gist.user.avatar_url , class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, height: 45, width: 45 %>
                 </div>
                 <div class="file-info">
                   <div class="gist-filename">
@@ -45,7 +45,7 @@
                     <% if gist.user == current_user %>
                       You added <span><%= pluralize(gist.gist_files.count, "new file") %></span>
                     <% else %>
-                      <%= link_to gist.user.githubname, user_path(slug: gist.user.githubname) %> added <span><%= pluralize(gist.gist_files.count, "new file") %></span>
+                      <%= link_to gist.user.githubname, user_path(slug: gist.user.githubname), data: { turbolinks: false } %> added <span><%= pluralize(gist.gist_files.count, "new file") %></span>
                     <% end %>
                   </div>
                 </div>

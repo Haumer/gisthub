@@ -1,9 +1,11 @@
 <div class="container" data-turbolinks="false">
   <div class="page-content">
-    <div class="gist-search">
-      <%= simple_form_for :search, url: user_user_gists_path(slug: @user.githubname), method: :get do |f| %>
-        <%= f.input :keyword, label: false, placeholder: "Search your Gists" %>
-      <% end %>
+    <div class="gist-top-content">
+      <div class="gist-search">
+        <%= simple_form_for :search, url: user_user_gists_path(slug: @user.githubname), method: :get do |f| %>
+          <%= f.input :keyword, label: false, placeholder: "Search your Gists" %>
+        <% end %>
+      </div>
     </div>
     <% if @gists.present? %>
       <% @gists.each do |gist| %>
