@@ -7,11 +7,8 @@ class UserGistsController < ApplicationController
 
   def index
     @user = User.find_by_githubname(params[:user_slug])
-    if search_params
-      @gists = policy_scope(UserGist).global_search(search_params[:keyword]).where(user: @user)
-    else
+    search_params ? @gists = policy_scope(UserGist).global_search(search_params[:keyword]).where(user: @user) :
       @gists = policy_scope(UserGist).where(user: @user).order(date: :desc)
-    end
   end
 
   def show
