@@ -1,4 +1,4 @@
-<div class="dashboard-container">
+<div class="dashboard-container" data-turbolinks="false">
   <div class="main d-flex">
     <div class="side col-12 col-md-4 col-lg-3 hide-sm">
       <div class="group-sidebar">
@@ -24,9 +24,7 @@
           <% end %>
         </div>
         <% if @gists.present? %>
-          <%# @gists.each do |gist| %>
-            <%= render Gist::CardComponent.with_collection(@gists, user: @user, full: false, modal: true, permitted: policy(@gists.first).update?) %>
-          <%# end %>
+          <%= render Gist::CardComponent.with_collection(@gists, user: @user, full: false, modal: true, permitted: policy(@gists.first).update?) %>
         <% end %>
       </div>
     </div>

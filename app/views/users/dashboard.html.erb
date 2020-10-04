@@ -33,9 +33,7 @@
             <% date_group.last.each do |gist| %>
               <div class="gist-activity d-flex">
                 <div class="gist-owner">
-                  <%= link_to user_path(slug: gist.user.githubname) do %>
                     <%= image_tag gist.user.avatar_url , class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, height: 45, width: 45 %>
-                  <% end %>
                 </div>
                 <div class="file-info">
                   <div class="gist-filename">
@@ -44,7 +42,11 @@
                     <% end %>
                   </div>
                   <div class="files">
-                    <%= gist.user == current_user ? "You" : gist.user.githubname %> added <span><%= pluralize(gist.gist_files.count, "new file") %></span>
+                    <% if gist.user == current_user %>
+                      You added <span><%= pluralize(gist.gist_files.count, "new file") %></span>
+                    <% else %>
+                      <%= link_to gist.user.githubname, user_path(slug: gist.user.githubname) %> added <span><%= pluralize(gist.gist_files.count, "new file") %></span>
+                    <% end %>
                   </div>
                 </div>
                 <div class="group-info d-flex align-items-center hide-sm">
@@ -69,8 +71,8 @@
 </div>
 
 <div class="modal fade" id="newGroupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+  <div class="modal-dialog modal-dialog-centered" role="document" id="new-group">
+    <div class="modal-content new-group">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Create a new Group</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
