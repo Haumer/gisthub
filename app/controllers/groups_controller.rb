@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
     @group.user = current_user
     if @group.save!
       Usergroup.create(group: @group, user: current_user)
-      redirect_to user_path(slug: @group.user.githubname)
+      redirect_back(fallback_location: user_path(slug: @group.user.githubname))
     else
       render :new
     end

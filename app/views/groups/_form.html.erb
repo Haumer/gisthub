@@ -1,19 +1,20 @@
-<% if group.new_record? %>
-  <%= simple_form_for group do |f| %>
-    <div class="form-group string optional group_name">
-      <input class="form-control string optional user-container-input" type="text" name="group[name]" id="group_name">
-    </div>
+<div class="new-group-form">
+  <% if group.new_record? %>
+    <%= simple_form_for group do |f| %>
+      <div class="form-group string optional group_name">
+        <input class="form-control string optional user-container-input" type="text" name="group[name]" id="group_name">
+      </div>
+    <% end %>
+  <% else %>
+    <%= simple_form_for group do |f| %>
+      <%= f.input :name %>
+      <%= f.input :slug, hint: "Set a unique prefix, to automatically import your gists. Min. length 3." %>
+      <%= f.input :public_group, as: :radio_buttons %>
+      Select a color
+      <%= f.color_field :color, label: "Color", hint: "Set a color" %>
+      <br>
+      <br>
+      <%= f.submit "save", class: "btn btn-primary" %>
+    <% end %>
   <% end %>
-<% else %>
-  <%= simple_form_for group do |f| %>
-    <%= f.input :name %>
-    <%= f.input :slug, hint: "Set a unique prefix, to automatically import your gists. Min. length 3." %>
-    <%= f.input :public_group, as: :radio_buttons %>
-    Select a color
-    <%= f.color_field :color, label: "Color", hint: "Set a color" %>
-    <br>
-    <br>
-
-    <%= f.submit "save", class: "btn btn-primary" %>
-  <% end %>
-<% end %>
+</div>
