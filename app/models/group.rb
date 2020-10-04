@@ -8,7 +8,7 @@ class Group < ApplicationRecord
   has_many :users, through: :usergroups, source: :user
 
   validates :name, presence: true, length: { minimum: 2 }
-  validates :slug, length: { minimum: 2 }, format: { with: /\w+{3,}/,
+  validates :slug, length: { minimum: 2 }, format: { with: /([a-zA-Z0-9]{3,})/,
     message: "need at least one letter and one digit" }, on: :update, uniqueness: true
 
   def slug_changed?
@@ -16,9 +16,7 @@ class Group < ApplicationRecord
   end
 
   def set_default_slug
-    set_slug = ""
-    6.times { set_slug += (("a".."z").to_a).sample }
-    6.times { set_slug += (("1".."9").to_a).sample }
+    set_slug = SecureRandom.hex(3)
 
     self.update(slug: set_slug)
   end
