@@ -2,7 +2,7 @@ class UsergroupsController < ApplicationController
   def create
     @group = Group.find(params[:group_id])
     @user = User.find(strong_params["user"].to_i
-    @usergroup = Usergroup.new(user: @user))
+    @usergroup = Usergroup.new(user: @user)
     @usergroup.group = @group
     authorize @usergroup
     if @usergroup.save!
