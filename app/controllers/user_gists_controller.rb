@@ -13,8 +13,16 @@ class UserGistsController < ApplicationController
 
   def show
     @gist = UserGist.find(params[:slug])
+
     authorize @gist
     @user = User.find_by_githubname(params[:user_slug])
+  end
+
+  def destroy
+    @gist = UserGist.find(params[:gist])
+    authorize @gist
+    @gist.destroy
+    redirect_back(fallback_location: user_path(current_user.githubname))
   end
 
   def toggle_hide

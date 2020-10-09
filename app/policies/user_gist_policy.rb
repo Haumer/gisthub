@@ -13,6 +13,10 @@ class UserGistPolicy < ApplicationPolicy
     true
   end
 
+  def destroy?
+    admin_is_owner_or_admin?
+  end
+
   def create?
     !user.nil?
   end

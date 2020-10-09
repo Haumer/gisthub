@@ -90,7 +90,7 @@
 .github-btn {
   color: #fff;
   background-color: #2ea44f;
-  box-shadow: 0 1px 0 rgba(27,31,35,.1), inset 0 1px 0 hsla(0,0%,100%,.03);
+  // box-shadow: 0 1px 0 rgba(27,31,35,.1), inset 0 1px 0 hsla(0,0%,100%,.03);
 
   &--grey {
     transition: 0.3s opacity ease;
@@ -102,15 +102,17 @@
     }
   }
   &--green {
+    border-radius: 6px;
     transition: 0.3s opacity ease;
     border-color: rgba(27,31,35,.15);
     color: #fff;
     background-color: #2ea44f;
     opacity: 1;
+    box-shadow: 0 1px 0 rgba(27,31,35,.04), inset 0 1px 0 hsla(0,0%,100%,.25);
+    transition: background-color .2s cubic-bezier(.3,0,.5,1);
     &:hover {
       color: #ffffff;
       opacity: 0.9;
     }
   }
 }
-

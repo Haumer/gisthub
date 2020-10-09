@@ -36,6 +36,11 @@ document.addEventListener('turbolinks:load', () => {
     element.style.borderColor = invert(color, true)
   }
   labels.forEach(invertColor)
+
+  let gists = document.querySelectorAll(".gist-data")
+  gists.forEach((gist) => {
+    gist.classList.add("small-gist")
+  })
 });
 
 import invert from 'invert-color';

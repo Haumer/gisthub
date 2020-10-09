@@ -1,68 +1,88 @@
-<div class="dashboard-container">
-  <div class="main d-flex">
-    <div class="side col-12 col-md-4 col-lg-3 hide-sm">
-      <div class="group-sidebar">
-        <div class="user-info">
-          <div class="d-flex justify-content-center align-center">
-            <%= image_tag @user.avatar_url , class: "avatar avatar-xl" %>
+<%= cache @user, @gists do %>
+  <div class="dashboard-container">
+    <div class="main d-flex">
+      <div class="side col-12 col-md-4 col-lg-3 hide-sm">
+        <div class="group-sidebar">
+          <div class="user-info">
+            <div class="d-flex justify-content-center align-center">
+              <%= image_tag @user.avatar_url , class: "avatar avatar-xl" %>
+            </div>
+            <h4 class="text-center"><%= @user.githubname %></h4>
           </div>
-          <h4 class="text-center"><%= @user.githubname %></h4>
-        </div>
-        <div class="group-details">
-          <ul class="group-results">
-            <li>Gists: <%= @user.user_gists.count %></li>
-            <li>Files: <%= @user.user_gists.map(&:gist_files).flatten.count %></li>
-          </ul>
+          <div class="group-details">
+            <ul class="group-results">
+              <li>Gists: <%= @user.user_gists.count %></li>
+              <li>Files: <%= @user.user_gists.map(&:gist_files).flatten.count %></li>
+            </ul>
+          </div>
+          <div class="group-top">
+            <span>Groups</span>
+            <div class="new-group-modal-trigger github-btn--green" data-toggle="modal" data-target="#newGroupModal">
+              <i class="fas fa-layer-group"></i> New
+            </div>
+          </div>
+          <%= simple_form_for :group_search, method: :get do |f| %>
+            <%= f.input :keyword, label: false, placeholder: "Find a group..." %>
+          <% end %>
+          <div class="group-details">
+            <ul class="group-results" >
+              <% @user.groups.each do |group| %>
+                <li>
+                  <%= link_to "#{group.owner.githubname} / #{group.name}", group_path(group), data: { turbolinks: false } %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-12 col-md-8 col-lg-6 p-responsive mt-3 border-bottom d-flex flex-auto">
-      <div class="gist-results">
-        <div class="gist-search">
-          <%= simple_form_for :search, url: user_path(slug: @user.githubname), method: :get do |f| %>
-            <%= f.input :keyword, label: false, placeholder: "Search your gists" %>
+      <div class="col-12 col-md-8 col-lg-6 p-responsive mt-3 border-bottom d-flex flex-auto">
+        <div class="gist-results">
+          <div class="gist-search">
+            <%= simple_form_for :search, url: user_path(slug: @user.githubname), method: :get do |f| %>
+              <%= f.input :keyword, label: false, placeholder: "Search your gists" %>
+            <% end %>
+          </div>
+          <% if @gists.present? %>
+            <%= render Gist::CardComponent.with_collection(@gists, user: @user, full: false, modal: true, permitted: policy(@gists.first).update?) %>
           <% end %>
         </div>
-        <% if @gists.present? %>
-          <%= render Gist::CardComponent.with_collection(@gists, user: @user, full: false, modal: true, permitted: policy(@gists.first).update?) %>
-        <% end %>
       </div>
-    </div>
-    <div class="side col-12 col-md-4 col-lg-3 hide-sm">
-      <div class="group-sidebar right">
-        <div class="settings">
-          <% if policy(@user).get_gists? %>
-            <%= link_to [ :get_gists, slug: @user.githubname ], method: :post do %>
-              <div class="btn github-btn--green">
-                <%= @gists.present? ? "Refresh" : "Import gists" %>
-              </div>
+      <div class="side col-12 col-md-4 col-lg-3 hide-sm">
+        <div class="group-sidebar right">
+          <div class="settings">
+            <% if policy(@user).get_gists? %>
+              <%= link_to [ :get_gists, slug: @user.githubname ], method: :post do %>
+                <div class="btn github-btn--green">
+                  <%= @gists.present? ? "Refresh" : "Import gists" %>
+                </div>
+              <% end %>
+              <br>
+              <br>
+              <br>
+              <h5>Import Settings</h5>
+              <% if policy(@user).import_settings? %>
+                <%= render "users/edit", user: @user %>
+              <% end %>
             <% end %>
-            <br>
-            <br>
-            <br>
-            <h5>Import Settings</h5>
-            <% if policy(@user).import_settings? %>
-              <%= render "users/edit", user: @user %>
-            <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="modal fade" id="ImportSettings" tabindex="-1" role="dialog" aria-labelledby="ImportSettings" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Import Settings</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render "users/edit", user: @user %>
+  <div class="modal fade" id="ImportSettings" tabindex="-1" role="dialog" aria-labelledby="ImportSettings" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Import Settings</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render "users/edit", user: @user %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

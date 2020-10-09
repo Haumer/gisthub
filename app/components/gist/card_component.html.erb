@@ -19,6 +19,10 @@
             <div data-toggle="modal" data-target="#Gist<%= @gist.id%>" class="options">
               <i class="fas fa-cog"></i>
             </div>
+
+            <%= link_to user_user_gist_path(@user, gist: @gist), confirm: 'Are you sure?', method: :delete do %>
+              <i class="fas fa-trash ml-2"></i>
+            <% end %>
           <% end %>
         </div>
         <% end %>
@@ -39,6 +43,6 @@
     gists<%= @gist.id %>.forEach((gist) => {
       gist.classList.add("small-gist")
     })
-    delete gists
+    delete gists<%= @gist.id %>
   </script>
 <% end %>
