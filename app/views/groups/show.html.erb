@@ -28,7 +28,7 @@
       <div class="flex-shrink-0 col-12 col-md-12">
         <% if @group.gists.present? %>
           <% @group.gists.each do |gist| %>
-            <%= render Gist::CardComponent.new(gist: gist, user: @user, full: true, modal: false, permitted: policy(gist).update?) %>
+            <%= render Gist::CardComponent.new(gist: gist, user: gist.user, full: true, modal: false, permitted: policy(gist).update?) %>
           <% end %>
         <% end %>
       </div>
