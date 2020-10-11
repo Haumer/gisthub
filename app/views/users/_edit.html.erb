@@ -1,6 +1,6 @@
 <%= simple_form_for user, url: user_path(slug: @user.githubname) do |f| %>
-  <%= f.input :auto_import, wrapper: :custom_boolean_switch %>
-  <%= f.input :only_group_import, wrapper: :custom_boolean_switch %>
-  <%= f.input :stop_import, wrapper: :custom_boolean_switch %>
+  <%= f.input :auto_import, wrapper: :custom_boolean_switch, label: "Automatic", hint: "Automatically import gists." %>
+  <%= f.input :only_group_import, wrapper: :custom_boolean_switch, label: "Only Groups", hint: "Only import gists that are in groups." %>
+  <%= f.input :stop_import, wrapper: :custom_boolean_switch, label: "Stop importing", hint: "Stop importing new gists." %>
   <%= f.submit "Update Settings", class: "btn github-btn--grey" %>
 <% end %>
