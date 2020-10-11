@@ -12,7 +12,7 @@ class UserGistsController < ApplicationController
   end
 
   def show
-    @gist = UserGist.find(params[:slug])
+    @gist = UserGist.find(params[:gist])
 
     authorize @gist
     @user = User.find_by_githubname(params[:user_slug])
