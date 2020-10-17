@@ -26,7 +26,7 @@
           <% end %>
           <div class="group-details">
             <ul class="group-results" >
-              <% @user.groups.each do |group| %>
+              <% @groups.each do |group| %>
                 <li>
                   <%= link_to "#{group.owner.githubname} / #{group.name}", group_path(group), data: { turbolinks: false } %>
                 </li>

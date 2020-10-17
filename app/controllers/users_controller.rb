@@ -12,6 +12,10 @@ class UsersController < ApplicationController
     if @gists.present?
       @gists = policy(@user).update? ? @gists : policy_scope(UserGist).where(user: @user, hide: false).order(date: :desc) - @star_gists
     end
+    @groups = (@user.groups + @user.other_groups).uniq
+    if group_search.present? && group_search[:keyword].present?
+      @groups = [@user.groups.group_search(group_search[:keyword]), @user.other_groups.group_search(group_search[:keyword])].flatten
+    end
   end
 
   def admin_create
@@ -52,9 +56,9 @@ class UsersController < ApplicationController
   def dashboard
     @user = current_user
     authorize current_user
-    @groups = (@user.groups + @user.usergroups.map(&:group)).uniq
-    if group_search.present?
-      @groups = @groups.group_search(group_search[:keyword]) if group_search[:keyword].present?
+    @groups = (@user.groups + @user.other_groups).uniq
+    if group_search.present? && group_search[:keyword].present?
+      @groups = [@user.groups.group_search(group_search[:keyword]), @user.other_groups.group_search(group_search[:keyword])].flatten
     end
     @users = @user.groups.map(&:members).flatten.uniq
     @gists = (@users.map {|user| user.user_gists}.flatten.uniq + @user.user_gists).group_by_day(&:date).to_a.reverse

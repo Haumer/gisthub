@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :user_gists, dependent: :destroy
   has_many :groups, dependent: :destroy
   has_many :usergroups, dependent: :destroy
+  has_many :other_groups, through: :usergroups, source: :group
   has_many :labels, dependent: :destroy
 
   after_create :create_personal_group
