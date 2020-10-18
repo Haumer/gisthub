@@ -20,7 +20,7 @@
               <i class="fas fa-cog"></i>
             </div>
 
-            <%= link_to user_user_gist_path(@user, gist: @gist), confirm: 'Are you sure?', method: :delete do %>
+            <%= link_to user_user_gist_path(@gist.user.githubname, @gist), confirm: 'Are you sure?', method: :delete do %>
               <i class="fas fa-trash ml-2"></i>
             <% end %>
           <% end %>
