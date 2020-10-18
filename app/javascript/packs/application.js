@@ -29,22 +29,12 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
-  let labels = Array.from(document.querySelectorAll(".group-info .group"))
-  function invertColor(element) {
-    let color = element.dataset.color
-    element.style.color = invert(color, true)
-    element.style.borderColor = invert(color, true)
-  }
-  labels.forEach(invertColor)
 
-  let gists = document.querySelectorAll(".gist-data")
-  gists.forEach((gist) => {
-    gist.classList.add("small-gist")
-  })
 });
 
-import {search, filter} from './groupSearch.js'
-import invert from 'invert-color';
+import { search, filter } from './groupSearch.js'
+import { invertColor } from './invertColor.js'
+import { collapseGists } from './collapseGists.js'
 import "controllers"
 
 // let cards = document.querySelectorAll(".gist-card")

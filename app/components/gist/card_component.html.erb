@@ -38,11 +38,11 @@
 <%= render Gist::GistOptionsModalComponent.new(gist: @gist, user: @user, permitted: @permitted) %>
 
 <% unless @full %>
-  <script>
-    let gists<%= @gist.id %> = document.querySelectorAll(".gist-data")
-    gists<%= @gist.id %>.forEach((gist) => {
-      gist.classList.add("small-gist")
-    })
-    delete gists<%= @gist.id %>
-  </script>
+<script>
+  let gists<%= @gist.id %> = document.querySelectorAll(".gist-data")
+  gists<%= @gist.id %>.forEach((gist) => {
+    gist.classList.add("small-gist")
+  })
+  delete gists<%= @gist.id %>
+</script>
 <% end %>
