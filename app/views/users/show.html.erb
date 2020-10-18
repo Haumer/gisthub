@@ -9,8 +9,8 @@
             </div>
             <h4 class="text-center"><%= @user.githubname %></h4>
           </div>
-          <div class="group-details">
-            <ul class="group-results">
+          <div class="user-details">
+            <ul class="user-results">
               <li>Gists: <%= @user.user_gists.count %></li>
               <li>Files: <%= @user.user_gists.map(&:gist_files).flatten.count %></li>
             </ul>
@@ -69,27 +69,11 @@
       </div>
     </div>
   </div>
-
-  <div class="modal fade" id="ImportSettings" tabindex="-1" role="dialog" aria-labelledby="ImportSettings" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Import Settings</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <%= render "users/edit", user: @user %>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="modal fade" id="newGroupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document" id="new-group">
       <div class="modal-content new-group">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Create a new Group</h5>
+          <h5 class="modal-title">Create a new Group</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

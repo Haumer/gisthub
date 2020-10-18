@@ -43,6 +43,7 @@ document.addEventListener('turbolinks:load', () => {
   })
 });
 
+import {search, filter} from './groupSearch.js'
 import invert from 'invert-color';
 import "controllers"
 
