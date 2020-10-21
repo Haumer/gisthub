@@ -10,12 +10,6 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import { Application } from "stimulus"
-import { definitionsFromContext } from "stimulus/webpack-helpers"
-
-const application = Application.start()
-const context = require.context("./controllers", true, /\.js$/)
-application.load(definitionsFromContext(context))
 
 // Internal imports:
 document.addEventListener('turbolinks:load', () => {
