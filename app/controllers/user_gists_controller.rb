@@ -19,7 +19,7 @@ class UserGistsController < ApplicationController
   end
 
   def destroy
-    @gist = UserGist.find(params[:gist])
+    @gist = UserGist.find(params[:id])
     @user = @gist.user
     authorize @gist
     @gist.destroy
