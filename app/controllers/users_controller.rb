@@ -3,14 +3,14 @@ class UsersController < ApplicationController
   before_action :group_search, only: [ :dashboard ]
 
   def show
-    @star_gists = @user.user_gists.where(star: true).order(date: :desc)
+    # @star_gists = @user.user_gists.where(star: true).order(date: :desc)
     if search_params
-      @gists = policy_scope(UserGist).global_search(search_params[:keyword]).where(user: @user) - @star_gists
+      @gists = policy_scope(UserGist).global_search(search_params[:keyword]).where(user: @user)
     else
-      @gists = policy_scope(UserGist).where(user: @user).order(date: :desc) - @star_gists
+      @gists = policy_scope(UserGist).where(user: @user).order(date: :desc).uniq
     end
     if @gists.present?
-      @gists = policy(@user).update? ? @gists : policy_scope(UserGist).where(user: @user, hide: false).order(date: :desc) - @star_gists
+      @gists = policy(@user).update? ? @gists : policy_scope(UserGist).where(user: @user, hide: false).order(date: :desc)
     end
     @groups = (@user.groups + @user.other_groups).uniq
     # if group_search.present? && group_search[:keyword].present?
