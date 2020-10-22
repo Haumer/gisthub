@@ -3,7 +3,7 @@
     <%= f.association :group,
                       collection: Group.where(user: current_user) - GroupGist.where(user_gist: gist.id).map(&:group),
                       label: false %>
-    <%= f.input :user_gist_id, as: :hidden, input_html: {  value: gist.id } %>
+    <%= f.input :user_gist, as: :hidden, input_html: {  value: gist.id } %>
     <%= f.submit "Add to Group" %>
   </div>
 <% end %>

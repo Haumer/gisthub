@@ -17,7 +17,7 @@
   </div>
 <% end %>
 
-<% if add %>
+<% if !@group.personal && policy(@group).show? %>
   <!-- AddMemberModal -->
   <div class="modal fade" id="AddMemberModal" tabindex="-1" role="dialog" aria-labelledby="GroupDetails" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -30,6 +30,34 @@
         </div>
         <div class="modal-body">
           <%= render "user_groups/form", group: @group, user_group: Usergroup.new %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if policy(@group).show? %>
+  <!-- AddGistModal -->
+  <div class="modal fade" id="AddGistModal" tabindex="-1" role="dialog" aria-labelledby="GroupDetails" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Add A User</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for GroupGist.new do |f| %>
+            <%= f.input :group_id, as: :hidden, input_html: {  value: @group.id } %>
+            <%= f.input :user_gist_id,
+                        collection: current_user.user_gists - GroupGist.where(group: @group)&.map(&:user_gist),
+                        value_method: :id,
+                        label_method: :gist_filenames,
+                        label: false,
+                        hint: "Which Gist would you like to add?" %>
+            <%= f.submit %>
+          <% end %>
         </div>
       </div>
     </div>

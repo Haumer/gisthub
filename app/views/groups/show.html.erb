@@ -20,10 +20,14 @@
             <%= pluralize @group.gists.map(&:gist_files).flatten.count, "file" %>
           </span>
         </div>
-
-        <button type="button" class="group-stats modal-trigger" data-toggle="modal" data-target="#AddMemberModal">
-          Add Member
-        </button>
+        <div class="d-flex">
+          <button type="button" class="group-stats modal-trigger" data-toggle="modal" data-target="#AddGistModal">
+            Add a Gist
+          </button>
+          <button type="button" class="group-stats modal-trigger" data-toggle="modal" data-target="#AddMemberModal">
+            Add Member
+          </button>
+        </div>
       </div>
       <div class="flex-shrink-0 col-12 col-md-12">
         <% if @group.gists.present? %>
@@ -48,4 +52,4 @@
   </div>
 </div>
 
-<%= render "group_modals", group: @group, add: !@group.personal, settings: true %>
+<%= render "group_modals", group: @group, settings: policy(@group).logged_in_and_owner_or_admin? %>
