@@ -20,4 +20,8 @@ class Gist::CardComponent < ViewComponent::Base
   def render?
     @gist.gist_files.map(&:size).sum < 10000
   end
+
+  private
+
+  attr_reader :full, :modal, :user
 end
