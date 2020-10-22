@@ -21,12 +21,16 @@
           </span>
         </div>
         <div class="d-flex">
-          <button type="button" class="group-stats modal-trigger" data-toggle="modal" data-target="#AddGistModal">
-            Add a Gist
-          </button>
-          <button type="button" class="group-stats modal-trigger" data-toggle="modal" data-target="#AddMemberModal">
-            Add Member
-          </button>
+          <% if policy(@group).show?  %>
+            <button type="button" class="group-stats modal-trigger" data-toggle="modal" data-target="#AddGistModal">
+              Add a Gist
+            </button>
+          <% end %>
+          <% if !@group.personal && policy(@group).show? %>
+            <button type="button" class="group-stats modal-trigger" data-toggle="modal" data-target="#AddMemberModal">
+              Add Member
+            </button>
+          <% end %>
         </div>
       </div>
       <div class="flex-shrink-0 col-12 col-md-12">
@@ -42,9 +46,11 @@
       <div class="right-box">
         <div class="d-flex justify-content-between">
           <span class="group-about">About</span>
-          <div class="options" data-toggle="modal" data-target="#GroupDetailsModal">
-            <i class="fas fa-cog"></i>
-          </div>
+          <% if policy(@group).logged_in_and_owner_or_admin? %>
+            <div class="options" data-toggle="modal" data-target="#GroupDetailsModal">
+              <i class="fas fa-cog"></i>
+            </div>
+          <% end %>
         </div>
         <%= @group.description %>
       </div>
@@ -52,4 +58,4 @@
   </div>
 </div>
 
-<%= render "group_modals", group: @group, settings: policy(@group).logged_in_and_owner_or_admin? %>
+<%= render "group_modals", group: @group %>

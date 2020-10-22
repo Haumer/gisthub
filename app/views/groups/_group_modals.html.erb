@@ -1,4 +1,4 @@
-<% if settings %>
+<% if policy(@group).logged_in_and_owner_or_admin? %>
   <!-- GroupDetails Modal -->
   <div class="modal fade" id="GroupDetailsModal" tabindex="-1" role="dialog" aria-labelledby="GroupDetails" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -23,7 +23,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Add A User</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Add A Member</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -42,7 +42,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Add A User</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Add A Gist</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
