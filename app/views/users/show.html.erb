@@ -36,7 +36,7 @@
         </div>
       </div>
       <div class="col-12 col-md-8 col-lg-6 p-responsive mt-3 border-bottom d-flex flex-auto">
-        <div class="gist-results">
+        <div class="gist-results" data-controller="expand">
           <div class="gist-search">
             <%= simple_form_for :search, url: user_path(slug: @user.githubname), method: :get do |f| %>
               <%= f.input :keyword, label: false, placeholder: "Search your gists" %>

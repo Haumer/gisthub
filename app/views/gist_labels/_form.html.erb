@@ -1,4 +1,4 @@
-<%= simple_form_for gist_label do |f| %>
+<%= simple_form_for gist_label, html: { id: "label_for#{gist.id}" } do |f| %>
   <div class="d-flex align-items-center">
     <%= f.association :label,
                       collection: Label.where(user: current_user) - gist.labels,

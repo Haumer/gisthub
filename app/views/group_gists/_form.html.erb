@@ -1,4 +1,4 @@
-<%= simple_form_for GroupGist.new do |f| %>
+<%= simple_form_for GroupGist.new, html: { id: "group_gist_for#{gist.id}" } do |f| %>
   <div class="d-flex align-items-center">
     <%= f.association :group,
                       collection: Group.where(user: current_user) - GroupGist.where(user_gist: gist.id).map(&:group),
