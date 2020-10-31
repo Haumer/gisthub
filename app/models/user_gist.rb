@@ -9,7 +9,7 @@ class UserGist < ApplicationRecord
   acts_as_votable
 
   def languages
-    gist_files.pluck(:language).uniq
+    gist_files.map(&:languages).flatten
   end
 
   def gist_filenames
