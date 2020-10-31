@@ -1,1 +1,6 @@
-<%= render Gist::CardComponent.new(gist: @gist, user: @gist.user, full: true, modal: false, permitted: policy(@gist).update?) %>
+<div class="container">
+  <div class="gist-info">
+
+  </div>
+  <%= render Gist::CardComponent.new(gist: @gist, user: @gist.user, full: true, modal: false, permitted: policy(@gist).update?) %>
+</div>
