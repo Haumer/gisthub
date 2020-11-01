@@ -12,12 +12,12 @@ require("channels")
 import "bootstrap";
 
 // StimulusJS
-import { Application } from "stimulus"
-import { definitionsFromContext } from "stimulus/webpack-helpers"
+// import { Application } from "stimulus"
+// import { definitionsFromContext } from "stimulus/webpack-helpers"
 
-const application = Application.start()
-const context = require.context("controllers", true, /_controller\.js$/)
-application.load(definitionsFromContext(context))
+// const application = Application.start()
+// const context = require.context("controllers", true, /_controller\.js$/)
+// application.load(definitionsFromContext(context))
 
 // Internal imports:
 document.addEventListener('turbolinks:load', () => {
