@@ -21,5 +21,7 @@ Language.create(name: "Scss", img_url: "https://img.icons8.com/color/64/000000/c
 Language.create(name: "Css", img_url: "https://img.icons8.com/color/64/000000/css3.png")
 Language.create(name: "Text", img_url: "https://img.icons8.com/ios-glyphs/64/000000/text.png")
 Language.create(name: "Markdown", img_url: "https://img.icons8.com/officel/64/000000/markdown.png")
-
-
+Language.create(name: "CSV", img_url: "https://img.icons8.com/color/64/000000/csv.png")
+Language.create(name: "JSON", img_url: "https://img.icons8.com/color/64/000000/json.png")
+Language.create(name: "XML", img_url: "https://img.icons8.com/color/64/000000/xml.png")
+Language.create(name: "SQL", img_url: "https://img.icons8.com/color/64/000000/sql.png")

@@ -17,12 +17,11 @@ class UserGist < ApplicationRecord
   end
 
   def languages_percent
-    all = gist_files.pluck(:language, :size)
-    languages = Hash.new(0.000)
-    all.map do |language|
-      languages[language.first] += (language.last.to_f / gist_files.pluck(:size).sum.to_f) * 100
+    all_languages = Hash.new(0.000)
+    gist_files.map do |file|
+      all_languages[file.languages.first.name] += (file.size.to_f / gist_files.pluck(:size).sum.to_f) * 100
     end
-    languages
+    all_languages
   end
 
   def groups_of_owner
