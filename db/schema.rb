@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_17_234931) do
+ActiveRecord::Schema.define(version: 2020_11_04_195014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_234931) do
     t.string "filename", default: ""
     t.string "raw_url", default: ""
     t.integer "size", default: 0
+    t.string "raw_code"
     t.index ["user_gist_id"], name: "index_gist_files_on_user_gist_id"
   end
 

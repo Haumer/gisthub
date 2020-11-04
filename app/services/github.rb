@@ -85,10 +85,7 @@ module Github
             group = check_for_group(gist)
 
             if group && group.members.include?(@user)
-              GroupGist.find_or_create_by(
-                group: group,
-                user_gist: created_gist
-              )
+              GroupGist.find_or_create_by(group: group, user_gist: created_gist)
             end
 
             @user.update(avatar_url: gist["owner"]["avatar_url"]) if @user.avatar_url == "https://avatars3.githubusercontent.com/u/583231?v=4"
@@ -103,6 +100,11 @@ module Github
               language = Language.find_by_name(v["language"])
               if language
                 GistFileLanguage.create(language: language, gist_file: file)
+              end
+
+              if file.raw_url
+                raw_code = Net::HTTP.get(URI(file.raw_url))
+                file.update(raw_code: raw_code) if raw_code
               end
             end
           end
