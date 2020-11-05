@@ -11,7 +11,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item <%= active?('users', params[:controller]) %>">
-          <%= link_to "Profile", user_path(current_user.githubname), class: "nav-link", data: { turbolinks: false } %>
+          <%= link_to "Dashboard", user_path(current_user.githubname), class: "nav-link", data: { turbolinks: false } %>
         </li>
         <!-- <li class="nav-item <%#= active?('user_gists', params[:controller]) %>">
           <%#= link_to "My Gists", user_user_gists_path(current_user.githubname), class: "nav-link", data: { turbolinks: false } %>
