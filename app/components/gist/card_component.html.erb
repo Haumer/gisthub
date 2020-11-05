@@ -32,7 +32,8 @@
       </div>
     </div>
   </div>
-  <script src="https://gist.github.com/<%= @gist.user.githubname %>/<%= @gist.gist_id %>.js"></script>
+  <!-- <script src="https://gist.github.com/<%= @gist.user.githubname %>/<%= @gist.gist_id %>.js"></script> -->
+  <%= render Gist::FilesComponent.new(gist: @gist) %>
 </div>
 
 <%= render Gist::GistOptionsModalComponent.new(gist: @gist, user: user, permitted: @permitted) %>
