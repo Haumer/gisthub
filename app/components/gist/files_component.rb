@@ -6,9 +6,9 @@ class Gist::FilesComponent < ViewComponent::Base
   end
 
   def highlighter(code)
-    formatter = Rouge::Formatters::HTML.new(css_class: 'highlight')
-    lexer = Rouge::Lexer.find('ruby')
-    formatter.format(lexer.lex(code))
+    formatter = Rouge::Formatters::HTML.new("github")
+    lexer = Rouge::Lexers::Ruby.new
+    formatter.format(lexer.lex(code)).html_safe
   end
 
   attr_reader :gist

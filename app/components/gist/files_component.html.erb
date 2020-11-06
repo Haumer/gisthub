@@ -1,5 +1,5 @@
 <% gist.gist_files.each do |file| %>
   <div class="highlight">
-    <%= render file.raw_code, language: 'ruby' %>
+    <%= highlighter(file.raw_code) %>
   </div>
 <% end %>
