@@ -234,6 +234,11 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rouge (3.24.0)
+    rouge-rails (0.2.1)
+      actionview
+      railties
+      rouge
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -330,6 +335,8 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.2)
   redis (~> 4.0)
   rest-client
+  rouge
+  rouge-rails
   sass-rails (>= 6)
   selenium-webdriver
   sidekiq
