@@ -6,7 +6,7 @@ class Gist::FilesComponent < ViewComponent::Base
   end
 
   def highlighter(code)
-    formatter = Rouge::Formatters::HTML.new("github")
+    formatter = Rouge::Formatters::HTML.new
     lexer = Rouge::Lexers::Ruby.new
     formatter.format(lexer.lex(code)).html_safe
   end
