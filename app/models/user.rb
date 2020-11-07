@@ -8,6 +8,7 @@ class User < ApplicationRecord
   before_validation :valid_githubname?
   after_create :import_gists
   has_many :user_gists, dependent: :destroy
+  has_many :gist_files, through: :user_gists
   has_many :groups, dependent: :destroy
   has_many :usergroups, dependent: :destroy
   has_many :other_groups, through: :usergroups, source: :group

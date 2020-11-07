@@ -32,7 +32,7 @@ class UserGist < ApplicationRecord
   pg_search_scope :global_search,
     against: [ :description ],
     associated_against: {
-      gist_files: [ :filename ],
+      gist_files: [ :filename, :raw_code ],
       groups: [ :slug ]
     },
     using: {
