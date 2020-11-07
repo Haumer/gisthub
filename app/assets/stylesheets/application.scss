@@ -3,6 +3,7 @@
 @import "config/colors";
 @import "config/default";
 @import "config/bootstrap_variables";
+@import "config/rouge";
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
@@ -17,8 +18,6 @@
 @import "users/index";
 @import "group_gists/index";
 @import "user_gists/index";
-
-@import "rouge";
 
 html {
   scroll-behavior: smooth;
