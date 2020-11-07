@@ -3,13 +3,11 @@
 @import "config/colors";
 @import "config/default";
 @import "config/bootstrap_variables";
-@import "config/rouge";
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "rouge";
 
 // Your CSS partials
 @import "components/index";
