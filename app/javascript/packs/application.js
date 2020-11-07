@@ -20,12 +20,16 @@ import "bootstrap";
 // application.load(definitionsFromContext(context))
 
 // Internal imports:
+import { search, filter } from './groupSearch.js';
+import { invertColor } from './invertColor.js';
+import { collapseGists } from './collapseGists.js';
+import { expandGists } from './expandGists.js';
+import { loadSpinner } from './spinner.js';
+
 document.addEventListener('turbolinks:load', () => {
-  collapseGists()
+  collapseGists();
+  loadSpinner();
   // expandGists()
 });
 
-import { search, filter } from './groupSearch.js'
-import { invertColor } from './invertColor.js'
-import { collapseGists } from './collapseGists.js'
-import { expandGists } from './expandGists.js'
+
