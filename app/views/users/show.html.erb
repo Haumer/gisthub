@@ -52,7 +52,7 @@
           <div class="settings">
             <% if policy(@user).get_gists? %>
               <%= link_to [ :get_gists, slug: @user.githubname ], method: :post do %>
-                <div class="btn github-btn--green">
+                <div class="btn github-btn--green" id="import-gists">
                   <%= @gists.present? ? "Refresh" : "Import gists" %>
                 </div>
               <% end %>
