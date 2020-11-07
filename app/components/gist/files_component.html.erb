@@ -1,5 +1,14 @@
 <% gist.gist_files.each do |file| %>
   <div class="highlight">
-   <%= rouge(file.raw_code, file.language.rouge_name).html_safe %>
+    <%= rouge(file.raw_code, file.language.rouge_name).html_safe %>
+  </div>
+  <div class="file-info d-flex justify-content-between">
+    <div class="name">
+      <%= file.filename %>
+    </div>
+
+    <div class="link">
+      <%= link_to "view raw", file.raw_url %>
+    </div>
   </div>
 <% end %>
