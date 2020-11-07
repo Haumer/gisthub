@@ -7,9 +7,5 @@ class Gist::FilesComponent < ViewComponent::Base
 
   private
 
-  def language(name)
-
-  end
-
   attr_reader :gist
 end
