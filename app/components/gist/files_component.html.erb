@@ -1,5 +1,5 @@
 <% gist.gist_files.each do |file| %>
   <div class="highlight">
-   <%= helpers.rouge(file.raw_code, "python").html_safe %>
+   <%= rouge(file.raw_code, file.language.rouge_name).html_safe %>
   </div>
 <% end %>

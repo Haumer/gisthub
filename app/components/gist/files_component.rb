@@ -1,7 +1,15 @@
 class Gist::FilesComponent < ViewComponent::Base
-  attr_reader :gist
+  include ApplicationHelper
 
   def initialize(gist:)
     @gist = gist
   end
+
+  private
+
+  def language(name)
+
+  end
+
+  attr_reader :gist
 end
