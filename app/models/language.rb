@@ -9,6 +9,7 @@ class Language < ApplicationRecord
     case downcased_name
     when 'csv' then self.rouge_name = 'csvs'
     when 'html+erb' then self.rouge_name = 'erb'
+    when 'jupyter notebook' then self.rouge_name = 'markdown'
     else
       self.rouge_name = downcased_name
     end
