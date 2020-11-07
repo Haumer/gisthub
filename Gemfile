@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'rouge-rails'
+gem 'rouge'
 gem 'groupdate'
 gem 'rest-client'
 gem 'acts_as_votable'

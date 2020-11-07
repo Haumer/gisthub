@@ -1,0 +1,16 @@
+<%= Rouge::Theme.find('github').render(scope: '.highlight') %>
+
+.highlight {
+  .rouge-line-table tr {
+    line-height: 22px;
+    td {
+      padding: 0 8px;
+    }
+  }
+  margin: 8px 0 0 14px;
+  padding: 8px 0 0 32px;
+  border: 1px solid #ddd;
+  border-radius: 6px 6px 0 0;
+  background-color: white;
+  overflow: scroll;
+}

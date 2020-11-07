@@ -17,4 +17,11 @@ module ApplicationHelper
       "active"
     end
   end
+
+  def rouge(text, language)
+    formatter = Rouge::Formatters::HTML.new
+    formatter = Rouge::Formatters::HTMLLineTable.new(formatter, opts={})
+    lexer = Rouge::Lexer.find(language)
+    formatter.format(lexer.lex(text))
+  end
 end

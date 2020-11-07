@@ -14,7 +14,7 @@ if Rails.env.development?
 end
 
 Language.create(name: "Ruby", img_url: "https://img.icons8.com/office/64/000000/ruby-programming-language.png")
-Language.create(name: "Javascript", img_url: "https://img.icons8.com/color/64/000000/javascript.png")
+Language.create(name: "JavaScript", img_url: "https://img.icons8.com/color/64/000000/javascript.png")
 Language.create(name: "Python", img_url: "https://img.icons8.com/color/64/000000/python.png")
 Language.create(name: "HTML", img_url: "https://img.icons8.com/color/64/000000/html-5.png")
 Language.create(name: "Scss", img_url: "https://img.icons8.com/color/64/000000/css3.png")
@@ -25,3 +25,4 @@ Language.create(name: "CSV", img_url: "https://img.icons8.com/color/64/000000/cs
 Language.create(name: "JSON", img_url: "https://img.icons8.com/color/64/000000/json.png")
 Language.create(name: "XML", img_url: "https://img.icons8.com/color/64/000000/xml.png")
 Language.create(name: "SQL", img_url: "https://img.icons8.com/color/64/000000/sql.png")
+Language.create(name: "HTML+ERB", img_url: "https://img.icons8.com/office/64/000000/ruby-programming-language.png")
