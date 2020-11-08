@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  # root to: "pages#home"
   unauthenticated :user do
     root to: "pages#home"
   end
