@@ -26,3 +26,4 @@ Language.create(name: "JSON", img_url: "https://img.icons8.com/color/64/000000/j
 Language.create(name: "XML", img_url: "https://img.icons8.com/color/64/000000/xml.png")
 Language.create(name: "SQL", img_url: "https://img.icons8.com/color/64/000000/sql.png")
 Language.create(name: "HTML+ERB", img_url: "https://img.icons8.com/office/64/000000/ruby-programming-language.png")
+Language.create(name: "Jupyter Notebook", img_url: "https://img.icons8.com/color/64/000000/python.png")
