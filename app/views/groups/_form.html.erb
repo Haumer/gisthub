@@ -1,9 +1,8 @@
 <div class="new-group-form">
   <% if group.new_record? %>
     <%= simple_form_for group do |f| %>
-      <div class="form-group string optional group_name">
-        <input class="form-control string optional user-container-input" type="text" name="group[name]" id="group_name">
-      </div>
+      <%= f.input :name, label: false %>
+      <%= f.submit "Create", class: "btn btn-primary" %>
     <% end %>
   <% else %>
     <%= simple_form_for group do |f| %>
@@ -14,7 +13,7 @@
       <%= f.color_field :color, label: "Color", hint: "Set a color" %>
       <br>
       <br>
-      <%= f.submit "save", class: "btn btn-primary" %>
+      <%= f.submit "Save", class: "btn btn-primary" %>
     <% end %>
   <% end %>
 </div>
