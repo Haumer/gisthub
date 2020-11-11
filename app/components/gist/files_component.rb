@@ -5,6 +5,10 @@ class Gist::FilesComponent < ViewComponent::Base
     @gist = gist
   end
 
+  def language?(file)
+    file.language.present?
+  end
+
   private
 
   attr_reader :gist

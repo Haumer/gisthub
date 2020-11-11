@@ -13,15 +13,13 @@ module ApplicationHelper
 
   def active?(path, controller)
     # FIXME (haumer): rework
-    if controller == path
-      "active"
-    end
+    "active" if controller == path
   end
 
   def rouge(text, language)
     formatter = Rouge::Formatters::HTML.new
     formatter = Rouge::Formatters::HTMLLineTable.new(formatter, opts={})
     lexer = Rouge::Lexer.find(language)
-    formatter.format(lexer.lex(text))
+    lexer ? formatter.format(lexer.lex(text)) : text
   end
 end
