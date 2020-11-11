@@ -10,23 +10,5 @@ class PagesController < ApplicationController
     end.sort_by { |info| -info.last }.first(5)
 
     @minimum_password_length = Devise.password_length.first
-
-    # if GistFile.all.map(&:language).present?
-    #   @languages = GistFile.group(:language).count(:language).sort_by { |l, v| -v }.first(5)
-    # else
-    #   @languages = []
-    # end
-  end
-
-  def howto
-  end
-
-  def access
-    # result = RestClient.post("https://github.com/login/oauth/access_token", {
-    #   client_id: ENV["DEV_APP_ID"],
-    #   client_secret: ENV["DEV_APP_SECRET"],
-    #   code: params[:code],
-    #   redirect_uri: "http://localhost:3000/access"
-    # })
   end
 end

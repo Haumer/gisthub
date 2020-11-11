@@ -28,7 +28,7 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.githubname = auth.info.nickname.downcase
-      # user.name = auth.info.name
+      user.github_token = auth.credentials.token
       user.avatar_url = auth.info.image
       user.save
     end

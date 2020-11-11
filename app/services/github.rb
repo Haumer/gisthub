@@ -1,30 +1,74 @@
 module Github
-  module Gists
-    class Api
+  module Gist
+    class Client
       GROUP_SLUG_REGEX = /\A([a-zA-Z]*\d*)_(\w*)\.(\w*)/.freeze
+      GIST_URL = "https://gist.github.com"
 
       def initialize(user)
         @user = user
-        @gist_url = "https://api.github.com/users/#{@user.githubname}".freeze
+        @github_api = "https://api.github.com/users/#{@user.githubname}".freeze
+        @latest_gist_date = @user.user_gists.present? ?
+          @user.user_gists.order(date: :desc).first.date : "2000-00-00T00:00:00Z"
       end
 
-      def set_lastest_gist_date
-        @latest_gist_date = @user.user_gists.present? ? @user.user_gists.order(date: :desc).first.date : "2000-00-00T00:00:00Z"
+      def get_gists
+        response = RestClient.get("#{@github_api}/gists")
+        JSON.parse(response)
+      end
+
+      def access_token
+        uri = URI.parse("https://api.github.com/user")
+        request = Net::HTTP::Get.new(uri)
+        request["Authorization"] = "token #{user.github_token}"
+
+        req_options = {
+          use_ssl: uri.scheme == "https",
+        }
+
+        response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+          http.request(request)
+        end
+      end
+
+      def create_gist(gist)
+        uri = URI.parse("https://api.github.com/gists")
+        request = Net::HTTP::Post.new(uri)
+        request["Accept"] = "application/vnd.github.v3+json"
+        request["Authorization"] = "token #{user.github_token}"
+        request.body = JSON.dump({
+          "files" => {}
+        })
+
+        req_options = {
+          use_ssl: uri.scheme == "https",
+        }
+
+        response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+          http.request(request)
+        end
       end
 
       def edit_gist_url(gist)
-        "https://gist.github.com/#{gist.user.githubname}/#{gist.gist_id}/edit"
+        "#{GIST_URL}/#{@user.githubname}/#{gist.gist_id}/edit"
       end
 
       def gist_url(gist)
-        "https://gist.github.com/#{gist.user.githubname}/#{gist.gist_id}"
+        "#{GIST_URL}/#{@user.githubname}/#{gist.gist_id}"
+      end
+
+      def build(gist)
+        {
+          files: {
+
+          }
+        }
       end
 
       def save_gists
         return if @user.stop_import
 
-        call_api
-        set_lastest_gist_date
+        @data = get_gists
+        @lastest_gist_date
         if !@user.only_group_import
           create_gists
         elsif @user.only_group_import
@@ -33,14 +77,6 @@ module Github
           create_gists
         end
       end
-
-        # def access
-        #   if Rails.env.development?
-        #     result = RestClient.get("https://github.com/login/oauth/authorize?client_id=#{ENV['DEV_APP_ID']}&scope=user%20public_repo")
-        #   else
-        #     RestClient.get("https://github.com/login/oauth/authorize?client_id=#{ENV['APP_ID']}&scope=user%20public_repo")
-        #   end
-        # end
 
       private
 
@@ -53,11 +89,6 @@ module Github
             @user.groups.pluck(:slug).include?(group_id)
           end.present?
         end
-      end
-
-      def call_api
-        uri = URI("#{@gist_url}/gists")
-        @data = JSON.parse(Net::HTTP.get(uri))
       end
 
       def create_gists
