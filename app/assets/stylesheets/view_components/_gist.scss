@@ -20,7 +20,19 @@
   .file-wrapper {
     margin-left: 30px;
     padding-left: 16px;
-    border-left: 1px solid;
+    border-left: 1px solid #ddd;
+    .gist-node {
+      border-radius: 50%;
+      border: 2px solid #ddd;
+      width: 9px;
+      position: absolute;
+      height: 9px;
+      background-color: white;
+      left: 41px;
+    }
+    &:last-of-type {
+      margin-bottom: 24px;
+    }
     .highlight-file-info {
       border: 1px solid #ddd;
       border-top: none;

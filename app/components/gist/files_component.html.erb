@@ -1,5 +1,8 @@
 <% gist.gist_files.each do |file| %>
   <div class="file-wrapper">
+    <div class="gist-node">
+
+    </div>
     <div class="highlight">
       <% if language?(file) %>
         <%= rouge(file.raw_code, file.language.rouge_name).html_safe %>
