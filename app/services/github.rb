@@ -19,7 +19,7 @@ module Github
       def access_token
         uri = URI.parse("https://api.github.com/user")
         request = Net::HTTP::Get.new(uri)
-        request["Authorization"] = "token #{user.github_token}"
+        request["Authorization"] = "token #{@user.github_token}"
 
         req_options = {
           use_ssl: uri.scheme == "https",
@@ -34,7 +34,7 @@ module Github
         uri = URI.parse("https://api.github.com/gists")
         request = Net::HTTP::Post.new(uri)
         request["Accept"] = "application/vnd.github.v3+json"
-        request["Authorization"] = "token #{user.github_token}"
+        request["Authorization"] = "token #{@user.github_token}"
         request.body = JSON.dump({
           "files" => {}
         })
@@ -42,7 +42,6 @@ module Github
         req_options = {
           use_ssl: uri.scheme == "https",
         }
-
         response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
           http.request(request)
         end
