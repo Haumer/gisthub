@@ -20,31 +20,3 @@
 .gist-time {
   font-size: 0.9rem;
 }
-
-.highlight-file-info {
-  border: 1px solid #ddd;
-  border-top: none;
-  border-radius: 0 0 6px 6px;
-  height: 40px;
-  padding: 10px;
-  overflow: hidden;
-  font: 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
-  color: #586069;
-  font-weight: bolder;
-  margin-left: 14px;
-  background-color: #f7f7f7;
-  a {
-    font: 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
-    color: #586069;
-    font-weight: bolder;
-    &:hover {
-      text-decoration: none;
-    }
-  }
-}
-
-.unrecognized-file-type {
-  margin: 40px 40px 40px 8px;
-  display: flex;
-  justify-content: space-around;
-}
