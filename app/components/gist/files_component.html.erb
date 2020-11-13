@@ -3,7 +3,7 @@
     <div class="gist-node">
 
     </div>
-    <div class="highlight">
+    <div class="highlight <%= "gist-data" unless full %>">
       <% if language?(file) %>
         <%= rouge(file.raw_code, file.language.rouge_name).html_safe %>
       <% else %>
