@@ -1,8 +1,9 @@
 class Gist::FilesComponent < ViewComponent::Base
   include ApplicationHelper
 
-  def initialize(gist:)
+  def initialize(gist:, full:)
     @gist = gist
+    @full = full
   end
 
   def language?(file)
@@ -11,5 +12,5 @@ class Gist::FilesComponent < ViewComponent::Base
 
   private
 
-  attr_reader :gist
+  attr_reader :gist, :full
 end
