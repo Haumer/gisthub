@@ -3,32 +3,21 @@
     <% if language?(file) %>
       <%= rouge(file.raw_code, file.language.rouge_name).html_safe %>
     <% else %>
-    <div class="unrecognized-file-type">
-      <span>
-        We dont support this file type yet!
-        You can submit an issue <a href="https://github.com/Haumer/gisthub/issues/new?assignees=&labels=&template=issue-template.md&title=" target="_blank">here</a>
-      </span>
-    </div>
-    <div class="highlight">
-      <% if language?(file) %>
-        <%= rouge(file.raw_code, file.language.rouge_name).html_safe %>
-      <% else %>
       <div class="unrecognized-file-type">
         <span>
           We dont support this file type yet!
-          You can submit an issue <a href="https://github.com/Haumer/gisthub/issues" target="_blank">here</a>
+          You can submit an issue <a href="https://github.com/Haumer/gisthub/issues/new?assignees=&labels=&template=issue-template.md&title=" target="_blank">here</a>
         </span>
       </div>
-      <% end %>
+    <% end %>
+  </div>
+  <div class="highlight-file-info d-flex justify-content-between">
+    <div class="name">
+      <%= file.filename %>
     </div>
-    <div class="highlight-file-info d-flex justify-content-between">
-      <div class="name">
-        <%= file.filename %>
-      </div>
 
-      <div class="link">
-        <%= link_to "view raw", file.raw_url %>
-      </div>
+    <div class="link">
+      <%= link_to "view raw", file.raw_url %>
     </div>
   </div>
 <% end %>
