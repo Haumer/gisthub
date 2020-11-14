@@ -1,7 +1,20 @@
 class Users::ActivityComponent < ViewComponent::Base
   def initialize(user:)
     @user = user
-    @calendar = ((Date.today- 1.year)..Date.today).to_a.freeze
+    @calendar = format_calendar
+  end
+
+  def format_calendar
+    ((Date.today - 364.day)..Date.today).to_a.group_by do |day|
+      day.cwday
+    end.sort_by do |day|
+      day.first
+    end
+  end
+
+  def offset_days
+    Date.today.cwday
+    raise
   end
 
   private
