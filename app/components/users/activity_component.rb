@@ -12,11 +12,6 @@ class Users::ActivityComponent < ViewComponent::Base
     end
   end
 
-  def offset_days
-    Date.today.cwday
-    raise
-  end
-
   private
 
   attr_reader :user, :calendar

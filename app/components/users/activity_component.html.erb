@@ -7,8 +7,7 @@
             <div class="gist-activity-day">
             </div>
           <% end %>
-          <div class="gist-activity-day" data-count="">
-
+          <div class="gist-activity-day" data-count="<%= user.user_gists.where(created_at: day.to_datetime).count %>">
           </div>
         <% end %>
       </div>
@@ -18,7 +17,7 @@
 
 <style>
   .gist-activity {
-    margin: auto
+    margin-bottom: 16px;
   }
 
   .gist-activity-row {
