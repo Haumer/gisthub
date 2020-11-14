@@ -1,31 +1,37 @@
 <div class="gist-activity">
   <table>
     <% calendar.each do |weekday| %>
-      <tr>
-        <th>
-          <%= Date::DAYNAMES[weekday.last.first.wday] %>
-        </th>
-
+      <div class="gist-activity-row">
         <% weekday.last.each_with_index do |day, index| %>
           <% if index.zero? && (day.cwday < Date.today.cwday) %>
-            <td class="gist-activity-day">
-            </td>
+            <div class="gist-activity-day">
+            </div>
           <% end %>
-          <td class="gist-activity-day" data-count="">
+          <div class="gist-activity-day" data-count="">
 
-          </td>
+          </div>
         <% end %>
-      </tr>
+      </div>
     <% end %>
   </table>
 </div>
 
 <style>
+  .gist-activity {
+    margin: auto
+  }
+
+  .gist-activity-row {
+    display: flex
+  }
+
   .gist-activity-day {
-    height: 16px !important;
-    width: 16px !important;
+    height: 10px;
+    width: 10px;
     margin: 1px;
     padding: 1px;
-    background-color: green;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px #ddd
   }
 </style>
