@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :usergroups, dependent: :destroy
   has_many :other_groups, through: :usergroups, source: :group
   has_many :labels, dependent: :destroy
+  has_many :group_gists, through: :user_gists
 
   after_create :create_personal_group
   acts_as_voter
@@ -21,6 +22,10 @@ class User < ApplicationRecord
     github_user = Github::Api.new(self)
 
     errors.add(:githubname, "does not seem to be valid") if github_user.valid?
+  end
+
+  def activity_groups
+    group_gists.map(&:group).uniq
   end
 
   def self.from_omniauth(auth)
