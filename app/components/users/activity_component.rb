@@ -2,6 +2,7 @@ class Users::ActivityComponent < ViewComponent::Base
   def initialize(user:)
     @user = user
     @calendar = format_calendar
+    @user_gists = @user.user_gists
   end
 
   def format_calendar
@@ -25,7 +26,7 @@ class Users::ActivityComponent < ViewComponent::Base
   end
 
   def gists_count(day)
-    @user.user_gists.select { |ug| ug.date.to_date == day }.count
+    @user_gists.select { |ug| ug.date.to_date == day }.count
   end
 
   private
