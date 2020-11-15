@@ -1,4 +1,4 @@
-<div class="gist-activity-calendar">
+<div class="gist-activity-calendar mb-2">
   <h5><%= user.number_of_gists_since(Date.today - 365.day) %> Gists created in the last year</h5>
   <% calendar.each do |weekday| %>
     <div class="gist-activity-row">
@@ -7,18 +7,21 @@
           <div class="gist-activity-day">
           </div>
         <% end %>
-        <div class="gist-activity-day <%= color_class(user.user_gists.select { |ug| ug.date.to_date == day }.count) %>" data-day="<%= day %>">
+        <div class="gist-activity-day <%= color_class(gists_count(day)) %>" 
+             data-toggle="tooltip" data-placement="top" 
+             title="<%= pluralize(gists_count(day), 'contribution') %> on <%= day %>" 
+             data-day="<%= day %>">
         </div>
       <% end %>
     </div>
   <% end %>
 </div>
-<div class="gist-activity">
-  <% if user.group_gists.present? %>
+<% if user.group_gists.present? %>
+  <div class="gist-activity">
     <div class="group-activity">
       <% user.activity_groups.each do |group| %>
         Most Recent Contributions in: <%= link_to group.name, group_path(group) %>
       <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

@@ -24,6 +24,10 @@ class Users::ActivityComponent < ViewComponent::Base
     end
   end
 
+  def gists_count(day)
+    @user.user_gists.select { |ug| ug.date.to_date == day }.count
+  end
+
   private
 
   attr_reader :user, :calendar
