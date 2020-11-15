@@ -1,48 +1,18 @@
-<div class="gist-activity">
-  <table>
-    <% calendar.each do |weekday| %>
-      <div class="gist-activity-row">
-        <% weekday.last.each_with_index do |day, index| %>
-          <% if index.zero? && (day.cwday < Date.today.cwday) %>
-            <div class="gist-activity-day">
-            </div>
-          <% end %>
-          <div class="gist-activity-day <%= color_class(user.user_gists.select { |ug| ug.date.to_date == day }.count) %>" data-day="<%= day %>">
+<div class="gist-activity-calendar">
+  <h5><%= user.number_of_gists_since(Date.today - 365.day) %> Gists created in the last year</h5>
+  <% calendar.each do |weekday| %>
+    <div class="gist-activity-row">
+      <% weekday.last.each_with_index do |day, index| %>
+        <% if index.zero? && (day.cwday < Date.today.cwday) %>
+          <div class="gist-activity-day">
           </div>
         <% end %>
-      </div>
-    <% end %>
-  </table>
+        <div class="gist-activity-day <%= color_class(user.user_gists.select { |ug| ug.date.to_date == day }.count) %>" data-day="<%= day %>">
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
+<div class="gist-activity">
 
-<style>
-  .gist-activity {
-    margin-bottom: 16px;
-  }
-
-  .gist-activity-row {
-    display: flex
-  }
-
-  .gist-activity-day {
-    height: 10px;
-    width: 10px;
-    margin: 1px;
-    padding: 1px;
-    border: 1px solid #ddd;
-    border-radius: 2px;
-  }
-
-  .low-activity {
-    background-color: rgba(3,37,108,0.3)
-  }
-
-  .medium-activity {
-    background-color: rgba(3,37,108,0.7)
-  }
-
-  .high-activity {
-    background-color: rgba(3,37,108,1)
-  }
-</style>
-
+</div>

@@ -46,6 +46,10 @@ class User < ApplicationRecord
     self.groups.find_by_personal(true)
   end
 
+  def number_of_gists_since(date)
+    user_gists.where(date: date..DateTime::Infinity.new).count
+  end
+
   def create_personal_group
     Group.create(user: self, name: "Personal", personal: true)
   end
