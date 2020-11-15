@@ -5,14 +5,14 @@
       <% weekday.last.each_with_index do |day, index| %>
         <% if index.zero? && (day.cwday < Date.today.cwday) %>
           <div class="gist-activity-day" data-toggle="tooltip" data-placement="top"
-             title="<%= pluralize(gists_count(day - 1.week), 'contribution') %> on <%= day -1.week %>"
-             data-day="<%= day - 1.week %>">
+             title="<%= pluralize(gists_count(day - 1.week), 'contribution') %> on <%= (day - 1.week).strftime("%b %d, %Y")  %>"
+             data-day="<%= (day - 1.week).strftime("%b %d, %Y") %>">
           </div>
         <% end %>
         <div class="gist-activity-day <%= color_class(gists_count(day)) %>"
              data-toggle="tooltip" data-placement="top"
-             title="<%= pluralize(gists_count(day), 'contribution') %> on <%= day %>"
-             data-day="<%= day %>">
+             title="<%= pluralize(gists_count(day), 'contribution') %> on <%= day.strftime("%b %d, %Y") %>"
+             data-day="<%= day.strftime("%b %d, %Y") %>">
         </div>
       <% end %>
     </div>
