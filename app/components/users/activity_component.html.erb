@@ -4,7 +4,9 @@
     <div class="gist-activity-row">
       <% weekday.last.each_with_index do |day, index| %>
         <% if index.zero? && (day.cwday < Date.today.cwday) %>
-          <div class="gist-activity-day">
+          <div class="gist-activity-day" data-toggle="tooltip" data-placement="top" 
+             title="<%= pluralize(gists_count(day - 1.week), 'contribution') %> on <%= day -1.week %>" 
+             data-day="<%= day - 1.week %>">
           </div>
         <% end %>
         <div class="gist-activity-day <%= color_class(gists_count(day)) %>" 
