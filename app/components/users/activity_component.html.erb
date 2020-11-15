@@ -1,7 +1,7 @@
-<div class="gist-activity-calendar mb-2">
+<div class="gist-activity-calendar d-flex align-items-center flex-column mb-2">
   <h5><%= user.number_of_gists_since(Date.today - 365.day) %> Gists created in the last year</h5>
   <% calendar.each do |weekday| %>
-    <div class="gist-activity-row justify-content-between">
+    <div class="gist-activity-row">
       <% weekday.last.each_with_index do |day, index| %>
         <% if index.zero? && (day.cwday < Date.today.cwday) %>
           <div class="gist-activity-day">
