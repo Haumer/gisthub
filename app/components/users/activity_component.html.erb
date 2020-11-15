@@ -7,7 +7,7 @@
             <div class="gist-activity-day">
             </div>
           <% end %>
-          <div class="gist-activity-day" data-count="<%= user.user_gists.where(created_at: day.to_datetime).count %>">
+          <div class="gist-activity-day <%= color_class(user.user_gists.select { |ug| ug.date.to_date == day }.count) %>" data-day="<%= day %>">
           </div>
         <% end %>
       </div>
@@ -31,6 +31,10 @@
     padding: 1px;
     border: 1px solid #ddd;
     border-radius: 2px;
-    box-shadow: 0 1px 1px #ddd
+  }
+
+  .low-activity {
+    background-color: green
   }
 </style>
+
