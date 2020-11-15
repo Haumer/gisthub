@@ -1,47 +1,50 @@
-.gist-activity-calendar {
-  background-color: white;
-  width: 100%;
-  padding: 24px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  border: 1px solid #ddd;
-  .gist-activity-row {
-    display: flex
-  }
-  .gist-activity-day {
-    height: 10px;
-    width: 10px;
-    margin: 1px;
-    padding: 1px;
+.activity-dashboard {
+  .gist-activity-calendar {
+    background-color: white;
+    width: 100%;
+    padding: 24px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
     border: 1px solid #ddd;
-    border-radius: 2px;
-    &.low-activity {
-      background-color: rgba(3,37,108,0.3);
-      border: 1px solid rgba(3,37,108,0.4);
+    .gist-activity-row {
+      display: flex
     }
-    &.medium-activity {
-      background-color: rgba(3,37,108,0.6);
-      border: 1px solid rgba(3,37,108,0.7);
-    }
-    &.high-activity {
-      background-color: rgba(3,37,108,0.9);
-      border: 1px solid rgba(3,37,108,1);
+    .gist-activity-day {
+      height: 10px;
+      width: 10px;
+      margin: 1px;
+      padding: 1px;
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      &.low-activity {
+        background-color: rgba(3,37,108,0.3);
+        border: 1px solid rgba(3,37,108,0.4);
+      }
+      &.medium-activity {
+        background-color: rgba(3,37,108,0.6);
+        border: 1px solid rgba(3,37,108,0.7);
+      }
+      &.high-activity {
+        background-color: rgba(3,37,108,0.9);
+        border: 1px solid rgba(3,37,108,1);
+      }
     }
   }
-}
-.gist-activity {
-  height: 64px;
-  border-top: transparent;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  border-bottom: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  background-color: white;
-  margin-bottom: 18px;
-}
+  .gist-activity {
+    height: 64px;
+    border-top: transparent;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    background-color: white;
+    margin-bottom: 18px;
+  }
 
-.group-activity {
-  font-size: 14px;
-  padding: 20px;
+  .group-activity,
+  .group-cta {
+    font-size: 14px;
+    padding: 20px;
+  }
 }

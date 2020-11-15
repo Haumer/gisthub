@@ -36,7 +36,7 @@
     </div>
     <div class="col-12 col-md-8 col-lg-6 p-responsive mt-3 border-bottom">
       <div class="activity-dashboard">
-        <%= render Users::ActivityComponent.new(user: @user) %>
+        <%= render Users::ActivityComponent.new(user: @user, owner: current_user == @user) %>
       </div>
       <div class="gist-results" data-controller="expand">
         <div class="gist-search">

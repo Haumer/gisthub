@@ -1,6 +1,7 @@
 class Users::ActivityComponent < ViewComponent::Base
-  def initialize(user:)
+  def initialize(user:, owner:)
     @user = user
+    @owner = owner
     @calendar = format_calendar
     @user_gists = @user.user_gists
   end
@@ -31,5 +32,5 @@ class Users::ActivityComponent < ViewComponent::Base
 
   private
 
-  attr_reader :user, :calendar
+  attr_reader :user, :calendar, :owner
 end
