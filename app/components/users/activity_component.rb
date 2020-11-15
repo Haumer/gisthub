@@ -13,11 +13,11 @@ class Users::ActivityComponent < ViewComponent::Base
   end
 
   def color_class(count)
-    if count >= 1 && count <= 5
+    if count >= 1 && count <= 2
       "low-activity"
-    elsif count >= 6 && count <= 10
-      "medium-activiy"
-    elsif count >= 11
+    elsif count >= 3 && count <= 5
+      "medium-activity"
+    elsif count >= 6
       "high-activity"
     else
       "no-activity"
