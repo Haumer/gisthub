@@ -25,10 +25,12 @@ import { invertColor } from './invertColor.js';
 import { collapseGists } from './collapseGists.js';
 import { expandGists } from './expandGists.js';
 import { loadSpinner } from './spinner.js';
+import { initTooltips } from './init_tooltips.js';
 
 document.addEventListener('turbolinks:load', () => {
   collapseGists();
   loadSpinner();
+  initTooltips();
   // expandGists()
 });
 
