@@ -6,13 +6,12 @@
   border-top-right-radius: 6px;
   border: 1px solid #ddd;
   .gist-activity-row {
-    display: flex
+    display: flex;
   }
   .gist-activity-day {
-    height: 10px;
-    width: 10px;
+    height: 9px;
+    width: 9px;
     margin: 1px;
-    padding: 1px;
     border: 1px solid #ddd;
     border-radius: 2px;
     &.low-activity {
