@@ -24,6 +24,10 @@ class User < ApplicationRecord
     errors.add(:githubname, "does not seem to be valid") if github_user.valid?
   end
 
+  def code_lines
+    gist_files.map { |file| file.raw_code.count("\n") }.sum
+  end
+
   def activity_groups
     group_gists.map(&:group).uniq
   end
