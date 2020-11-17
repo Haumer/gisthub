@@ -28,6 +28,10 @@ class User < ApplicationRecord
     group_gists.map(&:group).uniq
   end
 
+  def code_lines
+    gist_files.map { |file| file.raw_code.count("\n") }.sum
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
