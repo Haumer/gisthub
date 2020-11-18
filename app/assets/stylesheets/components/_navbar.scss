@@ -42,3 +42,26 @@
 .navbar-hubgist .navbar-brand img {
   width: 40px;
 }
+
+.navbar-nav {
+  .dropdown-menu {
+    position: static;
+    float: none;
+    width: 200px !important;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px !important;
+
+    .signed-in-as {
+      padding: 4px 24px !important;
+      width: 100% !important;
+      border-bottom: 1px solid #ddd !important;
+    }
+    .dropdown-item:hover {
+      transition: ease 0.2;
+      background-color: $blue;
+      color: white !important;
+    }
+  }
+
+}
