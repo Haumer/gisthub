@@ -58,6 +58,7 @@ class UsersController < ApplicationController
   end
 
   def admin_dashboard
+    @users = policy_scope(User)
     authorize current_user
   end
 
