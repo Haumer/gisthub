@@ -1,15 +1,8 @@
 .admin-container {
   .admin-user-options {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .user-import,
-    .user-creation {
-      width: 33%;
-      margin: auto;
-    }
   }
   .admin-user-section {
-    padding: 24px;
+    // padding: 24px;
   }
 }

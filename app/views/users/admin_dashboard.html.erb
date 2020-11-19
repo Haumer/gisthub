@@ -1,28 +1,49 @@
 <div class="admin-container">
   <div class="admin-user-options">
-    <div class="user-import">
-      Manual Import
-      <%= simple_form_for :import, url: import_for_group_path do |f| %>
-        <%= f.input :user_id, collection: User.all, label_method: :githubname, label: false %>
+    <div class="col-sm-4">
+      <div class="user-import">
+        Manual Import
+        <%= simple_form_for :import, url: import_for_group_path do |f| %>
+          <%= f.input :user_id, collection: User.all, label_method: :githubname, label: false %>
 
-        <%= f.submit "import" %>
-      <% end %>
-    </div>
-
-    <div class="user-creation">
-      Manual User Creation
-      <%= simple_form_for :user, url: admin_create_path, method: :post do |f| %>
-        <%= f.input :githubname, label: false %>
-
-        <%= f.submit "create" %>
-      <% end %>
-    </div>
-  </div>
-  <div class="admin-user-section">
-    <% @users.each do |user| %>
-      <div class="user">
-        <%= link_to user.githubname, user_path(slug: user.githubname) %> - <%= user.user_gists.count %>
+          <%= f.submit "import" %>
+        <% end %>
       </div>
-    <% end %>
+
+      <div class="user-creation">
+        Manual User Creation
+        <%= simple_form_for :user, url: admin_create_path, method: :post do |f| %>
+          <%= f.input :githubname, label: false %>
+
+          <%= f.submit "create" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="admin-user-section col-sm-7">
+      <table>
+        <th>
+          User
+        </th>
+        <th>
+          Gists
+        </th>
+        <th>
+          Groups
+        </th>
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= link_to user.githubname, user_path(slug: user.githubname) %>
+            </td>
+            <td>
+              <%= user.user_gists.count %>
+            </td>
+            <td>
+              <%= user.usergroups.count %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>
