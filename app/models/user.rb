@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, :omniauth_providers => [:github]
+         :trackable, :omniauthable, :omniauth_providers => [:github]
   validates :githubname, presence: true, uniqueness: true
   before_validation :valid_githubname?
   after_create :import_gists
