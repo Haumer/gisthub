@@ -30,16 +30,28 @@
         <th>
           Groups
         </th>
+        <th>
+          Files
+        </th>
+        <th>
+          Code Lines
+        </th>
         <% @users.each do |user| %>
           <tr>
-            <td>
+            <td class="cell lg">
               <%= link_to user.githubname, user_path(slug: user.githubname) %>
             </td>
-            <td>
+            <td class="cell">
               <%= user.user_gists.count %>
             </td>
-            <td>
+            <td class="cell">
               <%= user.usergroups.count %>
+            </td>
+            <td class="cell">
+              <%= user.gist_files.count %>
+            </td>
+            <td class="cell">
+              <%= user.code_lines %>
             </td>
           </tr>
         <% end %>
