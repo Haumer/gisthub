@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   get "dashboard", to: "users#dashboard"
 
   # Admin
-  get "admin_dashboard", to: "users#admin_dashboard", as: "admin_dashboard"
   post "import_for_group", to: "users#import_for_group"
   post "admin_create", to: "users#admin_create"
+  get "admin_dashboard", to: "users#admin_dashboard", as: "admin_dashboard"
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 

@@ -1,20 +1,67 @@
 <div class="admin-container">
+  <div class="admin-user-options">
+    <div class="col-sm-4">
+      <div class="user-import">
+        Manual Import
+        <%= simple_form_for :import, url: import_for_group_path do |f| %>
+          <%= f.input :user_id, collection: User.all, label_method: :githubname, label: false %>
 
-  <div class="col-sm-4">
-    Manual Import
-    <%= simple_form_for :import, url: import_for_group_path do |f| %>
-      <%= f.input :user_id, collection: User.all, label_method: :githubname, label: false %>
+          <%= f.submit "import" %>
+        <% end %>
+      </div>
 
-      <%= f.submit "import" %>
-    <% end %>
-  </div>
+      <div class="user-creation">
+        Manual User Creation
+        <%= simple_form_for :user, url: admin_create_path, method: :post do |f| %>
+          <%= f.input :githubname, label: false %>
 
-  <div class="col-sm-4">
-    Manual User Creation
-    <%= simple_form_for :user, url: admin_create_path, method: :post do |f| %>
-      <%= f.input :githubname, label: false %>
-
-      <%= f.submit "create" %>
-    <% end %>
+          <%= f.submit "create" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="admin-user-section col-sm-7">
+      <table>
+        <th>
+          User
+        </th>
+        <th>
+          Gists
+        </th>
+        <th>
+          Groups
+        </th>
+        <th>
+          Files
+        </th>
+        <th>
+          Code Lines
+        </th>
+        <th>
+          Last Login
+        </th>
+        <% @users.each do |user| %>
+          <tr>
+            <td class="cell lg name">
+              <%= link_to user.githubname, user_path(slug: user.githubname) %>
+            </td>
+            <td class="cell">
+              <%= user.user_gists.count %>
+            </td>
+            <td class="cell">
+              <%= user.usergroups.count %>
+            </td>
+            <td class="cell">
+              <%= user.gist_files.count %>
+            </td>
+            <td class="cell">
+              <%= user.code_lines %>
+            </td>
+            <td class="cell lg">
+              <%= user.last_sign_in_at.strftime("%m-%e-%y %H:%M") if user.last_sign_in_at %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>
