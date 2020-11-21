@@ -38,6 +38,15 @@
           <% @group.gists.each do |gist| %>
             <%= render Gist::CardComponent.new(gist: gist, user: gist.user, full: true, modal: false, permitted: policy(gist).update?) %>
           <% end %>
+        <% else %>
+          <div class="d-flex align-items-center justify-content-around mt-4 mb-4">
+            <span>
+              <b>No gists have been added to this Repo yet!</b>
+              <div class="d-flex align-items-center justify-content-around mt-4 mb-4">
+                <b>:(</b>
+              </div>
+            </span>
+          </div>
         <% end %>
       </div>
     </div>
