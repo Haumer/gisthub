@@ -37,7 +37,7 @@
                 </div>
                 <div class="file-info">
                   <div class="gist-filename">
-                    <%= link_to user_user_gists_path(user_slug: gist.user.githubname), data: { turbolinks: false } do %>
+                    <%= link_to user_user_gist_path(user_slug: gist.user.githubname, id: gist.id), data: { turbolinks: false } do %>
                       <%= gist.gist_filenames.truncate(50, omission: '...') %>
                     <% end %>
                   </div>
