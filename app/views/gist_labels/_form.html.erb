@@ -1,9 +1,9 @@
 <%= simple_form_for gist_label, html: { id: "label_for#{gist.id}" } do |f| %>
-  <div class="d-flex align-items-center">
+  <div class="inline-modal-form">
     <%= f.association :label,
                       collection: Label.where(user: current_user) - gist.labels,
-                      label: false %>
+                      label: false, prompt: "Add a Label" %>
     <%= f.input :gist, :as => :hidden, :input_html => { :value => gist.id } %>
-    <%= f.submit "Add Label" %>
+    <%= f.submit "Add Label", class: "btn btn-primary top-button-margin"  %>
   </div>
 <% end %>

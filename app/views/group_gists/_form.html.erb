@@ -1,5 +1,5 @@
 <%= simple_form_for GroupGist.new, html: { id: "group_gist_for#{gist.id}" } do |f| %>
-  <div class="group-form-modal">
+  <div class="inline-modal-form">
     <%= f.association :group,
                       collection: Group.where(user: current_user) - GroupGist.where(user_gist: gist.id).map(&:group),
                       label: false, prompt: 'Select a Group' %>

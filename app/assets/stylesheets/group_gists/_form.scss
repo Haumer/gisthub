@@ -2,8 +2,22 @@
   margin: 0;
 }
 
-.group-form-modal {
+.inline-modal-form {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  .form-group {
+    &.gist_label_label,
+    &.group_gist_group {
+      width: 60%;
+    }
+  }
+}
+
+.top-button-margin {
+  margin-bottom: 16px;
+}
+
+.modal-content {
+  border-radius: 6px;
 }
