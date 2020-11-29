@@ -22,4 +22,9 @@ module ApplicationHelper
     lexer = Rouge::Lexer.find(language)
     lexer ? formatter.format(lexer.lex(text)) : text
   end
+
+  def markdown(text)
+    options = [:hard_wrap, :autolink, :no_intra_emphasis, :fenced_code_blocks]
+    Markdown.new(text, *options).to_html.html_safe
+  end
 end
