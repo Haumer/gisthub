@@ -1,12 +1,23 @@
 <%= Rouge::Theme.find('github').render(scope: '.highlight') %>
 
-.highlight {
+.highlight.code-highlight {
   .rouge-line-table tr {
     line-height: 22px;
     td {
       padding: 0 8px;
     }
   }
+  .highlight {
+    pre {
+      padding: 16px;
+      margin: 8px;
+    }
+      /*code {
+      padding: 8px;
+      margin: 8px;
+    }*/
+  }
+  padding-right: 28px !important;
   margin: 8px 0 0 14px;
   padding: 8px 0 0 32px;
   border: 1px solid #ddd;

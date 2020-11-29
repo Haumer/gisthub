@@ -1,4 +1,8 @@
 module ApplicationHelper
+  require 'redcarpet'
+  require 'rouge'
+  require 'rouge/plugins/redcarpet'
+
   def controller_is_users_show?(params)
     params[:controller] == "users" && params[:action] == "show"
   end
@@ -23,13 +27,17 @@ module ApplicationHelper
     lexer ? formatter.format(lexer.lex(text)) : text
   end
 
+  class HTML < Redcarpet::Render::HTML
+    include Rouge::Plugins::Redcarpet
+  end
+
   def markdown(text)
       render_options = {
         hard_wrap: true,
         link_attributes: { rel: 'nofollow' },
         prettify: true
       }
-      renderer = Redcarpet::Render::HTML.new(render_options)
+      renderer = HTML.new(render_options)
       options = {
         autolink: true,
         no_intra_emphasis: true,
