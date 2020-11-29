@@ -2,7 +2,7 @@
   <div class="creator flex-order-1 col-12 d-flex">
     <% unless params["controller"] == "users" && params["action"] == "show" %>
       <div class="d-lg-inline-block d-none v-align-top mt-1">
-          <a class="d-inline-block"><%= image_tag user.avatar_url, class: "avatar" %></a>
+        <a class="d-inline-block"><%= image_tag user.avatar_url, class: "avatar" %></a>
       </div>
     <% end %>
     <div class="d-inline-block px-lg-2 px-0 w-100">

@@ -6,6 +6,13 @@
       </div>
     <% end %>
     <div class="highlight <%= "gist-data" unless full %>">
+      <% if file.language.name == 'Markdown' && file.user_gist.user.markdown_permission %>
+        <div class="md-checkbox">
+          <%= simple_form_for file do |f| %>
+            <%= f.input :markdown_display, wrapper: :custom_boolean_switch, label: "Display as Markdown" %>
+          <% end %>
+        </div>
+      <% end %>
       <% if language?(file) %>
         <%= rouge(file.raw_code, file.language.rouge_name).html_safe %>
       <% else %>
