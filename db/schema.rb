@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_20_001818) do
+ActiveRecord::Schema.define(version: 2020_11_29_001340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_11_20_001818) do
     t.string "raw_url", default: ""
     t.integer "size", default: 0
     t.string "raw_code"
+    t.boolean "markdown_display", default: false
     t.index ["user_gist_id"], name: "index_gist_files_on_user_gist_id"
   end
 
@@ -133,6 +134,7 @@ ActiveRecord::Schema.define(version: 2020_11_20_001818) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.boolean "markdown_permission", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

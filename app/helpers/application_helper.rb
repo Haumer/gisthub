@@ -22,4 +22,25 @@ module ApplicationHelper
     lexer = Rouge::Lexer.find(language)
     lexer ? formatter.format(lexer.lex(text)) : text
   end
+
+  def markdown(text)
+      render_options = {
+        hard_wrap: true,
+        link_attributes: { rel: 'nofollow' },
+        prettify: true
+      }
+      renderer = Redcarpet::Render::HTML.new(render_options)
+      options = {
+        autolink: true,
+        no_intra_emphasis: true,
+        disable_indented_code_blocks: true,
+        fenced_code_blocks: true,
+        strikethrough: true,
+        superscript: true,
+        lax_spacing: true
+      }
+
+    markdown = Redcarpet::Markdown.new(renderer, options)
+    raw markdown.render(text)
+  end
 end
