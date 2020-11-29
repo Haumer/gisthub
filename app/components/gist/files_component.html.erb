@@ -1,27 +1,30 @@
 <% gist.gist_files.each do |file| %>
   <div class="file-wrapper">
     <% unless params[:controller] == "user_gists" && params[:action] == "show" %>
-      <div class="gist-node">
-
-      </div>
+      <div class="gist-node"></div>
     <% end %>
     <div class="highlight <%= "gist-data" unless full %>">
       <% if file.language.name == 'Markdown' && file.user_gist.user.markdown_permission %>
         <div class="md-checkbox">
-          <%= simple_form_for file do |f| %>
-            <%= f.input :markdown_display, wrapper: :custom_boolean_switch, label: "Display as Markdown" %>
+          <%= simple_form_for file, data: { controller: 'form', remote: 'true' }, method: :put do |f| %>
+            <%= f.input :markdown_display, wrapper: :custom_boolean_switch, label: "Display as Markdown", input_html: { data: { action: 'form#submit' } } %>
+            <%= f.submit class: 'd-none' %>
           <% end %>
         </div>
       <% end %>
-      <% if language?(file) %>
-        <%= rouge(file.raw_code, file.language.rouge_name).html_safe %>
+      <% if file.markdown_display %>
+        <%= markdown(file.raw_code) %>
       <% else %>
-      <div class="unrecognized-file-type">
-        <span>
-          We dont support this file type yet!
-          You can submit an issue <a href="https://github.com/Haumer/gisthub/issues" target="_blank">here</a>
-        </span>
-      </div>
+        <% if language?(file) %>
+          <%= rouge(file.raw_code, file.language.rouge_name).html_safe %>
+        <% else %>
+        <div class="unrecognized-file-type">
+          <span>
+            We dont support this file type yet!
+            You can submit an issue <a href="https://github.com/Haumer/gisthub/issues" target="_blank">here</a>
+          </span>
+        </div>
+        <% end %>
       <% end %>
     </div>
     <div class="highlight-file-info d-flex justify-content-between">
