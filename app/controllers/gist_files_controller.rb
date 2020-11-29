@@ -5,9 +5,15 @@ class GistFilesController < ApplicationController
   end
 
   def update
+    @gist_file.update(gist_file_params)
+    redirect_back(fallback_location: root_path)
   end
 
   private
+
+  def gist_file_params
+    params.require(:gist_file).permit(:markdown_display)
+  end
 
   def set_gist_file
     @gist_file = GistFile.find(params[:id])
