@@ -20,4 +20,4 @@ gist *.rb
 ```
 
 ### Contributors
-[@barangerbenjamin](https://github.com/barangerbenjamin)
+<a href="https://github.com/barangerbenjamin" target="_blank">@barangerbenjamin</a>
