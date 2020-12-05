@@ -20,7 +20,7 @@ or
 gist *.rb
 ```
 
-## HubGist Group
+## Group your Gists
 
 You can create public and private groups. <br>
 **HubGist** keeps track of your gists and shares them with your groups!
