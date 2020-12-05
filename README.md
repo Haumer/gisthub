@@ -1,5 +1,6 @@
 # [Hubgist](http://www.hubgist.com/)
 ### Write, Share and Organise your Code Snippets!
+Never lose track of your [Gists](https://gist.github.com/) again! <br>
 [Sign up now](http://www.hubgist.com/users/sign_up) :wink:
 
 ## Github Gist integration
@@ -18,6 +19,18 @@ or
 ```
 gist *.rb
 ```
+
+## HubGist Group
+
+You can create public and private groups. <br>
+**HubGist** keeps track of your gists and shares them with your groups!
+
+Simply prepend your file with a ```group_slug``` :point_down:
+```
+gist group1_hello_world.rb
+```
+Or import manually on your dashboard
+
 
 ### Contributors
 <a href="https://github.com/barangerbenjamin" target="_blank">@barangerbenjamin</a>
