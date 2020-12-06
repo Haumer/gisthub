@@ -7,8 +7,6 @@ module Github
       def initialize(user)
         @user = user
         @github_api = "https://api.github.com/users/#{@user.githubname}".freeze
-        @latest_gist_date = @user.user_gists.present? ?
-          @user.user_gists.order(date: :desc).first.date : "2000-00-00T00:00:00Z"
       end
 
       def get_gists
@@ -92,8 +90,9 @@ module Github
 
       def create_gists
         return if @data.is_a?(Hash)
-
         @data.each do |gist|
+          @latest_gist_date = @user.user_gists.present? ?
+            @user.user_gists.order(date: :desc).first.date : "2000-00-00T00:00:00Z"
           next unless gist["updated_at"] > @latest_gist_date
           created_gist = UserGist.find_or_create_by(
             gist_id: gist["id"],

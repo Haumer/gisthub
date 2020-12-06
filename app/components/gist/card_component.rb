@@ -9,6 +9,7 @@ class Gist::CardComponent < ViewComponent::Base
     @full = full
     @modal = modal
     @permitted = permitted
+    @current_user = current_user || nil
   end
 
   def permitted?
@@ -21,5 +22,5 @@ class Gist::CardComponent < ViewComponent::Base
 
   private
 
-  attr_reader :full, :modal, :user
+  attr_reader :full, :modal, :user, :current_user
 end
