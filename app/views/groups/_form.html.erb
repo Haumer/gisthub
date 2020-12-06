@@ -2,7 +2,7 @@
   <% if group.new_record? %>
     <%= simple_form_for group do |f| %>
       <%= f.input :name, label: false %>
-      <%= f.submit "Create", class: "btn btn-primary" %>
+      <%= f.submit "Create", class: "btn github-btn--green" %>
     <% end %>
   <% else %>
     <%= simple_form_for group do |f| %>
@@ -13,7 +13,7 @@
       <%= f.color_field :color, label: "Color", hint: "Set a color" %>
       <br>
       <br>
-      <%= f.submit "Save", class: "btn btn-primary" %>
+      <%= f.submit "Save", class: "btn github-btn--green" %>
     <% end %>
   <% end %>
 </div>
