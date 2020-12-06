@@ -3,7 +3,7 @@ class Gist::CardComponent < ViewComponent::Base
 
   with_collection_parameter :gist
 
-  def initialize(gist:, user:, full:, modal:, permitted:)
+  def initialize(gist:, user:, full:, modal:, permitted:, current_user:)
     @gist = gist
     @user = user
     @full = full
