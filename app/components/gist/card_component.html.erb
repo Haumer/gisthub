@@ -34,7 +34,7 @@
       </div>
     </div>
   </div>
-  <%= render Gist::FilesComponent.new(gist: @gist, full: full) %>
+  <%= render Gist::FilesComponent.new(gist: @gist, full: full, current_user: current_user) %>
 </div>
 
 <%= render Gist::GistOptionsModalComponent.new(gist: @gist, user: user, permitted: @permitted) %>

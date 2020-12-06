@@ -46,7 +46,7 @@
           <% end %>
         </div>
         <% if @gists.present? %>
-          <%= render Gist::CardComponent.with_collection(@gists, user: @user, full: false, modal: true, permitted: policy(@gists.first).update?) %>
+          <%= render Gist::CardComponent.with_collection(@gists, user: @user, full: false, modal: true, permitted: policy(@gists.first).update?), current_user: current_user %>
         <% end %>
       </div>
     </div>

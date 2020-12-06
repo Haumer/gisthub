@@ -51,7 +51,7 @@
           <%= simple_form_for GroupGist.new do |f| %>
             <%= f.input :group_id, as: :hidden, input_html: {  value: @group.id } %>
             <%= f.input :user_gist_id,
-                        collection: current_user.user_gists - GroupGist.where(group: @group)&.map(&:user_gist),
+                        collection: @group.user.user_gists - GroupGist.where(group: @group)&.map(&:user_gist),
                         value_method: :id,
                         label_method: :gist_filenames,
                         label: false,
