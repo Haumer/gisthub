@@ -61,8 +61,23 @@
             </div>
           <% end %>
         </div>
-        <div class="description">
-          <%= @group.description %>
+        <div class="description" data-controller="swap-content">
+          <div class="description-text" data-target="swap-content.display" data-action="click->swap-content#swap">
+            <% if @group.description.empty? %>
+              No Description
+            <% else %>
+              <%= @group.description %>
+            <% end %>
+          </div>
+          <div class="description-form d-none" data-target="swap-content.form">
+            <!-- <div class="edit-desc" data-target="swap-content.display">
+              sdasd
+            </div> -->
+            <%= simple_form_for @group, data: { controller: 'form', remote: 'true' } do |f| %>
+              <%= f.input :description, label: false %>
+              <%= f.submit class: 'btn github-btn--green', input_html: { data: { action: 'form#submit' } } %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
