@@ -29,7 +29,7 @@ Simply prepend your file with a ```group_slug``` :point_down:
 ```
 gist group1_hello_world.rb
 ```
-Or import manually on your dashboard
+Or import manually on your dashboard.
 
 
 ### Contributors
