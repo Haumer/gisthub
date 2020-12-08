@@ -22,7 +22,7 @@ class Group < ApplicationRecord
   end
 
   def gists
-    user_gists.reject(&:hide).sort_by(&:updated_at).reverse
+    user_gists.reject(&:hide).sort_by(&:date).reverse
   end
 
   def members
