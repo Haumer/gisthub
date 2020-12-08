@@ -21,9 +21,7 @@
 <div class="gist-activity">
   <% if user.group_gists.present? %>
     <div class="group-activity">
-      <% user.activity_groups.each do |group| %>
-        Most Recent Contributions in: <%= link_to group.name, group_path(group) %>
-      <% end %>
+      Most Recent Contributions in: <%= link_to user.activity_groups.last.name, group_path(user.activity_groups.last) %>
     </div>
   <% else %>
     <div class="group-cta">

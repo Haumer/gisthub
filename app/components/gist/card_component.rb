@@ -17,7 +17,7 @@ class Gist::CardComponent < ViewComponent::Base
   end
 
   def render?
-    @gist.gist_files.map(&:size).sum < 10000
+    @gist.gist_files.map(&:size).sum < 25000
   end
 
   private
