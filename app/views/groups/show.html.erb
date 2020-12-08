@@ -61,7 +61,7 @@
             </div>
           <% end %>
         </div>
-        <div class="description" data-controller="swap-content">
+        <div class="description" data-controller="<%= 'swap-content' if policy(@group).logged_in_and_owner_or_admin? %>">
           <div class="description-text mt-3" data-target="swap-content.display" data-action="click->swap-content#swap">
             <% if @group.description.empty? %>
               No Description
