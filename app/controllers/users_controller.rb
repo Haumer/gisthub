@@ -54,7 +54,7 @@ class UsersController < ApplicationController
     authorize current_user
     @groups = (@user.groups + @user.other_groups).uniq
     @users = @user.groups.map(&:members).flatten.uniq
-    @gists = (@users.map {|user| user.user_gists}.flatten.uniq + @user.user_gists).group_by_day(&:date).to_a.reverse
+    @gists = ((@users.map {|user| user.user_gists}.flatten + @user.user_gists)).uniq.group_by_day(&:date).to_a.reverse
   end
 
   def admin_dashboard
