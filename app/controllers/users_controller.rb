@@ -12,7 +12,11 @@ class UsersController < ApplicationController
       @gists = policy(@user).update? ? @gists : policy_scope(UserGist).where(user: @user, hide: false).order(date: :desc)
     end
     @groups = (@user.groups + @user.other_groups).uniq
-    @user.page_counter += 1
+    if @user.page_counter.nil?
+      @user.page_counter = 1
+    else
+      @user.page_counter += 1
+    end
     @user.save
   end
 
