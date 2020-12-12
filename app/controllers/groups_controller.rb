@@ -35,6 +35,8 @@ class GroupsController < ApplicationController
     @users = @group.users
     @user = @group.owner
     @group_gists = @group.gists
+    @group.page_counter += 1
+    @group.save
   end
 
   private

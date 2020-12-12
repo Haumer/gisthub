@@ -12,6 +12,8 @@ class UsersController < ApplicationController
       @gists = policy(@user).update? ? @gists : policy_scope(UserGist).where(user: @user, hide: false).order(date: :desc)
     end
     @groups = (@user.groups + @user.other_groups).uniq
+    @user.page_counter += 1
+    @user.save
   end
 
   def admin_create
