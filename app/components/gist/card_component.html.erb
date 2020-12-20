@@ -22,11 +22,13 @@
                 <i class="fas fa-cog"></i>
               </div>
 
-              <%= link_to user_user_gist_path(@gist.user.githubname, @gist), confirm: 'Are you sure?', method: :delete do %>
-                <i class="fas fa-trash ml-2"></i>
-              <% end %>
             <% end %>
           </div>
+        <% end %>
+        <% if permitted? %>
+          <%= link_to user_user_gist_path(@gist.user.githubname, @gist), confirm: 'Are you sure?', method: :delete do %>
+            <i class="fas fa-trash ml-2"></i>
+          <% end %>
         <% end %>
       </div>
       <div class="timestamp">

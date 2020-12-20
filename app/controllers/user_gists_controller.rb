@@ -1,3 +1,4 @@
+
 class UserGistsController < ApplicationController
   after_action :authorize_gist, only: [ :create, :toggle_hide, :toggle_star ]
 
@@ -22,7 +23,7 @@ class UserGistsController < ApplicationController
     @user = @gist.user
     authorize @gist
     @gist.destroy
-    redirect_to user_path(slug: @user.githubname)
+    redirect_back(fallback_location: user_path(slug: @user.githubname))
   end
 
   def toggle_hide
