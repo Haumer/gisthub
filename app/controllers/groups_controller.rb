@@ -35,6 +35,12 @@ class GroupsController < ApplicationController
     @users = @group.users
     @user = @group.owner
     @group_gists = @group.gists
+    if @group.page_counter.nil?
+      @group.page_counter = 1
+    else
+      @group.page_counter += 1
+    end
+    @group.save
   end
 
   private

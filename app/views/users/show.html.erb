@@ -13,6 +13,7 @@
             <li>Gists: <%= @user.user_gists.count %></li>
             <li>Files: <%= @user.user_gists.map(&:gist_files).flatten.count %></li>
             <li>Code Lines: <%= @user.code_lines %></li>
+            <li>Profile Views: <%= @user.page_counter %></li>
           </ul>
         </div>
         <div class="group-top">

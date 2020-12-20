@@ -12,21 +12,23 @@
             / <strong><%= link_to @gist.gist_id, user_user_gist_path(@gist.user.githubname, @gist), data: { turbolinks: false } %></strong>
         </span>
         <% if modal %>
-        <div class="d-flex">
-          <% if permitted? %>
-            <%= link_to hide_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", data: { turbolinks: false } do %>
-              <i class="fas <%= @gist.hide ? "fa-eye-slash" : "fa-eye" %>"></i>
-            <% end %>
+          <div class="d-flex">
+            <% if permitted? %>
+              <%= link_to hide_gist_path(id: @gist.id) + "#gist#{@gist.id.to_s}", data: { turbolinks: false } do %>
+                <i class="fas <%= @gist.hide ? "fa-eye-slash" : "fa-eye" %>"></i>
+              <% end %>
 
-            <div data-toggle="modal" data-target="#Gist<%= @gist.id%>" class="options">
-              <i class="fas fa-cog"></i>
-            </div>
+              <div data-toggle="modal" data-target="#Gist<%= @gist.id%>" class="options">
+                <i class="fas fa-cog"></i>
+              </div>
 
-            <%= link_to user_user_gist_path(@gist.user.githubname, @gist), confirm: 'Are you sure?', method: :delete do %>
-              <i class="fas fa-trash ml-2"></i>
             <% end %>
+          </div>
+        <% end %>
+        <% if permitted? %>
+          <%= link_to user_user_gist_path(@gist.user.githubname, @gist), confirm: 'Are you sure?', method: :delete do %>
+            <i class="fas fa-trash ml-2"></i>
           <% end %>
-        </div>
         <% end %>
       </div>
       <div class="timestamp">

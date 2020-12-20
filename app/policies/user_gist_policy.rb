@@ -36,10 +36,10 @@ class UserGistPolicy < ApplicationPolicy
   private
 
   def admin_is_owner_or_admin?
-    record.user == user || user.admin if user_signed_in?
+    user_signed_in? ? record.user == user || user.admin : false
   end
 
   def user_signed_in?
-    record.user.nil?
+    !record.user.nil?
   end
 end

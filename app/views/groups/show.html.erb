@@ -19,6 +19,10 @@
           <span class="group-stats" id="files">
             <%= pluralize @group.gists.map(&:gist_files).flatten.count, "file" %>
           </span>
+
+          <span class="group-stats">
+            <%= @group.page_counter %> Views
+          </span>
         </div>
         <div class="d-flex">
           <% if policy(@group).show?  %>
