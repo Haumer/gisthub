@@ -4,14 +4,16 @@
       <div class="gist-node"></div>
     <% end %>
     <div class="highlight code-highlight <%= "gist-data" unless full %>">
-      <% if file.language.name == 'Markdown' && file.user_gist.user.markdown_permission && file.user_gist.user == current_user %>
-        <% unless (controller_name == 'users') && (action_name == 'show') %>
-          <div class="md-checkbox">
-            <%= simple_form_for file, data: { controller: 'form', remote: 'true' }, method: :put do |f| %>
-              <%= f.input :markdown_display, wrapper: :custom_boolean_switch, label: "Display as Markdown", input_html: { data: { action: 'form#submit' } } %>
-              <%= f.submit class: 'd-none' %>
-            <% end %>
-          </div>
+      <% if file.language.present? %>
+        <% if file.language.name == 'Markdown' && file.user_gist.user.markdown_permission && file.user_gist.user == current_user %>
+          <% unless (controller_name == 'users') && (action_name == 'show') %>
+            <div class="md-checkbox">
+              <%= simple_form_for file, data: { controller: 'form', remote: 'true' }, method: :put do |f| %>
+                <%= f.input :markdown_display, wrapper: :custom_boolean_switch, label: "Display as Markdown", input_html: { data: { action: 'form#submit' } } %>
+                <%= f.submit class: 'd-none' %>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
       <% if file.markdown_display %>
