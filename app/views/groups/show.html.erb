@@ -76,7 +76,7 @@
           <div class="description-form mt-3 d-none" data-target="swap-content.form">
             <%= simple_form_for @group, data: { controller: 'form', remote: 'true' } do |f| %>
               <%= f.input :description, label: false %>
-              <%= f.submit class: 'btn github-btn--green', input_html: { data: { action: 'form#submit' } } %>
+              <%= f.submit 'Update Description', class: 'btn github-btn--green', input_html: { data: { action: 'form#submit' } } %>
             <% end %>
           </div>
         </div>
