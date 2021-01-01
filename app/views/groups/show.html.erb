@@ -12,9 +12,11 @@
     <div class="flex-shrink-0 col-12 col-md-9 mb-4 mb-md-0">
       <div class="group-main-nav mb-3 d-flex justify-content-between flex-items-start">
         <div class="d-flex">
-          <span class="group-stats" id="members">
-            <%= pluralize(@group.members.count, 'Member') %>
-          </span>
+          <% unless @group.personal %>
+            <span class="group-stats" id="members">
+              <%= pluralize(@group.members.count, 'Member') %>
+            </span>
+          <% end %>
 
           <span class="group-stats" id="files">
             <%= pluralize @group.gists.map(&:gist_files).flatten.count, "file" %>
