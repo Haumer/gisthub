@@ -39,7 +39,7 @@ class UserGistPolicy < ApplicationPolicy
     user_logged_in? ? user_is_owner? || user_is_admin? : false
   end
 
-  def user_signed_in?
+  def user_logged_in?
     !record.user.nil?
   end
 end
