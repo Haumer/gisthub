@@ -40,6 +40,6 @@ class UserGistPolicy < ApplicationPolicy
   end
 
   def user_logged_in?
-    !record.user.nil?
+    create?
   end
 end
