@@ -18,7 +18,7 @@ class UserGistPolicy < ApplicationPolicy
   end
 
   def create?
-    !user.nil?
+    user_logged_in?
   end
 
   def update?
@@ -40,6 +40,10 @@ class UserGistPolicy < ApplicationPolicy
   end
 
   def user_logged_in?
-    create?
+    !user.nil?
+  end
+
+  def user_is_admin?
+    user.admin?
   end
 end
