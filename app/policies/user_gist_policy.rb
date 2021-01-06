@@ -36,7 +36,7 @@ class UserGistPolicy < ApplicationPolicy
   private
 
   def admin_is_owner_or_admin?
-    user_logged_in? ? user_is_owner? || user_is_admin? : false
+    user_logged_in? ? user_is_admin? : false
   end
 
   def user_logged_in?
