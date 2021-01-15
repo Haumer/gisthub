@@ -10,5 +10,6 @@ class PagesController < ApplicationController
     end.sort_by { |info| -info.last }.first(5)
 
     @minimum_password_length = Devise.password_length.first
+    @lastest = UserGist.last(3)
   end
 end
