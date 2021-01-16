@@ -29,6 +29,10 @@ class Group < ApplicationRecord
     users
   end
 
+  def member_gists
+    members.map(&:user_gists).flatten
+  end
+
   def owner
     user
   end
