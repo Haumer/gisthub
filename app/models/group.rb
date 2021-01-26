@@ -26,7 +26,7 @@ class Group < ApplicationRecord
   end
 
   def members
-    users
+    [owner, users].flatten
   end
 
   def member_gists
