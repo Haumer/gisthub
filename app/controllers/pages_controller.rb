@@ -11,5 +11,6 @@ class PagesController < ApplicationController
 
     @minimum_password_length = Devise.password_length.first
     @lastest = UserGist.last(3)
+    @languages = Language.all.map { |language| [language, language.lines] }
   end
 end

@@ -14,4 +14,8 @@ class Language < ApplicationRecord
       self.rouge_name = downcased_name
     end
   end
+
+  def lines
+    gist_files.map(&:size).sum
+  end
 end
