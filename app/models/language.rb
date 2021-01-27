@@ -16,6 +16,6 @@ class Language < ApplicationRecord
   end
 
   def lines
-    gist_files.map(&:size).sum
+    gist_files.map { |file| file.raw_code.lines.count }.sum
   end
 end

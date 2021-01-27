@@ -6,4 +6,8 @@ class GistFile < ApplicationRecord
   def language
     languages.first
   end
+
+  def lines
+    raw_code.lines.count
+  end
 end
