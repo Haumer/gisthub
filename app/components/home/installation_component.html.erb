@@ -4,19 +4,28 @@
   </h3>
 <% end %>
 <% unless @long %>
-  <span>
-    If you have ruby installed:
-  </span>
-  <div class="code-block">
-    gem install gist
-  </div>
-  For OS X, gist lives in Homebrew
-  <div class="code-block">
-    brew install gist
-  </div>
-  For FreeBSD, gist lives in ports
-  <div class="code-block">
-    pkg install gist
-  </div>
+  <% if defunkt %>
+    <span>
+      For Linux:
+    </span>
+    <div class="code-block">
+      sudo apt install gist
+    </div>
+      For MacOS:
+    <div class="code-block">
+      brew install gist
+    </div>
+  <% else %>
+    <span>
+      Install the CLI:
+    </span>
+    <div class="code-block">
+      gem install gist
+    </div>
+      Authorize through GitHub:
+    <div class="code-block">
+      gh auth login -s 'user:email' -w
+    </div>
+  <% end %>
 <% end %>
 

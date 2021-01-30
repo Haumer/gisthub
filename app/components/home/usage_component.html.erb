@@ -6,27 +6,34 @@
 <span>
 ‌  To create a gist:
 </span>
-<div class="code-block">
-  gist a.rb
-</div>
-<span>
-‌  Upload multiple files:
-</span>
-<div class="code-block">
-  gist *.rb
-</div>
-<span>
-  Use -d to add a description:
-</span>
-‌<div class="code-block">
-  gist -d "Random rbx bug" a.rb
-</div>
-<% if @long %>
+<% if defunkt %>
+  <div class="code-block">
+    gist a.rb
+  </div>
   <span>
-    Alternatively, you can just paste from the clipboard:
+  ‌  Upload multiple files:
   </span>
-  ‌<div class="code-block">
-    gist -P
+  <div class="code-block">
+    gist *.rb
+  </div>
+  <% if @long %>
+    <span>
+      Alternatively, you can just paste from the clipboard:
+    </span>
+    ‌<div class="code-block">
+      gist -P
+    </div>
+  <% end %>
+<% else %>
+  <!-- GH CLI -->
+  <div class="code-block">
+    gh gist create -p file_name.rb
+  </div>
+  <span>
+  ‌  Upload multiple files:
+  </span>
+  <div class="code-block">
+    gh gist create -p *.rb
   </div>
 <% end %>
 
