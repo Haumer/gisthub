@@ -96,6 +96,8 @@ module Github
         @data.each do |gist|
           next unless gist["updated_at"] > @latest_gist_date
 
+          next if @user.user_gists.pluck(&:url).include?(gist["url"])
+
           created_gist = UserGist.find_or_create_by(
             gist_id: gist["id"],
             date: gist["created_at"],
