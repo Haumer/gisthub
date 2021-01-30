@@ -4,8 +4,9 @@ Never lose track of your [Gists](https://gist.github.com/) again! <br>
 [Sign up now](http://www.hubgist.com/users/sign_up) :wink:
 
 ## Github Gist integration
-Install Gist by [defunkt](https://github.com/defunkt/gist)
+Install Gist by [defunkt](https://github.com/defunkt/gist) or [github cli](https://github.com/cli/cli)
 
+### Gist (defunkt)
 ```
 brew install gist
 ```
@@ -20,6 +21,22 @@ or
 gist *.rb
 ```
 
+### gh (GitHub CLI)
+```
+brew install gh
+```
+
+Then its as simple as 
+
+```
+gh gist create -p <file_name>
+```
+or
+```
+gh gist create -p *.rb
+```
+
+
 ## Group your Gists
 
 You can create public and private groups. <br>
@@ -32,5 +49,5 @@ gist group1_hello_world.rb
 Or import manually on your dashboard.
 
 
-### Contributors
+### Contributors :pray:
 <a href="https://github.com/barangerbenjamin" target="_blank">@barangerbenjamin</a>
