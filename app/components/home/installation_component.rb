@@ -12,5 +12,5 @@ class Home::InstallationComponent < ViewComponent::Base
 
   private
 
-  attr_reader :defunkt, :gh
+  attr_reader :defunkt, :gh, :title
 end
