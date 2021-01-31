@@ -3,7 +3,7 @@
   <div class="get-started" data-controller="swap-content">
     <div class="get-started-installation-section gh-cli" data-target="swap-content.display">
       <div class="get-started-installation-section-option" data-action="click->swap-content#swap">
-        <span class="get-started-highlight">GitHub CLI</span> / <span class="greyed">defunkt</span>
+        <span class="bolded underlined">GitHub CLI</span> / <span class="greyed">defunkt</span>
       </div>
       <div class="get-started-installation">
         <%= render Home::InstallationComponent.new(title:false, long: false, defunkt: true) %>
@@ -14,7 +14,7 @@
     </div>
     <div class="get-started-installation-section defunkt d-none" data-target="swap-content.form">
       <div class="get-started-installation-section-option" data-action="click->swap-content#swap">
-        <span class="greyed">GitHub CLI</span> / <span class="get-started-highlight">defunkt</span>
+        <span class="greyed">GitHub CLI</span> / <span class="bolded underlined">defunkt</span>
       </div>
       <div class="get-started-installation">
         <%= render Home::InstallationComponent.new(title:false, long: false, gh: true) %>
@@ -34,7 +34,7 @@
         </div>
       <% end %>
       <div class="github-cta-button">
-        <%= link_to "View this project on github", "https://github.com/Haumer/gisthub" %>
+        <%= link_to "View this project on github", "https://github.com/Haumer/gisthub", target: :blank %>
       </div>
       <div class="github-cta-button">
         <%= link_to "Gists Guide", howto_path %>

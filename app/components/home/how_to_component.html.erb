@@ -4,10 +4,12 @@
   <% end %>
   <div class="row">
     <div class="step-1 col-sm-4">
-      <%= render Home::InstallationComponent.new %>
+      <%= render Home::InstallationComponent.new(title: false, long: false, defunkt: true, gh: false) %>
+      <%= render Home::UsageComponent.new(title: false, long: false, defunkt: true, gh: false) %>
     </div>
     <div class="step-2 col-sm-4">
-      <%= render Home::UsageComponent.new %>
+      <%= render Home::InstallationComponent.new(title: false, long: false, defunkt: false, gh: true) %>
+      <%= render Home::UsageComponent.new(title: false, long: false, defunkt: false, gh: true) %>
     </div>
     <div class="step-3 col-sm-4">
       <p>

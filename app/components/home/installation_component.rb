@@ -1,5 +1,5 @@
 class Home::InstallationComponent < ViewComponent::Base
-  def initialize(title:, long:, defunkt: false, gh: false)
+  def initialize(title: true, long: true, defunkt: false, gh: false)
     @title = title
     @long = long
     @defunkt = defunkt

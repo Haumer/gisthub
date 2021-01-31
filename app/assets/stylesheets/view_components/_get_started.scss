@@ -7,9 +7,17 @@
       width: 50%;
       margin: 40px;
       min-height: 324px;
-      .get-started-highlight {
-        font-weight: bolder;
-        text-decoration: underline;
+      .get-started-installation-section-option {
+        font-size: 18px;
+        .bolded {
+          font-weight: bold;
+        }
+        .underlined {
+          text-decoration: underline;
+        }
+        .greyed {
+          color: grey;
+        }
       }
     }
   }
