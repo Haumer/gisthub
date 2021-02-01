@@ -116,3 +116,36 @@
     }
   }
 }
+
+.archive-button {
+  text-decoration: none;
+  border-radius: 6px;
+  height: 38px;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.15);
+  background-image: -webkit-linear-gradient(#ffc53a, #f5ab00);
+  background-image: linear-gradient(#ffc53a, #f5ab00);
+  border: 1px solid #f5ab00;
+  position: relative;
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 20px;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+  transition: 0.3s opacity ease;
+  border-color: rgba(27,31,35,.15);
+  background-color: #2ea44f;
+  opacity: 1;
+  box-shadow: 0 1px 0 rgba(27,31,35,.04), inset 0 1px 0 hsla(0,0%,100%,.25);
+  transition: background-color .2s cubic-bezier(.3,0,.5,1);
+  &:hover {
+    text-decoration: none;
+    color: #ffffff;
+    opacity: 0.9;
+  }
+}

@@ -13,7 +13,10 @@
       <%= f.color_field :color, label: "Color", hint: "Set a color" %>
       <br>
       <br>
-      <%= f.submit "Save", class: "btn github-btn--green" %>
+      <div class="d-flex justify-content-between">
+        <%= f.submit "Save", class: "btn github-btn--green" %>
+        <%= link_to 'Archive', group_archive_path(group), class: 'archive-button' %>
+      </div>
     <% end %>
   <% end %>
 </div>

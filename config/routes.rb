@@ -22,12 +22,12 @@ Rails.application.routes.draw do
 
   resources :users, param: :slug, only: [ :create, :show, :edit, :update ] do
     resources :user_gists, only: [ :index, :show, :destroy ]
-    get "archive", to: "groups#archive"
   end
 
   resources :gist_files, only: [ :show, :update ]
   resources :groups, only: [ :new, :create, :show, :update, :destroy ] do
     resources :usergroups, only: [ :create ]
+    get "archive", to: "groups#archive"
   end
   resources :labels, only: [ :new, :create ]
   resources :gist_labels, only: [ :new, :create ]
