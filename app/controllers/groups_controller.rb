@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :show ]
-  before_action :set_group, only: [ :show, :edit, :update ]
+  before_action :set_group, only: [ :show, :edit, :update, :destroy ]
 
   def new
     @group = Group.new
@@ -41,6 +41,11 @@ class GroupsController < ApplicationController
       @group.page_counter += 1
     end
     @group.save
+  end
+
+  def destroy
+    @group.destroy
+    redirect_to user_path(slug: current_user.githubname)
   end
 
   private
