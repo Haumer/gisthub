@@ -46,6 +46,7 @@ class GroupsController < ApplicationController
   def archive
     @group = Group.find(params[:group_id])
     @group.archive!
+    authorize @group
     redirect_back(fallback_location: current_user.githubname)
   end
 

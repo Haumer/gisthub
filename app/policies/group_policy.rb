@@ -21,6 +21,10 @@ class GroupPolicy < ApplicationPolicy
     user_is_owner?
   end
 
+  def archive?
+    logged_in_and_owner_or_admin?
+  end
+
   def logged_in_and_owner_or_admin?
     user_logged_in? ? user_is_owner? || user_is_admin? : false
   end
