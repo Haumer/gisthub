@@ -37,6 +37,10 @@ class Group < ApplicationRecord
     user
   end
 
+  def archive!
+    archive = true
+  end
+
   include PgSearch::Model
   pg_search_scope :group_search,
     against: [ :name, :slug ],

@@ -43,6 +43,12 @@ class GroupsController < ApplicationController
     @group.save
   end
 
+  def archive
+    @group = Group.find(params[:group_id])
+    @group.archive!
+    redirect_back(fallback_location: current_user.githubname)
+  end
+
   def destroy
     @group.destroy
     redirect_to user_path(slug: current_user.githubname)
