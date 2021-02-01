@@ -38,7 +38,7 @@ class Group < ApplicationRecord
   end
 
   def archive!
-    archive = true
+    self.update(archived: !self.archived)
   end
 
   include PgSearch::Model

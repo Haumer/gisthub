@@ -15,7 +15,11 @@
       <br>
       <div class="d-flex justify-content-between">
         <%= f.submit "Save", class: "btn github-btn--green" %>
-        <%= link_to 'Archive', group_archive_path(group), class: 'archive-button' %>
+        <% if group.archived %>
+          <%= link_to 'Reopen', group_archive_path(group), class: 'archive-button', data: { confirm: 'Are you sure you want to reopen this group?'} %>
+        <% else %>
+          <%= link_to 'Archive', group_archive_path(group), class: 'archive-button', data: { confirm: 'Are you sure you want to archive this group?'} %>
+        <% end %>
       </div>
     <% end %>
   <% end %>
