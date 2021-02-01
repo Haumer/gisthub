@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    .get-started-installation-section, .get-started-ctas {
+    .get-started-installation-section {
       width: 50%;
       margin: 40px;
       min-height: 324px;
@@ -19,6 +19,11 @@
           color: grey;
         }
       }
+    }
+    .get-started-ctas {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
   h2 {

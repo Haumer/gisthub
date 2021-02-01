@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
 
   resources :gist_files, only: [ :show, :update ]
-  resources :groups, only: [ :new, :create, :show, :update ] do
+  resources :groups, only: [ :new, :create, :show, :update, :destroy ] do
     resources :usergroups, only: [ :create ]
   end
   resources :labels, only: [ :new, :create ]
