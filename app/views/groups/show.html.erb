@@ -5,6 +5,7 @@
         <span>
           <%= link_to @user.githubname, user_path(slug: @user.githubname), data: { turbolinks: false }, class: "light" %> / <%= link_to @group.name, group_path(@group), class: "bold", data: { turbolinks: false } %>
         </span>
+        <span class="ml-1"><%= '- this group has been Archived' if @group.archived %></span>
       </h4>
     </div>
   </div>
