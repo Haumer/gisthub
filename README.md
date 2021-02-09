@@ -4,22 +4,7 @@ Never lose track of your [Gists](https://gist.github.com/) again! <br>
 [Sign up now](http://www.hubgist.com/users/sign_up) :wink:
 
 ## Github Gist integration
-Install Gist by [defunkt](https://github.com/defunkt/gist) or [github cli](https://github.com/cli/cli)
-
-### Gist (defunkt)
-```
-brew install gist
-```
-
-Then its as simple as 
-
-```
-gist <file_name>
-```
-or
-```
-gist *.rb
-```
+Install [github cli](https://github.com/cli/cli) or Gist by [defunkt](https://github.com/defunkt/gist)
 
 ### gh (GitHub CLI)
 ```
@@ -34,6 +19,21 @@ gh gist create -p <file_name>
 or
 ```
 gh gist create -p *.rb
+```
+
+### Gist (defunkt)
+```
+brew install gist
+```
+
+Then its as simple as 
+
+```
+gist <file_name>
+```
+or
+```
+gist *.rb
 ```
 
 
