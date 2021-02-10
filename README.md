@@ -21,7 +21,7 @@ or
 gh gist create -p *.rb
 ```
 
-### Gist (defunkt)
+### Gist ([defunkt](https://github.com/defunkt/gist))
 ```
 brew install gist
 ```
