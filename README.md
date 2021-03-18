@@ -6,7 +6,7 @@ Never lose track of your [Gists](https://gist.github.com/) again! <br>
 ## Github Gist integration
 Install [github cli](https://github.com/cli/cli) or Gist by [defunkt](https://github.com/defunkt/gist)
 
-### gh ([gGithub CLI](https://github.com/cli/cli))
+### gh ([Github CLI](https://github.com/cli/cli))
 ```
 brew install gh
 ```
