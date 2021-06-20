@@ -347,7 +347,7 @@ DEPENDENCIES
   pg_search (~> 2.3.0)
   pry-byebug
   pry-rails
-  puma (~> 4.1)
+  puma (~> 4.3)
   pundit
   rails (~> 6.0.3, >= 6.0.3.2)
   redcarpet
