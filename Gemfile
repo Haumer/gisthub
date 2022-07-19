@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '3.0.3'
 
+gem 'omniauth-rails_csrf_protection'
 gem 'redcarpet'
 gem 'rouge-rails'
 gem 'rouge'
