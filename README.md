@@ -1,7 +1,7 @@
-# [Hubgist](http://gisthub.herokuapp.com/)
+# [Hubgist](http://hubgist.herokuapp.com/)
 ### Write, Share and Organise your Code Snippets!
 Never lose track of your [Gists](https://gist.github.com/) again! <br>
-[Sign up now](http://gisthub.herokuapp.com/users/sign_up) :wink:
+[Sign up now](http://hubgist.herokuapp.com/users/sign_up) :wink:
 
 ## Github Gist integration
 Install [github cli](https://github.com/cli/cli) or Gist by [defunkt](https://github.com/defunkt/gist)
