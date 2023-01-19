@@ -115,7 +115,7 @@ GEM
     font-awesome-sass (6.1.1)
       sassc (~> 2.0)
     gist (6.0.0)
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     groupdate (6.1.0)
       activesupport (>= 5.2)
@@ -154,7 +154,7 @@ GEM
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.16.2)
+    minitest (5.17.0)
     msgpack (1.5.3)
     multi_xml (0.6.0)
     netrc (0.11.0)
@@ -327,7 +327,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   ruby
